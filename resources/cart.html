@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageTurn Cart Feature Views</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .view-section {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .view-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .view-content {
+            padding: 30px;
+        }
+        
+        /* Cart Page */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            gap: 20px;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 100px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #6c757d;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .cart-item-meta {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 4px;
+        }
+        
+        .cart-item-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #27ae60;
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 4px;
+        }
+        
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .remove-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .cart-summary {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .summary-total {
+            border-top: 2px solid #dee2e6;
+            padding-top: 16px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #27ae60;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        /* Checkout Page */
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+        }
+        
+        .checkout-form {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .form-section {
+            margin-bottom: 32px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .form-input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        .privacy-notice {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+        
+        .privacy-title {
+            font-weight: 600;
+            color: #1565c0;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .privacy-text {
+            font-size: 14px;
+            color: #1976d2;
+            line-height: 1.5;
+        }
+        
+        .order-summary {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            height: fit-content;
+            border: 2px solid #e9ecef;
+        }
+        
+        .payment-methods {
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .payment-option {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .payment-option.selected {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .payment-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .payment-desc {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        .place-order-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 24px;
+        }
+        
+        /* Order Confirmation */
+        .confirmation-header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .success-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .order-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .detail-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .detail-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #2c3e50;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-processing {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-verified {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .timeline {
+            margin-top: 24px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .timeline-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .timeline-current {
+            background: #667eea;
+            color: white;
+        }
+        
+        .timeline-completed {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .timeline-pending {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cart Page -->
+        <div class="view-section">
+            <div class="view-header">
+                🛒 Shopping Cart
+            </div>
+            <div class="view-content">
+                <div class="cart-item">
+                    <div class="cart-item-image">📖</div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">Advanced Mathematics - Grade 12</div>
+                        <div class="cart-item-meta">Textbook • University of Colombo</div>
+                        <div class="cart-item-meta">Seller ID: #PT2024-789 • Like New Condition</div>
+                        <div class="cart-item-price">LKR 2,500</div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <span>1</span>
+                            <button class="qty-btn">+</button>
+                        </div>
+                        <button class="remove-btn">Remove</button>
+                    </div>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="cart-item-image">📝</div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">Chemistry Lecture Notes</div>
+                        <div class="cart-item-meta">Lecture Notes • Royal College</div>
+                        <div class="cart-item-meta">Seller ID: #PT2024-456 • Good Condition</div>
+                        <div class="cart-item-price">LKR 800</div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <span>1</span>
+                            <button class="qty-btn">+</button>
+                        </div>
+                        <button class="remove-btn">Remove</button>
+                    </div>
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal (2 items):</span>
+                        <span>LKR 3,300</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Service Fee:</span>
+                        <span>LKR 165 (5%)</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total:</span>
+                        <span>LKR 3,465</span>
+                    </div>
+                    <button class="checkout-btn">🔒 Proceed to Secure Checkout</button>
+                </div>
+                
+                <div class="privacy-notice">
+                    <div class="privacy-title">🔐 Complete Privacy Guarantee</div>
+                    <div class="privacy-text">
+                        • Your personal information is never shared with sellers<br>
+                        • All communication goes through our secure messaging system<br>
+                        • Sellers receive anonymous shipping labels<br>
+                        • Payment processing is completely secure and private
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Page -->
+        <div class="view-section">
+            <div class="view-header">
+                💳 Secure Checkout
+            </div>
+            <div class="view-content">
+                <div class="checkout-grid">
+                    <div class="checkout-form">
+                        <div class="form-section">
+                            <div class="section-title">🏠 Delivery Information</div>
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" class="form-input" placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-input" placeholder="+94771234567">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Delivery Address *</label>
+                                <input type="text" class="form-input" placeholder="Street address">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">City *</label>
+                                <input type="text" class="form-input" placeholder="Colombo">
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <div class="section-title">💳 Payment Method</div>
+                            <div class="payment-methods">
+                                <div class="payment-option selected">
+                                    <div class="payment-title">🏦 Bank Transfer</div>
+                                    <div class="payment-desc">Direct bank transfer - Most secure</div>
+                                </div>
+                                <div class="payment-option">
+                                    <div class="payment-title">💰 Digital Wallet</div>
+                                    <div class="payment-desc">eZ Cash, Dialog Pay, Mobitel mCash</div>
+                                </div>
+                                <div class="payment-option">
+                                    <div class="payment-title">💳 Card Payment</div>
+                                    <div class="payment-desc">Visa, Mastercard (via PayPal)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="privacy-notice">
+                            <div class="privacy-title">🛡️ Your Privacy is Protected</div>
+                            <div class="privacy-text">
+                                • Sellers receive anonymous buyer ID: #BUY2024-892<br>
+                                • Your address is only shared after successful payment<br>
+                                • All personal details are encrypted and secure<br>
+                                • PageTurn acts as intermediary for all communications
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="detail-title">📋 Order Summary</div>
+                        
+                        <div class="cart-item" style="padding: 16px 0; border-bottom: 1px solid #e9ecef;">
+                            <div class="cart-item-image" style="width: 60px; height: 75px; font-size: 20px;">📖</div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title" style="font-size: 14px;">Advanced Mathematics</div>
+                                <div class="cart-item-meta">Seller: #PT2024-789</div>
+                                <div class="cart-item-price" style="font-size: 16px;">LKR 2,500</div>
+                            </div>
+                        </div>
+                        
+                        <div class="cart-item" style="padding: 16px 0; border-bottom: 1px solid #e9ecef;">
+                            <div class="cart-item-image" style="width: 60px; height: 75px; font-size: 20px;">📝</div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title" style="font-size: 14px;">Chemistry Notes</div>
+                                <div class="cart-item-meta">Seller: #PT2024-456</div>
+                                <div class="cart-item-price" style="font-size: 16px;">LKR 800</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span>LKR 3,300</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Service Fee:</span>
+                                <span>LKR 165</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping:</span>
+                                <span>Free</span>
+                            </div>
+                            <div class="summary-row summary-total">
+                                <span>Total:</span>
+                                <span>LKR 3,465</span>
+                            </div>
+                        </div>
+                        
+                        <button class="place-order-btn">🔒 Place Secure Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Confirmation -->
+        <div class="view-section">
+            <div class="view-header">
+                ✅ Order Confirmation
+            </div>
+            <div class="view-content">
+                <div class="confirmation-header">
+                    <div class="success-icon">🎉</div>
+                    <h2>Order Placed Successfully!</h2>
+                    <p>Order ID: #ORD2024-1234</p>
+                    <p>Your order is being processed with complete privacy protection</p>
+                </div>
+                
+                <div class="order-details">
+                    <div class="detail-card">
+                        <div class="detail-title">📦 Order Status</div>
+                        <div style="margin-bottom: 12px;">
+                            <span class="status-badge status-processing">Processing Payment</span>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            Sellers have been notified anonymously as:
+                        </div>
+                        <div style="margin-bottom: 8px;">• Seller #PT2024-789: New order #ORD-A789</div>
+                        <div style="margin-bottom: 20px;">• Seller #PT2024-456: New order #ORD-B456</div>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon timeline-completed">✓</div>
+                                <div>
+                                    <div style="font-weight: 600;">Order Received</div>
+                                    <div style="font-size: 14px; color: #6c757d;">Payment processing initiated</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon timeline-current">2</div>
+                                <div>
+                                    <div style="font-weight: 600;">Sellers Notified</div>
+                                    <div style="font-size: 14px; color: #6c757d;">Anonymous order notifications sent</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon timeline-pending">3</div>
+                                <div>
+                                    <div style="font-weight: 600;">Items Prepared</div>
+                                    <div style="font-size: 14px; color: #6c757d;">Sellers prepare items for shipping</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon timeline-pending">4</div>
+                                <div>
+                                    <div style="font-weight: 600;">Shipped</div>
+                                    <div style="font-size: 14px; color: #6c757d;">Items shipped to your address</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <div class="detail-title">🔐 Privacy Protection</div>
+                        <div style="margin-bottom: 16px;">
+                            <span class="status-badge status-verified">Identity Protected</span>
+                        </div>
+                        
+                        <div style="font-size: 14px; line-height: 1.6; color: #495057;">
+                            <div style="margin-bottom: 12px;">
+                                <strong>Your Information:</strong><br>
+                                • Buyer ID: #BUY2024-892<br>
+                                • Only PageTurn knows your real identity
+                            </div>
+                            
+                            <div style="margin-bottom: 12px;">
+                                <strong>Seller Communication:</strong><br>
+                                • All messages go through PageTurn<br>
+                                • No direct contact until you choose
+                            </div>
+                            
+                            <div style="margin-bottom: 12px;">
+                                <strong>Shipping Privacy:</strong><br>
+                                • Address shared only after payment<br>
+                                • Anonymous shipping labels used
+                            </div>
+                            
+                            <div style="background: #e8f5e8; padding: 12px; border-radius: 6px; margin-top: 16px;">
+                                <strong style="color: #27ae60;">✓ Complete Privacy Guaranteed</strong><br>
+                                <span style="font-size: 13px; color: #2d5a2d;">
+                                    Your personal information remains secure throughout the entire process.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="privacy-notice" style="margin-top: 30px;">
+                    <div class="privacy-title">📱 What Happens Next?</div>
+                    <div class="privacy-text">
+                        <strong>Within 2 hours:</strong> Payment verification completed<br>
+                        <strong>Within 24 hours:</strong> Sellers prepare items for shipping<br>
+                        <strong>2-3 business days:</strong> Items delivered to your address<br>
+                        <strong>Throughout:</strong> Real-time updates via SMS and email
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Add click handler to the place order button
+    const placeOrderBtn = document.querySelector('.place-order-btn');
+    if (placeOrderBtn) {
+        placeOrderBtn.addEventListener('click', function() {
+            // Get selected payment method
+            const selectedPayment = document.querySelector('.payment-option.selected');
+            
+            if (!selectedPayment) {
+                alert('Please select a payment method');
+                return;
+            }
+            
+            // Get form data
+            const name = document.querySelector('input[placeholder="Your full name"]').value;
+            const phone = document.querySelector('input[placeholder="+94771234567"]').value;
+            const address = document.querySelector('input[placeholder="Street address"]').value;
+            const city = document.querySelector('input[placeholder="Colombo"]').value;
+            
+            // Validate required fields
+            if (!name || !phone || !address || !city) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Determine payment method and redirect
+            const paymentTitle = selectedPayment.querySelector('.payment-title').textContent;
+            
+            if (paymentTitle.includes('Bank Transfer')) {
+                window.open('payment-transactions.html#bank-transfer', '_blank');
+            } else if (paymentTitle.includes('Digital Wallet')) {
+                window.open('payment-transactions.html#digital-wallet', '_blank');
+            } else if (paymentTitle.includes('Card Payment')) {
+                window.open('payment-transactions.html#card-payment', '_blank');
+            }
+        });
+    }
+    
+    // Add selection functionality to payment options
+    document.querySelectorAll('.payment-option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.payment-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            this.classList.add('selected');
+        });
+    });
+});
+</script>
+</body>
+
+</html>
