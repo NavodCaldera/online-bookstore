@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bookstore Header</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+  <!-- Font Awesome CDN for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header class="top-header">
+    <div class="header-left">
+      <span>📞 +94 77 123 4567</span>
+      <span>✉️ info@bookstore.lk</span>
+    </div>
+
+    <div class="header-center">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
+    <div class="header-right">
+      <a href="#">Sign Up</a> | <a href="#">Login</a>
+        <span class="currency">LKR</span>
+
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg" alt="Sri Lanka Flag" class="flag-icon">
+    </div>
+  </header>
+  <header class="main-header">
+  <div class="header-left">
+    <img src="logo.webp" alt="Logo" class="logo">
+    <span class="site-name">PageTurn</span>
+  </div>
+
+  <div class="header-center">
+  <a href="#"><i class="fas fa-home"></i></a>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search books...">
+    <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+  </div>
+</div>
+
+
+  <div class="header-right">
+    <a href="#"><i class="fas fa-heart"></i> <span>(2)</span></a>
+    <a href="#"><i class="fas fa-shopping-cart"></i> <span>LKR 3,200</span></a>
+  </div>
+</header>
+<nav class="main-nav">
+  <ul>
+    <li><a href="#">Shop Now</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact Us</a></li>
+    <li>
+      <a href="#">My Account <i class="fas fa-user"></i></a>
+    </li>
+  </ul>
+</nav>
+<div class="slider-container" id="slider">
+  <div class="slide">
+    <div class="slide-content">
+      <h1>WELCOME TO <br>PAGE TURN</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      <button class="btn-outline">LEARN MORE</button>
+    </div>
+    <img src="welcome.jpg" alt="Girl with books">
+  </div>
+
+  <div class="slide">
+    <img src="slider2.jpg" alt="Books">
+    <div class="slide-content">
+      <h1>Pre-loved Books For Education</h1>
+      <p>Affordable access to knowledge for students and book lovers alike</p>
+      <button class="btn-primary">Shop Now</button>
+      <button class="btn-outline">Sell Books</button>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="how-it-works">
+      <h2>How It Works</h2>
+      <p class="description">Three simple steps to buy or sell pre-loved educational materials</p>
+      <div class="steps">
+        <div class="step">
+          <i class="fas fa-user-plus"></i>
+          <h3>Create Account</h3>
+          <p>Sign up to start buying or selling pre-owned educational materials</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-search"></i>
+          <h3>Browse or List</h3>
+          <p>Find educational treasures or list your used materials for others</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-exchange-alt"></i>
+          <h3>Buy or Sell</h3>
+          <p>Complete secure transactions and help support affordable education</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow arrow-left" onclick="changeSlide(-1)">&#10094;</div>
+  <div class="arrow arrow-right" onclick="changeSlide(1)">&#10095;</div>
+
+  <div class="dots">
+    <span class="dot" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+  </div>
+</div>
+
+<section class="featured-products">
+        <div class="container">
+            <div class="section-title">
+                <br><h2><center>Our Featured Books</center></h2><br><br>
+            </div>
+            <div class="product-filter">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Textbooks</button>
+                <button class="filter-btn">Notes</button>
+                <button class="filter-btn">Papers</button>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-badge">Sale</div>
+                    <img src="physics.jpeg" alt="Book Title">
+                    <div class="product-details">
+                        <h3>Advanced Physics</h3>
+                        <p class="product-author">By Robert Wilson</p>
+                        <div class="product-price">
+                            <span class="current-price">LKR 5424.00</span>
+                            <span class="original-price">LKR 5450.00</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge new">New</div>
+                    <img src="modern_lit.jpg" alt="Book Title">
+                    <div class="product-details">
+                        <h3>Modern Literature</h3>
+                        <p class="product-author">By Emily Johnson</p>
+                        <div class="product-price">
+                            <span class="current-price">LKR 918.00</span>
+                            <span class="original-price">LKR 2320.00</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="calculus.jpeg" alt="Book Title">
+                    <div class="product-details">
+                        <h3>Calculus Made Easy</h3>
+                        <p class="product-author">By Thomas Grant</p>
+                        <div class="product-price">
+                            <span class="current-price">LKR 4321.00</span>
+                            <span class="original-price">LKR 4380.00</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">Popular</div>
+                    <img src="world_.jpg" alt="Book Title">
+                    <div class="product-details">
+                        <h3>World History</h3>
+                        <p class="product-author">By Sarah Parker</p>
+                        <div class="product-price">
+                            <span class="current-price">LKR 1029.00</span>
+                            <span class="original-price">LKR 3520.00</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <div class="info-banner">
+  <div class="info-item left">
+    <img src="shipped.png" alt="Delivery Truck">
+    <span>Island wide delivery</span>
+  </div>
+  <div class="info-item center">
+    <img src="credit-card.png" alt="Secure Payments">
+    <span>Secure payments</span>
+  </div>
+  <div class="info-item right">
+    <img src="best-price.png" alt="Best Price">
+    <span>Best Price</span>
+  </div>
+</div>
+
+<!--1 st Footer-->
+<div class="footer-section">
+  <!-- Left: Subscribe -->
+  <div class="footer-left">
+    <h2>Receive The Latest Offers & Updates Via Email</h2>
+    <form class="subscribe-form">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Center: Links -->
+  <div class="footer-center">
+    <div class="footer-column">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="#">Textbooks</a></li>
+        <li><a href="#">Novels</a></li>
+        <li><a href="#">Comics</a></li>
+        <li><a href="#">Science</a></li>
+        <li><a href="#">History</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Sell Book</a></li>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Right: Logo and Tagline -->
+  <div class="footer-right">
+    <div style="text-align: right;">
+      <img src="logo.webp" alt="Site Logo" class="logo">
+      <span style="text-align: right;">PageTurn</span>
+    </div>
+    <p>Empowering education through affordable reading</p>
+  </div>
+</div>
+
+<!--2nd Footer-->
+<div class="footer-bottom">
+  <!-- Left: Social Media -->
+  <div class="footer-social">
+    <h4>Follow Us</h4>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <!-- Center: Logo and Site Name -->
+  <div class="footer-center-logo">
+    <img src="logo.webp" alt="Logo" />
+    <span>PageTurn</span>
+  </div>
+
+  <!-- Right: Payment Icons -->
+  <div class="footer-payments">
+    <h4>We accept</h4>
+    <div class="payment-icons">
+      <img src="visa.png" alt="Visa" />
+      <img src="mastercard.png" alt="MasterCard" />
+    </div>
+  </div>
+</div>
+<footer class="copyright-footer">
+  <p>&copy; 2025 PageTurn Bookstore. All rights reserved.</p>
+</footer>
+
+
+    <script src="myscript.js"></script>
+    <!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+</body>
+</html>
