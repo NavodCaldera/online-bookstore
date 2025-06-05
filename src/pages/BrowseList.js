@@ -6,7 +6,7 @@ function BrowseList() {
   const [activeTab, setActiveTab] = useState('browse');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [priceRange, setPriceRange] = useState([0, 6000]); // Updated for LKR (1 USD = 100 LKR)
+  const [priceRange, setPriceRange] = useState([0, 20000]); // Include all books until prices are fixed
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([
     { value: 'all', label: 'All Categories' }
@@ -181,7 +181,7 @@ function BrowseList() {
       if (priceRange[0] > 0) {
         params.append('minPrice', priceRange[0]);
       }
-      if (priceRange[1] < 6000) {
+      if (priceRange[1] < 20000) {
         params.append('maxPrice', priceRange[1]);
       }
 
@@ -206,9 +206,19 @@ function BrowseList() {
         params.append('maxPrice', priceRange[1]);
       }
 
-      const response = await fetch(`${API_BASE_URL}/books?${params}`);
+      const apiUrl = `${API_BASE_URL}/books?${params}`;
+      console.log('🔍 API URL:', apiUrl);
+
+      const response = await fetch(apiUrl);
       if (response.ok) {
         const data = await response.json();
+        console.log('📊 API Response:', {
+          totalItems: data.pagination?.totalItems,
+          currentPage: data.pagination?.currentPage,
+          totalPages: data.pagination?.totalPages,
+          booksReturned: data.data?.length
+        });
+
         if (data.success) {
           // Transform API data to match component structure
           const transformedBooks = data.data.map(book => ({
@@ -372,8 +382,8 @@ function BrowseList() {
                   <input
                     type="range"
                     min="0"
-                    max="6000"
-                    step="100"
+                    max="20000"
+                    step="500"
                     value={priceRange[0]}
                     onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
                     className="range-slider"
@@ -381,8 +391,8 @@ function BrowseList() {
                   <input
                     type="range"
                     min="0"
-                    max="6000"
-                    step="100"
+                    max="20000"
+                    step="500"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                     className="range-slider"
@@ -544,7 +554,7 @@ function BrowseList() {
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory('all');
-                    setPriceRange([0, 6000]);
+                    setPriceRange([0, 20000]);
                     setSortBy('newest');
                   }}
                 >
@@ -633,8 +643,8 @@ function BrowseList() {
                   className="form-input"
                   value={listForm.price}
                   onChange={handleListFormChange}
-                  min="100"
-                  max="10000"
+                  min="50"
+                  max="3000"
                   required
                 />
               </div>
