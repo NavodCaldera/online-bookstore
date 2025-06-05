@@ -16,6 +16,12 @@
     "convert-prices": "node scripts/convert-prices-to-lkr.js",
     "reconvert-prices": "node scripts/reconvert-prices-100.js",
     "create-default-user": "node scripts/create-default-user.js",
+    "debug-book-count": "node scripts/debug-book-count.js",
+    "fix-book-categories": "node scripts/fix-book-categories.js",
+    "convert-to-50-lkr": "node scripts/convert-to-50-lkr.js",
+    "check-price-range": "node scripts/check-price-range.js",
+    "fix-prices-to-50-lkr": "node scripts/fix-prices-to-50-lkr.js",
+    "set-student-prices": "node scripts/set-student-friendly-prices.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
