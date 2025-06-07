@@ -6,7 +6,7 @@ function BrowseList() {
   const [activeTab, setActiveTab] = useState('browse');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [priceRange, setPriceRange] = useState([0, 20000]); // Include all books until prices are fixed
+  const [priceRange, setPriceRange] = useState([0, 3000]); // Updated for 1 USD = 50 LKR conversion
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([
     { value: 'all', label: 'All Categories' }
@@ -181,7 +181,7 @@ function BrowseList() {
       if (priceRange[0] > 0) {
         params.append('minPrice', priceRange[0]);
       }
-      if (priceRange[1] < 20000) {
+      if (priceRange[1] < 3000) {
         params.append('maxPrice', priceRange[1]);
       }
 
@@ -382,8 +382,8 @@ function BrowseList() {
                   <input
                     type="range"
                     min="0"
-                    max="20000"
-                    step="500"
+                    max="3000"
+                    step="100"
                     value={priceRange[0]}
                     onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
                     className="range-slider"
@@ -391,8 +391,8 @@ function BrowseList() {
                   <input
                     type="range"
                     min="0"
-                    max="20000"
-                    step="500"
+                    max="3000"
+                    step="100"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                     className="range-slider"
@@ -554,7 +554,7 @@ function BrowseList() {
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory('all');
-                    setPriceRange([0, 20000]);
+                    setPriceRange([0, 3000]);
                     setSortBy('newest');
                   }}
                 >
