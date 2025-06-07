@@ -3,6 +3,8 @@ import HomePage from './HomePage';
 import CreateAccount from './pages/CreateAccount';
 import BrowseList from './pages/BrowseList';
 import BuySell from './pages/BuySell';
+import Login from './pages/Login';
+
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/browse" element={<BrowseList />} />
         <Route path="/buy-sell" element={<BuySell />} />
         <Route path="*" element={<div>Page not found</div>} />
+        <Route path="/login" element={<Login />} />
+
       </Routes>
     </Router>
   );

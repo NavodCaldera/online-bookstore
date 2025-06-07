@@ -25,35 +25,35 @@ function Navigation() {
 
         {/* Desktop Navigation Links */}
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={`nav-link ${isActive('/')}`}
             onClick={() => setIsMenuOpen(false)}
           >
             <i className="fas fa-home"></i>
             <span>Home</span>
           </Link>
-          
-          <Link 
-            to="/browse" 
+
+          <Link
+            to="/browse"
             className={`nav-link ${isActive('/browse')}`}
             onClick={() => setIsMenuOpen(false)}
           >
             <i className="fas fa-search"></i>
             <span>Browse Books</span>
           </Link>
-          
-          <Link 
-            to="/buy-sell" 
+
+          <Link
+            to="/buy-sell"
             className={`nav-link ${isActive('/buy-sell')}`}
             onClick={() => setIsMenuOpen(false)}
           >
             <i className="fas fa-exchange-alt"></i>
             <span>Buy & Sell</span>
           </Link>
-          
-          <Link 
-            to="/create-account" 
+
+          <Link
+            to="/create-account"
             className={`nav-link ${isActive('/create-account')}`}
             onClick={() => setIsMenuOpen(false)}
           >
@@ -88,15 +88,17 @@ function Navigation() {
             <i className="fas fa-shopping-cart"></i>
             <span className="cart-count">0</span>
           </button>
-          
+
           <button className="nav-action-btn profile-btn">
             <i className="fas fa-user"></i>
           </button>
-          
-          <button className="nav-action-btn login-btn">
+
+
+          <Link to="/login" className="nav-action-btn login-btn">
             <i className="fas fa-sign-in-alt"></i>
             <span>Login</span>
-          </button>
+          </Link>
+
         </div>
 
         {/* Mobile Menu Toggle */}
