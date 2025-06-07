@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+<body>
+      <header class="top-header">
+    <div class="header-left">
+      <span>📞 +94 77 123 4567</span>
+      <span>✉️ info@bookstore.lk</span>
+    </div>
+
+    <div class="header-center">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
+    <div class="header-right">
+      <a href="register.html">Sign Up</a> | <a href="login.html">Login</a>
+        <span class="currency">LKR</span>
+
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg" alt="Sri Lanka Flag" class="flag-icon">
+    </div>
+  </header>
+  <header class="main-header">
+  <div class="header-left">
+    <img src="logo.webp" alt="Logo" class="logo">
+    <span class="site-name">PageTurn</span>
+  </div>
+
+  <div class="header-center">
+  <a href="home.html"><i class="fas fa-home"></i></a>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search books...">
+    <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+  </div>
+</div>
+
+
+<div class="header-right">
+  <div class="dropdown-menu">
+    <div class="menu-icon" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul class="menu-items" id="menuItems">
+      <li><a href="#">Shop Now</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">My Account</a></li>
+    </ul>
+  </div>
+
+  <a href="#"><i class="fas fa-heart"></i> <span>(2)</span></a>
+  <a href="#"><i class="fas fa-shopping-cart"></i> <span>LKR 3,200</span></a>
+</div>
+</header>
+<div class="about-container">
+    <!-- Left Column: Heading and Image 1 -->
+    <div class="about-left">
+      <a class="about-link" href="#">About us</a>
+      <div class="about-title">Bokify Is Best<br>Choice For You</div>
+      <img src="abt_img1.png" alt="Book on table" class="about-image1">
+    </div>
+    <!-- Right Column: Image 2 and Description -->
+    <div class="about-right">
+      <img src="abt_img2.png" alt="Person holding book" class="about-image2">
+      <div class="about-desc">
+        Welcome! We’re passionate about literature and committed to sharing the magic of storytelling. Our page is where you’ll discover our love for books, our mission to connect readers, and our dedication to fostering a vibrant reading community. Join us on this literary journey as we explore, and celebrate the captivating world of words.
+      </div>
+    </div>
+  </div>
+  <section class="mission-section">
+  <h2><span class="underline">Our Mission</span></h2>
+  <p class="mission-subtitle">
+    Fueling curiosity and lifelong learning insightful knowledge sharing through a<br>
+    carefully curated selection of books.
+  </p>
+  <div class="mission-cards">
+    <div class="mission-card">
+      <!-- Book Icon SVG -->
+      <div class="mission-icon">
+        <svg width="40" height="40" fill="none" stroke="#223" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="4" y="3" width="16" height="18" rx="2" stroke="#223" fill="none"/>
+          <path d="M8 7h8M8 11h8M8 15h4" stroke="#223"/>
+          <path d="M7 3v18" stroke="#223"/>
+        </svg>
+      </div>
+      <div class="mission-title">Best Bookstore</div>
+      <div class="mission-text">
+        Books Explore More. Your go-to destination for a treasure trove of reading wonders.
+      </div>
+      <button class="mission-arrow">
+        <span>&rarr;</span>
+      </button>
+    </div>
+    <div class="mission-card">
+      <!-- Ribbon Icon SVG -->
+      <div class="mission-icon">
+        <svg width="40" height="40" fill="none" stroke="#223" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="5" stroke="#223" fill="none"/>
+          <path d="M12 13v7M12 20l-3-3M12 20l3-3" stroke="#223"/>
+        </svg>
+      </div>
+      <div class="mission-title">Trusted Seller</div>
+      <div class="mission-text">
+        Quality Shop with confidence knowing we’re your trusted seller for genuine items.
+      </div>
+      <button class="mission-arrow">
+        <span>&rarr;</span>
+      </button>
+    </div>
+    <div class="mission-card">
+      <!-- Store Icon SVG -->
+      <div class="mission-icon">
+        <svg width="40" height="40" fill="none" stroke="#223" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="3" y="7" width="18" height="13" rx="2" stroke="#223" fill="none"/>
+          <path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke="#223"/>
+          <circle cx="18" cy="12" r="1" stroke="#223"/>
+        </svg>
+      </div>
+      <div class="mission-title">Expand Store</div>
+      <div class="mission-text">
+        Diversify our products to cater to evolving needs and preferences of our customers.
+      </div>
+      <button class="mission-arrow">
+        <span>&rarr;</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Join the Community Section -->
+<section class="community-section">
+  <div class="community-books">
+    <img src="comm.png" alt="Book 1">
+  </div>
+  <form class="community-form">
+    <div class="community-title"><span class="underline">Join the community</span></div>
+    <div class="community-subtitle">For newest books updates</div>
+    <div class="community-input-group">
+      <input type="email" placeholder="Enter your mail" required>
+      <button type="submit">&rarr;</button>
+    </div>
+  </form>
+</section>
+<div class="footer-section">
+  <!-- Left: Subscribe -->
+  <div class="footer-left">
+    <h2>Receive The Latest Offers & Updates Via Email</h2>
+    <form class="subscribe-form">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Center: Links -->
+  <div class="footer-center">
+    <div class="footer-column">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="#">Textbooks</a></li>
+        <li><a href="#">Novels</a></li>
+        <li><a href="#">Comics</a></li>
+        <li><a href="#">Science</a></li>
+        <li><a href="#">History</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Sell Book</a></li>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Right: Logo and Tagline -->
+  <div class="footer-right">
+    <div style="text-align: right;">
+    </div>
+    <img src = "logo.webp" class="logo" style="float:right"><br>
+      <h2><span style="text-align: right;">PageTurn</span></h2>
+          <p>Making education more accessible through pre-loved books and educational materials</p>
+
+  </div>
+</div>
+
+<!--2nd Footer-->
+<div class="footer-bottom">
+  <!-- Left: Social Media -->
+  <div class="footer-social">
+    <h4>Follow Us</h4>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <!-- Center: Logo and Site Name -->
+  <div class="footer-center-logo">
+    <img src="logo.webp" alt="Logo" />
+    <span>PageTurn</span>
+  </div>
+
+  <!-- Right: Payment Icons -->
+  <div class="footer-payments">
+    <h4>We accept</h4>
+    <div class="payment-icons">
+      <img src="visa.png" alt="Visa" />
+      <img src="mastercard.png" alt="MasterCard" />
+    </div>
+  </div>
+</div>
+<footer class="copyright-footer">
+  <p>&copy; 2025 PageTurn Bookstore. All rights reserved.</p>
+</footer>
+
+
+    <script src="myscript.js"></script>
+    <!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+</body>
+</html>
+
+
+    <script src="about.js"></script>
+  
+</body>
+</html>
