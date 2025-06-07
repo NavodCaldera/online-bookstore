@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import '../styles/browse.css';
+import '../styles/home.css';
 
 function BrowseList() {
   const [activeTab, setActiveTab] = useState('browse');
@@ -749,6 +751,87 @@ function BrowseList() {
           </div>
         </div>
       )}
+
+      {/* First Footer Section */}
+      <div className="footer-section">
+        <div className="container">
+          <div className="footer-left">
+            <h2>Receive The Latest Offers & Updates Via Email</h2>
+            <form className="subscribe-form">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+
+          <div className="footer-center">
+            <div className="footer-column">
+              <h3>Categories</h3>
+              <ul>
+                <li><Link to="/browse?category=mathematics">Mathematics</Link></li>
+                <li><Link to="/browse?category=reference">Reference</Link></li>
+                <li><Link to="/browse?category=technology">Technology</Link></li>
+                <li><Link to="/browse?category=literature">Literature</Link></li>
+                <li><Link to="/browse?category=non-fiction">Non-Fiction</Link></li>
+              </ul>
+            </div>
+            <div className="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/browse">Sell Book</Link></li>
+                <li><Link to="/buy-sell">My Account</Link></li>
+                <li><Link to="/help">Help</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-right">
+            <div style={{textAlign: 'right'}}>
+              <Link to="/">
+                <img src="/logo.webp" alt="Site Logo" className="logo" />
+              </Link>
+              <span style={{textAlign: 'right'}}>PageTurn</span>
+            </div>
+            <p>Empowering education through affordable reading</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Second Footer Section */}
+      <div className="footer-bottom">
+        <div className="container">
+          <div className="footer-social">
+            <h4>Follow Us</h4>
+            <div className="social-icons">
+              <a href="#"><i className="fab fa-facebook-f"></i></a>
+              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="#"><i className="fab fa-twitter"></i></a>
+              <a href="#"><i className="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <div className="footer-center-logo">
+            <Link to="/">
+              <img src="/logo.webp" alt="Logo" />
+            </Link>
+            <span>PageTurn</span>
+          </div>
+
+          <div className="footer-payments">
+            <h4>We accept</h4>
+            <div className="payment-icons">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright Footer */}
+      <footer className="copyright-footer">
+        <p>&copy; 2025 PageTurn Bookstore. All rights reserved.</p>
+      </footer>
     </div>
   );
 }

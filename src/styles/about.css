@@ -477,3 +477,92 @@
     text-align: center;
   }
 }
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 40px 15px;
+  }
+
+  .about-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .about-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .mission-section {
+    padding: 40px 15px;
+  }
+
+  .mission-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .mission-cards {
+    gap: 20px;
+  }
+
+  .mission-card {
+    padding: 20px 15px;
+  }
+
+  .mission-title {
+    font-size: 1.1rem;
+    margin: 10px 0 8px 0;
+  }
+
+  .mission-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .mission-icon img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .community-section {
+    padding: 30px 15px;
+  }
+
+  .community-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  .community-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .community-stats {
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .stat-item {
+    padding: 15px;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .about-container {
+    gap: 20px;
+  }
+
+  .about-left,
+  .about-right {
+    gap: 15px;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import '../styles/about.css';
+import '../styles/home.css';
 
 function AboutUs() {
   const [email, setEmail] = useState('');
@@ -52,11 +53,7 @@ function AboutUs() {
         <div className="mission-cards">
           <div className="mission-card">
             <div className="mission-icon">
-              <svg width="40" height="40" fill="none" stroke="#223" strokeWidth="2" viewBox="0 0 24 24">
-                <rect x="4" y="3" width="16" height="18" rx="2" stroke="#223" fill="none"/>
-                <path d="M8 7h8M8 11h8M8 15h4" stroke="#223"/>
-                <path d="M7 3v18" stroke="#223"/>
-              </svg>
+              <img src="/best_book.png" alt="Best Bookstore" width="40" height="40" />
             </div>
             <div className="mission-title">Best Bookstore</div>
             <div className="mission-text">
@@ -69,10 +66,7 @@ function AboutUs() {
           
           <div className="mission-card">
             <div className="mission-icon">
-              <svg width="40" height="40" fill="none" stroke="#223" strokeWidth="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="5" stroke="#223" fill="none"/>
-                <path d="M12 13v7M12 20l-3-3M12 20l3-3" stroke="#223"/>
-              </svg>
+              <img src="/trust_seller.png" alt="Trusted Seller" width="40" height="40" />
             </div>
             <div className="mission-title">Trusted Seller</div>
             <div className="mission-text">
@@ -85,11 +79,7 @@ function AboutUs() {
           
           <div className="mission-card">
             <div className="mission-icon">
-              <svg width="40" height="40" fill="none" stroke="#223" strokeWidth="2" viewBox="0 0 24 24">
-                <rect x="3" y="7" width="18" height="13" rx="2" stroke="#223" fill="none"/>
-                <path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke="#223"/>
-                <circle cx="18" cy="12" r="1" stroke="#223"/>
-              </svg>
+              <img src="/expand.png" alt="Expand Store" width="40" height="40" />
             </div>
             <div className="mission-title">Expand Store</div>
             <div className="mission-text">
@@ -105,7 +95,7 @@ function AboutUs() {
       {/* Join the Community Section */}
       <section className="community-section">
         <div className="community-books">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Community Books" />
+          <img src="/comm.png" alt="Community Books" />
         </div>
         <form className="community-form" onSubmit={handleNewsletterSubmit}>
           <div className="community-title"><span className="underline">Join the community</span></div>
@@ -123,81 +113,83 @@ function AboutUs() {
         </form>
       </section>
 
-      {/* Footer Section */}
+      {/* First Footer Section */}
       <div className="footer-section">
-        <div className="footer-left">
-          <h2>Receive The Latest Offers & Updates Via Email</h2>
-          <form className="subscribe-form" onSubmit={handleNewsletterSubmit}>
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required 
-            />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-
-        <div className="footer-center">
-          <div className="footer-column">
-            <h3>Categories</h3>
-            <ul>
-              <li><Link to="/browse?category=textbooks">Textbooks</Link></li>
-              <li><Link to="/browse?category=fiction">Novels</Link></li>
-              <li><Link to="/browse?category=arts">Comics</Link></li>
-              <li><Link to="/browse?category=science">Science</Link></li>
-              <li><Link to="/browse?category=history">History</Link></li>
-            </ul>
+        <div className="container">
+          <div className="footer-left">
+            <h2>Receive The Latest Offers & Updates Via Email</h2>
+            <form className="subscribe-form">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">Subscribe</button>
+            </form>
           </div>
-          <div className="footer-column">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/browse">Sell Book</Link></li>
-              <li><Link to="/buy-sell">My Account</Link></li>
-              <li><Link to="/help">Help</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
-          </div>
-        </div>
 
-        <div className="footer-right">
-          <div style={{textAlign: 'right'}}>
-            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Logo" className="logo" style={{float: 'right'}} />
-            <br />
-            <h2><span style={{textAlign: 'right'}}>PageTurn</span></h2>
-            <p>Making education more accessible through pre-loved books and educational materials</p>
+          <div className="footer-center">
+            <div className="footer-column">
+              <h3>Categories</h3>
+              <ul>
+                <li><Link to="/browse?category=mathematics">Mathematics</Link></li>
+                <li><Link to="/browse?category=reference">Reference</Link></li>
+                <li><Link to="/browse?category=technology">Technology</Link></li>
+                <li><Link to="/browse?category=literature">Literature</Link></li>
+                <li><Link to="/browse?category=non-fiction">Non-Fiction</Link></li>
+              </ul>
+            </div>
+            <div className="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/browse">Sell Book</Link></li>
+                <li><Link to="/buy-sell">My Account</Link></li>
+                <li><Link to="/help">Help</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-right">
+            <div style={{textAlign: 'right'}}>
+              <Link to="/">
+                <img src="/logo.webp" alt="Site Logo" className="logo" />
+              </Link>
+              <span style={{textAlign: 'right'}}>PageTurn</span>
+            </div>
+            <p>Empowering education through affordable reading</p>
           </div>
         </div>
       </div>
 
-      {/* Second Footer */}
+      {/* Second Footer Section */}
       <div className="footer-bottom">
-        <div className="footer-social">
-          <h4>Follow Us</h4>
-          <div className="social-icons">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
-            <a href="#"><i className="fab fa-instagram"></i></a>
-            <a href="#"><i className="fab fa-twitter"></i></a>
-            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+        <div className="container">
+          <div className="footer-social">
+            <h4>Follow Us</h4>
+            <div className="social-icons">
+              <a href="#"><i className="fab fa-facebook-f"></i></a>
+              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="#"><i className="fab fa-twitter"></i></a>
+              <a href="#"><i className="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
-        </div>
 
-        <div className="footer-center-logo">
-          <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Logo" />
-          <span>PageTurn</span>
-        </div>
+          <div className="footer-center-logo">
+            <Link to="/">
+              <img src="/logo.webp" alt="Logo" />
+            </Link>
+            <span>PageTurn</span>
+          </div>
 
-        <div className="footer-payments">
-          <h4>We accept</h4>
-          <div className="payment-icons">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" />
+          <div className="footer-payments">
+            <h4>We accept</h4>
+            <div className="payment-icons">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" />
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Copyright Footer */}
       <footer className="copyright-footer">
         <p>&copy; 2025 PageTurn Bookstore. All rights reserved.</p>
       </footer>

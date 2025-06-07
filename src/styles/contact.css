@@ -260,4 +260,54 @@
   .contact-form {
     padding: 25px 15px;
   }
+
+  /* Enhanced mobile responsiveness */
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .contact-info {
+    padding: 20px 15px;
+  }
+
+  .contact-info-item {
+    margin-bottom: 15px;
+  }
+
+  .contact-info-item i {
+    font-size: 1.2rem;
+  }
+
+  .contact-info-item div h3 {
+    font-size: 1rem;
+  }
+
+  .contact-info-item div p {
+    font-size: 0.9rem;
+  }
+
+  .contact-map {
+    padding: 20px 15px;
+  }
+
+  .map-container {
+    height: 250px;
+  }
 }
