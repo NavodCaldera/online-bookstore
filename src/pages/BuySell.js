@@ -25,26 +25,7 @@ function BuySell() {
     }
   ]);
 
-  const [myListings, setMyListings] = useState([
-    {
-      id: 1,
-      title: 'Chemistry Textbook',
-      price: 1800,
-      status: 'active',
-      views: 45,
-      inquiries: 3,
-      image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
-    },
-    {
-      id: 2,
-      title: 'Biology Notes',
-      price: 900,
-      status: 'sold',
-      views: 67,
-      inquiries: 8,
-      image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
-    }
-  ]);
+  const [myListings] = useState([]);
 
   const updateQuantity = (id, newQuantity) => {
     if (newQuantity === 0) {

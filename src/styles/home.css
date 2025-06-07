@@ -20,64 +20,8 @@
     --body-font: 'Poppins', sans-serif;
 }
 
-.top-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f4f4f4;
-  padding: 10px 30px;
-  flex-wrap: wrap;
-}
-
-.header-left,
-.header-center,
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.header-center {
-  justify-content: center;
-  flex: 1;
-}
-
-.header-right a {
-  text-decoration: none;
-  color: #333;
-  margin-right: 10px;
-}
-
-.header-right select {
-  margin-left: 10px;
-  padding: 4px;
-}
-
-.flag-icon {
-  width: 24px;
-  height: 16px;
-  margin-left: 5px;
-  vertical-align: middle;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .top-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .header-center {
-    justify-content: flex-start;
-  }
-
-  .header-right {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-}
-
+/* Remove the main header styles */
+/* 
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -88,19 +32,23 @@
   flex-wrap: wrap;
 }
 
-.main-header .header-left,
-.main-header .header-center,
 .main-header .header-right {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
+.main-header .header-right a {
+  text-decoration: none;
+  color: #333;
+  margin-right: 5px;
+}
+
 .logo {
   height: 60px;
   width: 60px;
   object-fit: cover;
-  border-radius: 50%; /* Makes it circular */
+  border-radius: 50%;
   margin-bottom: 5px;
 }
 
@@ -109,29 +57,7 @@
   font-weight: bold;
   color: #333;
 }
-
-.header-center input[type="text"] {
-  padding: 8px 12px;
-  font-size: 1rem;
-  width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.main-header a {
-  text-decoration: none;
-  color: #333;
-  font-size: 1.1rem;
-}
-
-.main-header i {
-  font-size: 1.3rem;
-}
-
-.header-right span {
-  margin-left: 5px;
-  font-weight: bold;
-}
+*/
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -732,6 +658,21 @@ body {
 .copyright-footer p {
     margin: 0;
     font-size: 0.9rem;
+}
+
+/* Add styles for the new button elements that replaced anchor tags */
+.icon-button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 5px;
+  font-size: 1rem;
+}
+
+.icon-button:hover {
+  color: var(--accent-color);
 }
 
 /* Responsive Design */

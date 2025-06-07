@@ -118,34 +118,32 @@
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 15px;
 }
 
 .nav-action-btn {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  border: 2px solid #ecf0f1;
+  gap: 5px;
   color: #ecf0f1;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .nav-action-btn:hover {
-  background: #ecf0f1;
-  color: #2c3e50;
-  transform: translateY(-2px);
+  color: #f39c12;
 }
 
-.cart-btn {
-  position: relative;
+.nav-action-btn i {
+  font-size: 1.2rem;
 }
 
-.cart-count {
+.count-badge, .cart-count {
   background: #e74c3c;
   color: white;
   border-radius: 50%;
@@ -153,6 +151,44 @@
   font-size: 0.8rem;
   min-width: 20px;
   text-align: center;
+}
+
+/* Style for login and signup buttons */
+.login-btn, .signup-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  background-color: transparent;
+  border: 1px solid #f39c12;
+  color: #f39c12;
+}
+
+.login-btn:hover {
+  background-color: rgba(243, 156, 18, 0.1);
+}
+
+.signup-btn {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.signup-btn:hover {
+  background-color: #e67e22;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  .login-btn span, .signup-btn span {
+    display: none;
+  }
+  
+  .login-btn, .signup-btn {
+    padding: 0.5rem;
+  }
 }
 
 /* Mobile Menu Toggle */

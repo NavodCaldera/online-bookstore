@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navigation from '../components/Navigation';
 import '../styles/auth.css';
+import { Link } from 'react-router-dom';
 
 function CreateAccount() {
   const [formData, setFormData] = useState({
@@ -282,7 +283,7 @@ function CreateAccount() {
           </form>
 
           <div className="auth-footer">
-            <p>Already have an account? <a href="/login" className="link">Sign in here</a></p>
+            <p>Already have an account? <Link to="/login" className="link">Sign in here</Link></p>
           </div>
         </div>
 

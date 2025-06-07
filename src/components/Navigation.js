@@ -52,15 +52,6 @@ function Navigation() {
             <span>Buy & Sell</span>
           </Link>
           
-          <Link 
-            to="/create-account" 
-            className={`nav-link ${isActive('/create-account')}`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <i className="fas fa-user-plus"></i>
-            <span>Sign Up</span>
-          </Link>
-
           {/* Additional Navigation Items */}
           <div className="nav-link dropdown">
             <i className="fas fa-ellipsis-h"></i>
@@ -84,19 +75,25 @@ function Navigation() {
 
         {/* User Actions */}
         <div className="nav-actions">
-          <button className="nav-action-btn cart-btn">
+          <Link to="/wishlist" className="nav-action-btn">
+            <i className="fas fa-heart"></i>
+            <span className="count-badge">2</span>
+          </Link>
+          
+          <Link to="/cart" className="nav-action-btn cart-btn">
             <i className="fas fa-shopping-cart"></i>
             <span className="cart-count">0</span>
-          </button>
+          </Link>
           
-          <button className="nav-action-btn profile-btn">
-            <i className="fas fa-user"></i>
-          </button>
-          
-          <button className="nav-action-btn login-btn">
+          <Link to="/login" className="nav-action-btn login-btn">
             <i className="fas fa-sign-in-alt"></i>
             <span>Login</span>
-          </button>
+          </Link>
+          
+          <Link to="/signup" className="nav-action-btn signup-btn">
+            <i className="fas fa-user-plus"></i>
+            <span>Sign Up</span>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}

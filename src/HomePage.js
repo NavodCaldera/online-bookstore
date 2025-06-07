@@ -149,33 +149,14 @@ function HomePage() {
       {/* Navigation Bar */}
       <Navigation />
 
-      {/* Top Header */}
-      <header className="top-header">
-        <div className="header-left">
-          <span>📞 +94 77 123 4567</span>
-          <span>✉️ info@bookstore.lk</span>
-        </div>
-        <div className="header-center">
-          <a href="#"><i className="fab fa-facebook-f"></i></a>
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-          <a href="#"><i className="fab fa-linkedin-in"></i></a>
-        </div>
-        <div className="header-right">
-          <Link to="/create-account">Sign Up</Link> | <a href="#">Login</a>
-          <span className="currency">LKR</span>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg" alt="Sri Lanka Flag" className="flag-icon" />
-        </div>
-      </header>
-
-      {/* Main Header */}
-      <header className="main-header">
+      {/* Main Header - REMOVE THIS ENTIRE SECTION */}
+      {/* <header className="main-header">
         <div className="header-left">
           <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Logo" className="logo" />
           <span className="site-name">PageTurn</span>
         </div>
         <div className="header-center">
-          <a href="#"><i className="fas fa-home"></i></a>
+          <Link to="/"><i className="fas fa-home"></i></Link>
           <div className="search-container">
             <input
               type="text"
@@ -188,17 +169,18 @@ function HomePage() {
           </div>
         </div>
         <div className="header-right">
-          <a href="#"><i className="fas fa-heart"></i> <span>(2)</span></a>
-          <a href="#"><i className="fas fa-shopping-cart"></i> <span>LKR 3,200</span></a>
+          <Link to="/wishlist"><i className="fas fa-heart"></i> <span>(2)</span></Link>
+          <Link to="/cart"><i className="fas fa-shopping-cart"></i> <span>LKR 3,200</span></Link>
+          <Link to="/login">Login</Link> | <Link to="/signup">Sign Up</Link>
         </div>
-      </header>
+      </header> */}
 
-      {/* Navigation */}
+      {/* Navigation - KEEP THIS SECTION */}
       <nav className="main-nav">
         <ul>
           <li><Link to="/browse">Shop Now</Link></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><Link to="/about">About Us</Link></li>
+          <li><Link to="/contact">Contact Us</Link></li>
           <li><Link to="/buy-sell">My Account <i className="fas fa-user"></i></Link></li>
         </ul>
       </nav>
@@ -358,11 +340,11 @@ function HomePage() {
           <div className="footer-column">
             <h3>Quick Links</h3>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Sell Book</a></li>
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact Us</Link></li>
+              <li><Link to="/faq">FAQ</Link></li>
+              <li><Link to="/terms">Terms & Conditions</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
             </ul>
           </div>
         </div>
