@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/navigation.css';
 
@@ -10,6 +10,28 @@ function Navigation() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('menu-open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.classList.remove('menu-open');
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('menu-open');
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
   const isActive = (path) => {
     return location.pathname === path ? 'active' : '';
   };
@@ -19,7 +41,7 @@ function Navigation() {
       <div className="nav-container">
         {/* Logo/Brand */}
         <Link to="/" className="nav-logo">
-          <i className="fas fa-book-open"></i>
+          <img src="/logo.webp" alt="PageTurn Logo" className="nav-logo-img" />
           <span>PageTurn</span>
         </Link>
 
@@ -100,7 +122,7 @@ function Navigation() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="nav-toggle" onClick={toggleMenu}>
+        <div className={`nav-toggle ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>

@@ -394,13 +394,27 @@ body {
 
 .featured-products {
     padding: 6rem 0;
-    background-color: var(--bg-color);
+    background-color: white;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+/* Section title styling - matching AboutUs Mission style */
+.section-title h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #181c32;
+    text-align: center;
+}
+
+.underline {
+    border-bottom: 3px solid #181c32;
+    padding-bottom: 2px;
 }
 
 .product-filter {
@@ -536,7 +550,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--white);
+    background-color: #dddcda;
     padding: 30px 20px;
     margin: 40px 0;
     box-shadow: 0 2px 10px var(--shadow);
@@ -567,8 +581,20 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     background-color: var(--section-alt-bg);
-    padding: 60px 40px;
+    padding: 60px 0;
+    margin: 0;
+    width: 100%;
+}
+
+.footer-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 40px;
+    width: 100%;
 }
 
 .footer-left {
@@ -650,12 +676,14 @@ body {
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .footer-right span {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--text-dark);
+    color: white;
 }
 
 .footer-right p {
@@ -670,7 +698,19 @@ body {
     align-items: center;
     background-color: var(--text-dark);
     color: var(--white);
-    padding: 30px 40px;
+    padding: 30px 0;
+    margin: 0;
+    width: 100%;
+}
+
+.footer-bottom .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .footer-social h4,
@@ -726,7 +766,9 @@ body {
     background-color: #1a1a1a;
     color: var(--white);
     text-align: center;
-    padding: 20px;
+    padding: 20px 0;
+    margin: 0;
+    width: 100%;
 }
 
 .copyright-footer p {
@@ -756,9 +798,10 @@ body {
         gap: 20px;
     }
 
-    .footer-section {
+    .footer-section .container {
         flex-direction: column;
         gap: 30px;
+        padding: 0 20px;
     }
 
     .footer-center {
@@ -766,10 +809,11 @@ body {
         gap: 30px;
     }
 
-    .footer-bottom {
+    .footer-bottom .container {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+        padding: 0 20px;
     }
 
     .slide-content h1 {
@@ -805,5 +849,141 @@ body {
 
     .slide-content {
         max-width: 100%;
+    }
+
+    /* Enhanced mobile responsiveness */
+    .top-header {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+    }
+
+    .main-header {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        height: 40px;
+        width: 40px;
+    }
+
+    .site-name {
+        font-size: 1.2rem;
+    }
+
+    .header-center input[type="text"] {
+        width: 200px;
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .main-nav li a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .slider-container {
+        height: 300px;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-section {
+        padding: 20px 0;
+    }
+
+    .footer-section .container {
+        padding: 0 15px;
+    }
+
+    .footer-left h2 {
+        font-size: 1.3rem;
+    }
+
+    .footer-column h3 {
+        font-size: 1.1rem;
+    }
+
+    .footer-bottom {
+        padding: 15px 0;
+    }
+
+    .footer-bottom .container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .slide h1 {
+        font-size: 1.8rem;
+    }
+
+    .slide p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Global styles for edge-to-edge footer */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure all footer sections extend to browser edge */
+.footer-section,
+.footer-bottom,
+.copyright-footer {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+}
+
+/* For pages that don't have container divs yet - fallback styling */
+.footer-section:not(.container *) {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.footer-bottom:not(.container *) {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* Mobile adjustments for pages without container */
+@media (max-width: 768px) {
+    .footer-section:not(.container *) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .footer-bottom:not(.container *) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-section:not(.container *) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .footer-bottom:not(.container *) {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }

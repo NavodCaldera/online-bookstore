@@ -14,8 +14,8 @@ function HomePage() {
       id: 1,
       type: 'welcome',
       title: 'WELCOME TO PAGE TURN',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'PageTurn reduces financial burden on students by providing access to educational materials at 50-70% lower prices than retail while enabling income generation through resale opportunities.',
+      image: '/welcome.jpg',
       buttonText: 'LEARN MORE'
     },
     {
@@ -23,7 +23,7 @@ function HomePage() {
       type: 'education',
       title: 'Pre-loved Books For Education',
       description: 'Affordable access to knowledge for students and book lovers alike',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: '/slider2.jpg',
       buttons: ['Shop Now', 'Sell Books']
     },
     {
@@ -171,7 +171,9 @@ function HomePage() {
       {/* Main Header */}
       <header className="main-header">
         <div className="header-left">
-          <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Logo" className="logo" />
+          <Link to="/">
+            <img src="/logo.webp" alt="Logo" className="logo" />
+          </Link>
           <span className="site-name">PageTurn</span>
         </div>
         <div className="header-center">
@@ -274,10 +276,11 @@ function HomePage() {
       <section className="featured-products">
         <div className="container">
           <div className="section-title">
-            <br /><h2><center>Our Featured Books</center></h2><br /><br />
+            <h2><span className="underline">Our Featured Books</span></h2>
+            <br />
           </div>
           <div className="product-filter">
-            {['All', 'Textbooks', 'Notes', 'Papers'].map((filter) => (
+            {['All', 'Mathematics', 'Reference', 'Technology', 'History', 'Literature'].map((filter) => (
               <button
                 key={filter}
                 className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
@@ -321,83 +324,91 @@ function HomePage() {
       {/* Info Banner */}
       <div className="info-banner">
         <div className="info-item left">
-          <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Delivery Truck" />
+          <img src="/shipped.png" alt="Delivery Truck" />
           <span>Island wide delivery</span>
         </div>
         <div className="info-item center">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Secure Payments" />
+          <img src="/credit-card.png" alt="Secure Payments" />
           <span>Secure payments</span>
         </div>
         <div className="info-item right">
-          <img src="https://images.unsplash.com/photo-1607863680198-23d4b2565df0?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Best Price" />
+          <img src="/best-price.png" alt="Best Price" />
           <span>Best Price</span>
         </div>
       </div>
 
       {/* First Footer Section */}
       <div className="footer-section">
-        <div className="footer-left">
-          <h2>Receive The Latest Offers & Updates Via Email</h2>
-          <form className="subscribe-form">
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
+        <div className="container">
+          <div className="footer-left">
+            <h2>Receive The Latest Offers & Updates Via Email</h2>
+            <form className="subscribe-form">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
 
-        <div className="footer-center">
-          <div className="footer-column">
-            <h3>Categories</h3>
-            <ul>
-              <li><a href="#">Textbooks</a></li>
-              <li><a href="#">Novels</a></li>
-              <li><a href="#">Comics</a></li>
-              <li><a href="#">Science</a></li>
-              <li><a href="#">History</a></li>
-            </ul>
+          <div className="footer-center">
+            <div className="footer-column">
+              <h3>Categories</h3>
+              <ul>
+                <li><a href="#">Mathematics</a></li>
+                <li><a href="#">Reference</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Litreature</a></li>
+                <li><a href="#">Non-Fiction</a></li>
+              </ul>
+            </div>
+            <div className="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sell Book</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
           </div>
-          <div className="footer-column">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Sell Book</a></li>
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </div>
 
-        <div className="footer-right">
-          <div style={{textAlign: 'right'}}>
-            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Site Logo" className="logo" />
-            <span style={{textAlign: 'right'}}>PageTurn</span>
+          <div className="footer-right">
+            <div style={{textAlign: 'right'}}>
+              <Link to="/">
+                <img src="/logo.webp" alt="Site Logo" className="logo" />
+              </Link>
+              <span style={{textAlign: 'right'}}>PageTurn</span>
+            </div>
+            <p>Empowering education through affordable reading</p>
           </div>
-          <p>Empowering education through affordable reading</p>
         </div>
       </div>
 
       {/* Second Footer Section */}
       <div className="footer-bottom">
-        <div className="footer-social">
-          <h4>Follow Us</h4>
-          <div className="social-icons">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
-            <a href="#"><i className="fab fa-instagram"></i></a>
-            <a href="#"><i className="fab fa-twitter"></i></a>
-            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+        <div className="container">
+          <div className="footer-social">
+            <h4>Follow Us</h4>
+            <div className="social-icons">
+              <a href="#"><i className="fab fa-facebook-f"></i></a>
+              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="#"><i className="fab fa-twitter"></i></a>
+              <a href="#"><i className="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
-        </div>
 
-        <div className="footer-center-logo">
-          <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Logo" />
-          <span>PageTurn</span>
-        </div>
+          <div className="footer-center-logo">
+            <Link to="/">
+              <img src="/logo.webp" alt="Logo" />
+            </Link>
+            <span>PageTurn</span>
+          </div>
 
-        <div className="footer-payments">
-          <h4>We accept</h4>
-          <div className="payment-icons">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" />
+          <div className="footer-payments">
+            <h4>We accept</h4>
+            <div className="payment-icons">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" />
+            </div>
           </div>
         </div>
       </div>

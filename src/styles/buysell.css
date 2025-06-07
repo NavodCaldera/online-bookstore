@@ -625,3 +625,117 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 480px) {
+  .buysell-container {
+    padding: 10px;
+  }
+
+  .buysell-navigation {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .nav-btn {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+
+  .buysell-content {
+    padding: 15px;
+  }
+
+  .overview-stats {
+    gap: 15px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .stat-card p {
+    font-size: 0.9rem;
+  }
+
+  .recent-activity {
+    padding: 15px;
+  }
+
+  .activity-item {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .activity-item h4 {
+    font-size: 1rem;
+  }
+
+  .activity-item p {
+    font-size: 0.8rem;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .cart-item {
+    padding: 15px;
+  }
+
+  .cart-item h4 {
+    font-size: 1rem;
+  }
+
+  .cart-item .price {
+    font-size: 1.1rem;
+  }
+
+  .cart-summary {
+    padding: 15px;
+  }
+
+  .summary-row {
+    font-size: 0.9rem;
+  }
+
+  .summary-total {
+    font-size: 1.1rem;
+  }
+
+  .manage-item {
+    padding: 15px;
+  }
+
+  .manage-item h4 {
+    font-size: 1rem;
+  }
+
+  .manage-item .status {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
