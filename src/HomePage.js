@@ -54,9 +54,9 @@ function HomePage() {
               currentPrice: parseFloat(book.price),
               originalPrice: parseFloat(book.price) * 1.2, // Simulate original price
               image: `https://images.unsplash.com/photo-${book.id % 4 === 0 ? '1543002588-bfa74002ed7e' :
-                      book.id % 4 === 1 ? '1544716278-ca5e3f4abd8c' :
-                      book.id % 4 === 2 ? '1635070041078-e363dbe005cb' :
-                      '1589998059171-988d887df646'}?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80`,
+                book.id % 4 === 1 ? '1544716278-ca5e3f4abd8c' :
+                  book.id % 4 === 2 ? '1635070041078-e363dbe005cb' :
+                    '1589998059171-988d887df646'}?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80`,
               badge: book.rating >= 4.5 ? 'Popular' : book.condition === 'New' ? 'New' : 'Sale',
               condition: book.condition,
               rating: book.rating,
@@ -150,23 +150,7 @@ function HomePage() {
       <Navigation />
 
       {/* Top Header */}
-      <header className="top-header">
-        <div className="header-left">
-          <span>📞 +94 77 123 4567</span>
-          <span>✉️ info@bookstore.lk</span>
-        </div>
-        <div className="header-center">
-          <a href="#"><i className="fab fa-facebook-f"></i></a>
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-          <a href="#"><i className="fab fa-linkedin-in"></i></a>
-        </div>
-        <div className="header-right">
-          <Link to="/create-account">Sign Up</Link> | <a href="#">Login</a>
-          <span className="currency">LKR</span>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg" alt="Sri Lanka Flag" className="flag-icon" />
-        </div>
-      </header>
+
 
       {/* Main Header */}
       <header className="main-header">
@@ -368,9 +352,9 @@ function HomePage() {
         </div>
 
         <div className="footer-right">
-          <div style={{textAlign: 'right'}}>
+          <div style={{ textAlign: 'right' }}>
             <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Site Logo" className="logo" />
-            <span style={{textAlign: 'right'}}>PageTurn</span>
+            <span style={{ textAlign: 'right' }}>PageTurn</span>
           </div>
           <p>Empowering education through affordable reading</p>
         </div>
