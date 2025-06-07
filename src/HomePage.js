@@ -181,8 +181,8 @@ function HomePage() {
       <nav className="main-nav">
         <ul>
           <li><Link to="/browse">Shop Now</Link></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><Link to="/about">About Us</Link></li>
+          <li><a href="/contact">Contact Us</a></li>
           <li><Link to="/buy-sell">My Account <i className="fas fa-user"></i></Link></li>
         </ul>
       </nav>

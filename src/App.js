@@ -4,6 +4,8 @@ import CreateAccount from './pages/CreateAccount';
 import BrowseList from './pages/BrowseList';
 import BuySell from './pages/BuySell';
 import Login from './pages/Login';
+import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         <Route path="/buy-sell" element={<BuySell />} />
         <Route path="*" element={<div>Page not found</div>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
 
       </Routes>
     </Router>
