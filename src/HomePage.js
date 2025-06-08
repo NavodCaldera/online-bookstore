@@ -149,25 +149,6 @@ function HomePage() {
       {/* Navigation Bar */}
       <Navigation />
 
-      {/* Top Header */}
-      <header className="top-header">
-        <div className="header-left">
-          <span>📞 +94 77 123 4567</span>
-          <span>✉️ info@bookstore.lk</span>
-        </div>
-        <div className="header-center">
-          <a href="#"><i className="fab fa-facebook-f"></i></a>
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-          <a href="#"><i className="fab fa-linkedin-in"></i></a>
-        </div>
-        <div className="header-right">
-          <Link to="/create-account">Sign Up</Link> | <a href="#">Login</a>
-          <span className="currency">LKR</span>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg" alt="Sri Lanka Flag" className="flag-icon" />
-        </div>
-      </header>
-
       {/* Main Header */}
       <header className="main-header">
         <div className="header-left">
