@@ -12,28 +12,28 @@ code {
     monospace;
 }
 
-/* Global Padding System */
+/* Balanced Global Padding System */
 .page-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 2rem; /* Balanced padding for better alignment */
 }
 
 /* Responsive Global Padding */
 @media (max-width: 768px) {
   .page-wrapper {
-    padding: 0 30px;
+    padding: 0 1.5rem; /* Balanced tablet padding */
   }
 }
 
 @media (max-width: 480px) {
   .page-wrapper {
-    padding: 0 20px;
+    padding: 0 1rem; /* Balanced mobile padding */
   }
 }
 
 @media (max-width: 360px) {
   .page-wrapper {
-    padding: 0 15px;
+    padding: 0 0.75rem; /* Balanced small mobile padding */
   }
 }

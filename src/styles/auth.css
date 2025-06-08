@@ -6,16 +6,16 @@
   width: 100%;
 }
 
-/* Container System - Improved padding approach */
+/* Container System - Balanced padding approach */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 2rem; /* Balanced padding for better alignment */
 }
 
 /* Page content wrapper for consistent padding */
 .page-content {
-  padding: 40px 40px 0 40px;
+  padding: 40px 2rem 0 2rem; /* Balanced horizontal padding */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -23,7 +23,7 @@
 .auth-header {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 40px 40px 0 40px;
+  padding: 40px 2rem 0 2rem; /* Balanced horizontal padding */
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -48,7 +48,7 @@
   gap: 4rem;
   width: 100%;
   margin: 0;
-  padding: 0 40px;
+  padding: 0 2rem; /* Balanced padding */
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -313,9 +313,22 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem; /* Balanced tablet padding */
+  }
+
+  .page-content {
+    padding: 30px 1.5rem 0 1.5rem; /* Balanced horizontal padding */
+  }
+
+  .auth-header {
+    padding: 30px 1.5rem 0 1.5rem; /* Balanced horizontal padding */
+  }
+
   .auth-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 0 1.5rem; /* Balanced tablet padding */
   }
 
   .auth-form-container {
@@ -332,7 +345,7 @@
   }
 
   .auth-header {
-    padding: 50px 10px;
+    padding: 30px 40px 0 40px; /* Updated to match new system */
   }
 
   .auth-header h1 {
@@ -374,15 +387,20 @@
 /* Enhanced Mobile Responsiveness */
 @media (max-width: 480px) {
   .container {
-    padding: 0 20px;
+    padding: 0 1rem; /* Balanced mobile padding */
   }
 
   .page-content {
-    padding: 20px 20px 0 20px;
+    padding: 20px 1rem 0 1rem; /* Balanced horizontal padding */
+  }
+
+  .auth-header {
+    padding: 20px 1rem 0 1rem; /* Balanced horizontal padding */
   }
 
   .auth-content {
     margin: 20px 0;
+    padding: 0 1rem; /* Balanced mobile padding */
     border-radius: 8px;
   }
 
@@ -442,12 +460,24 @@
 }
 
 @media (max-width: 360px) {
+  .container {
+    padding: 0 0.75rem; /* Balanced small mobile padding */
+  }
+
+  .page-content {
+    padding: 15px 0.75rem 0 0.75rem; /* Balanced horizontal padding */
+  }
+
   .auth-container {
     padding: 5px;
   }
 
   .auth-header {
-    padding: 30px 15px;
+    padding: 15px 0.75rem 0 0.75rem; /* Balanced horizontal padding */
+  }
+
+  .auth-content {
+    padding: 0 0.75rem; /* Balanced small mobile padding */
   }
 
   .auth-header h1 {

@@ -6,16 +6,16 @@
   width: 100%;
 }
 
-/* Container System - Improved padding approach */
+/* Container System - Balanced padding approach */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 2rem; /* Balanced padding for better alignment */
 }
 
 /* Page content wrapper for consistent padding */
 .page-content {
-  padding: 40px 40px 0 40px;
+  padding: 40px 2rem 0 2rem; /* Balanced horizontal padding */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -23,7 +23,7 @@
 .browse-header {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 40px 40px 0 40px;
+  padding: 40px 2rem 0 2rem; /* Balanced horizontal padding */
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -47,7 +47,7 @@
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
-  padding: 0 40px;
+  padding: 0 2rem; /* Balanced padding */
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -81,16 +81,17 @@
 
 .browse-content {
   width: 100%;
-  margin: 0;
-  padding: 0 10px;
+  margin: 0 auto; /* Center the content */
+  padding: 0 2rem; /* Add reasonable horizontal padding */
+  max-width: 1200px; /* Constrain maximum width */
 }
 
 .search-filters {
   background: white;
-  padding: 2rem;
+  padding: 2rem 3rem; /* Increased horizontal padding */
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* Only bottom margin, horizontal handled by parent */
 }
 
 .search-form {
@@ -182,9 +183,10 @@
 
 .results-section {
   background: white;
-  padding: 2rem;
+  padding: 2rem 3rem; /* Increased horizontal padding */
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* No horizontal margins, handled by parent container */
 }
 
 .results-header {
@@ -387,8 +389,12 @@
 /* List Content Styles */
 .list-content {
   width: 100%;
-  margin: 0;
-  padding: 0 10px;
+  margin: 0 auto; /* Center the content */
+  padding: 2rem; /* Balanced padding */
+  max-width: 1200px; /* Constrain maximum width */
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .list-header {
@@ -557,21 +563,39 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: 0 30px;
+    padding: 0 1.5rem; /* Balanced tablet padding */
   }
 
   .page-content {
-    padding: 30px 30px 0 30px;
+    padding: 30px 1.5rem 0 1.5rem; /* Balanced horizontal padding */
   }
 
   .browse-header {
-    padding: 30px 30px 0 30px;
+    padding: 30px 1.5rem 0 1.5rem; /* Balanced horizontal padding */
+  }
+
+  .search-filters {
+    margin-bottom: 2rem; /* Only bottom margin */
+    padding: 1.5rem 2rem; /* Adjusted padding */
+  }
+
+  .results-section {
+    padding: 1.5rem 2rem; /* Adjusted padding */
+  }
+
+  .list-content {
+    margin: 0 40px; /* Adjusted margins */
+    padding: 1.5rem 2rem; /* Adjusted padding */
+  }
+
+  .browse-content {
+    padding: 0 1.5rem; /* Adjusted padding for tablet */
   }
 
   .tab-navigation {
     flex-direction: column;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 1.5rem; /* Balanced tablet padding */
   }
 
   .search-filters {
@@ -733,12 +757,34 @@
 
 /* Enhanced Mobile Responsiveness */
 @media (max-width: 480px) {
-  .browse-container {
-    padding: 10px;
+  .container {
+    padding: 0 1rem; /* Balanced mobile padding */
+  }
+
+  .page-content {
+    padding: 20px 1rem 0 1rem; /* Balanced horizontal padding */
+  }
+
+  .browse-header {
+    padding: 20px 1rem 0 1rem; /* Balanced horizontal padding */
   }
 
   .search-filters {
-    padding: 15px;
+    margin-bottom: 2rem; /* Only bottom margin */
+    padding: 1rem 1.5rem; /* Adjusted padding */
+  }
+
+  .results-section {
+    padding: 1rem 1.5rem; /* Adjusted padding */
+  }
+
+  .list-content {
+    margin: 0 30px; /* Adjusted margins */
+    padding: 1rem 1.5rem; /* Adjusted padding */
+  }
+
+  .browse-content {
+    padding: 0 1rem; /* Adjusted padding for mobile */
   }
 
   .search-bar input {
