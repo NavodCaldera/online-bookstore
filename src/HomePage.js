@@ -362,11 +362,12 @@ function HomePage() {
             <div className="footer-column">
               <h3>Quick Links</h3>
               <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sell Book</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/buy-sell?section=buy">Buy Books</Link></li>
+                <li><Link to="/buy-sell?section=sell">Sell Books</Link></li>
                 <li><a href="#">My Account</a></li>
                 <li><a href="#">Help</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>
           </div>

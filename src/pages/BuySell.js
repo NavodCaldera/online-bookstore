@@ -1,31 +1,23 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import Navigation from '../components/Navigation';
 import '../styles/buysell.css';
 import '../styles/home.css';
 
 function BuySell() {
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState('overview');
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      title: 'Advanced Mathematics',
-      author: 'John Smith',
-      price: 2500,
-      quantity: 1,
-      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-      seller: 'Sarah K.'
-    },
-    {
-      id: 2,
-      title: 'Physics Practical Guide',
-      author: 'Dr. Wilson',
-      price: 1200,
-      quantity: 2,
-      image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-      seller: 'Mike R.'
+  const { cartItems, updateQuantity, getTotalPrice } = useCart();
+
+  // Handle URL parameters to set initial section
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const section = searchParams.get('section');
+    if (section && ['buy', 'sell', 'overview', 'manage'].includes(section)) {
+      setActiveSection(section);
     }
-  ]);
+  }, [location.search]);
 
   const [myListings, setMyListings] = useState([
     {
@@ -47,20 +39,6 @@ function BuySell() {
       image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
     }
   ]);
-
-  const updateQuantity = (id, newQuantity) => {
-    if (newQuantity === 0) {
-      setCartItems(cartItems.filter(item => item.id !== id));
-    } else {
-      setCartItems(cartItems.map(item => 
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      ));
-    }
-  };
-
-  const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
 
   const handleCheckout = () => {
     alert('Proceeding to checkout...');
@@ -485,9 +463,10 @@ function BuySell() {
               <h3>Quick Links</h3>
               <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/browse">Sell Book</Link></li>
-                <li><Link to="/buy-sell">My Account</Link></li>
-                <li><Link to="/help">Help</Link></li>
+                <li><Link to="/buy-sell?section=buy">Buy Books</Link></li>
+                <li><Link to="/buy-sell?section=sell">Sell Books</Link></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Help</a></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>
