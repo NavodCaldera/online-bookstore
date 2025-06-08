@@ -1,23 +1,89 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useToast } from '../context/ToastContext';
 import Navigation from '../components/Navigation';
 import '../styles/buysell.css';
 import '../styles/home.css';
 
 function BuySell() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('overview');
   const { cartItems, updateQuantity, getTotalPrice } = useCart();
+  const { showToast } = useToast();
+
+  // User account state
+  const [userProfile, setUserProfile] = useState(null);
+  const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
+  const [editFormData, setEditFormData] = useState({
+    full_name: '',
+    phone: '',
+    user_type: 'buyer'
+  });
 
   // Handle URL parameters to set initial section
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const section = searchParams.get('section');
-    if (section && ['buy', 'sell', 'overview', 'manage'].includes(section)) {
+    if (section && ['buy', 'sell', 'overview', 'manage', 'account'].includes(section)) {
       setActiveSection(section);
     }
   }, [location.search]);
+
+  // Load user profile on component mount
+  useEffect(() => {
+    loadUserProfile();
+  }, []);
+
+  const loadUserProfile = async () => {
+    try {
+      const userData = localStorage.getItem('userData');
+      const authToken = localStorage.getItem('authToken');
+
+      if (!userData || !authToken) {
+        showToast('Please log in to view your account', 'error');
+        navigate('/login');
+        return;
+      }
+
+      const user = JSON.parse(userData);
+      setUserProfile(user);
+      setEditFormData({
+        full_name: user.full_name || '',
+        phone: user.phone || '',
+        user_type: user.user_type || 'buyer'
+      });
+
+      // Fetch fresh profile data from server
+      const response = await fetch(`http://localhost:3002/api/users/profile/${user.id}`, {
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setUserProfile(data.data);
+          setEditFormData({
+            full_name: data.data.full_name || '',
+            phone: data.data.phone || '',
+            user_type: data.data.user_type || 'buyer'
+          });
+          // Update localStorage with fresh data
+          localStorage.setItem('userData', JSON.stringify(data.data));
+        }
+      }
+    } catch (error) {
+      console.error('Error loading user profile:', error);
+      showToast('Error loading profile data', 'error');
+    } finally {
+      setIsLoadingProfile(false);
+    }
+  };
 
   const [myListings, setMyListings] = useState([
     {
@@ -42,6 +108,69 @@ function BuySell() {
 
   const handleCheckout = () => {
     alert('Proceeding to checkout...');
+  };
+
+  const handleEditProfile = () => {
+    setIsEditingProfile(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditingProfile(false);
+    if (userProfile) {
+      setEditFormData({
+        full_name: userProfile.full_name || '',
+        phone: userProfile.phone || '',
+        user_type: userProfile.user_type || 'buyer'
+      });
+    }
+  };
+
+  const handleSaveProfile = async () => {
+    try {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken || !userProfile) {
+        showToast('Authentication required', 'error');
+        return;
+      }
+
+      const response = await fetch(`http://localhost:3002/api/users/profile/${userProfile.id}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editFormData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        showToast('Profile updated successfully!', 'success');
+        setIsEditingProfile(false);
+        // Reload profile data
+        await loadUserProfile();
+      } else {
+        showToast(data.error || 'Failed to update profile', 'error');
+      }
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      showToast('Error updating profile', 'error');
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
+    showToast('Logged out successfully', 'success');
+    navigate('/');
+  };
+
+  const handleEditFormChange = (e) => {
+    const { name, value } = e.target;
+    setEditFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const renderOverview = () => (
@@ -389,6 +518,228 @@ function BuySell() {
     </div>
   );
 
+  const renderAccountSection = () => {
+    if (isLoadingProfile) {
+      return (
+        <div className="account-section">
+          <div className="loading-spinner">
+            <i className="fas fa-spinner fa-spin"></i>
+            <p>Loading account details...</p>
+          </div>
+        </div>
+      );
+    }
+
+    if (!userProfile) {
+      return (
+        <div className="account-section">
+          <div className="error-message">
+            <i className="fas fa-exclamation-triangle"></i>
+            <p>Unable to load account details. Please try logging in again.</p>
+            <button className="btn-primary" onClick={() => navigate('/login')}>
+              Go to Login
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="account-section">
+        <div className="section-header">
+          <h2>My Account</h2>
+          <p>Manage your profile and account settings</p>
+        </div>
+
+        <div className="account-content">
+          {/* Profile Card */}
+          <div className="profile-card">
+            <div className="profile-header">
+              <div className="profile-avatar">
+                <i className="fas fa-user-circle"></i>
+              </div>
+              <div className="profile-info">
+                <h3>{userProfile.full_name}</h3>
+                <p className="user-type">{userProfile.user_type?.charAt(0).toUpperCase() + userProfile.user_type?.slice(1)}</p>
+                <p className="member-since">
+                  Member since {new Date(userProfile.created_at).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long'
+                  })}
+                </p>
+              </div>
+              <div className="profile-actions">
+                {!isEditingProfile ? (
+                  <button className="btn-secondary" onClick={handleEditProfile}>
+                    <i className="fas fa-edit"></i>
+                    Edit Profile
+                  </button>
+                ) : (
+                  <div className="edit-actions">
+                    <button className="btn-primary" onClick={handleSaveProfile}>
+                      <i className="fas fa-save"></i>
+                      Save
+                    </button>
+                    <button className="btn-secondary" onClick={handleCancelEdit}>
+                      Cancel
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Profile Details */}
+            <div className="profile-details">
+              {!isEditingProfile ? (
+                <div className="details-grid">
+                  <div className="detail-item">
+                    <label>Full Name</label>
+                    <p>{userProfile.full_name}</p>
+                  </div>
+                  <div className="detail-item">
+                    <label>Email Address</label>
+                    <p>{userProfile.email}</p>
+                  </div>
+                  <div className="detail-item">
+                    <label>Phone Number</label>
+                    <p>{userProfile.phone || 'Not provided'}</p>
+                  </div>
+                  <div className="detail-item">
+                    <label>Account Type</label>
+                    <p>{userProfile.user_type?.charAt(0).toUpperCase() + userProfile.user_type?.slice(1)}</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="edit-form">
+                  <div className="form-group">
+                    <label>Full Name</label>
+                    <input
+                      type="text"
+                      name="full_name"
+                      value={editFormData.full_name}
+                      onChange={handleEditFormChange}
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Email Address</label>
+                    <input
+                      type="email"
+                      value={userProfile.email}
+                      disabled
+                      className="disabled"
+                      title="Email cannot be changed"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={editFormData.phone}
+                      onChange={handleEditFormChange}
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Account Type</label>
+                    <select
+                      name="user_type"
+                      value={editFormData.user_type}
+                      onChange={handleEditFormChange}
+                    >
+                      <option value="buyer">Buyer</option>
+                      <option value="seller">Seller</option>
+                      <option value="both">Both</option>
+                    </select>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Account Statistics */}
+          <div className="account-stats">
+            <h3>Account Statistics</h3>
+            <div className="stats-grid">
+              <div className="stat-card">
+                <div className="stat-icon">
+                  <i className="fas fa-shopping-bag"></i>
+                </div>
+                <div className="stat-content">
+                  <div className="stat-number">0</div>
+                  <p>Items Purchased</p>
+                </div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">
+                  <i className="fas fa-tag"></i>
+                </div>
+                <div className="stat-content">
+                  <div className="stat-number">{myListings.length}</div>
+                  <p>Items Listed</p>
+                </div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">
+                  <i className="fas fa-check-circle"></i>
+                </div>
+                <div className="stat-content">
+                  <div className="stat-number">{myListings.filter(item => item.status === 'sold').length}</div>
+                  <p>Items Sold</p>
+                </div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">
+                  <i className="fas fa-star"></i>
+                </div>
+                <div className="stat-content">
+                  <div className="stat-number">4.8</div>
+                  <p>Rating</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Account Actions */}
+          <div className="account-actions">
+            <h3>Account Actions</h3>
+            <div className="actions-grid">
+              <button className="action-card" onClick={() => setActiveSection('buy')}>
+                <i className="fas fa-shopping-cart"></i>
+                <div>
+                  <h4>View Cart</h4>
+                  <p>Check items in your cart</p>
+                </div>
+              </button>
+              <button className="action-card" onClick={() => setActiveSection('sell')}>
+                <i className="fas fa-plus"></i>
+                <div>
+                  <h4>List New Item</h4>
+                  <p>Sell your educational materials</p>
+                </div>
+              </button>
+              <button className="action-card" onClick={() => setActiveSection('manage')}>
+                <i className="fas fa-cog"></i>
+                <div>
+                  <h4>Manage Listings</h4>
+                  <p>Edit your active listings</p>
+                </div>
+              </button>
+              <button className="action-card logout" onClick={handleLogout}>
+                <i className="fas fa-sign-out-alt"></i>
+                <div>
+                  <h4>Logout</h4>
+                  <p>Sign out of your account</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="buysell-container">
       {/* Navigation Bar */}
@@ -400,28 +751,35 @@ function BuySell() {
       </div>
 
       <div className="buysell-navigation">
-        <button 
+        <button
           className={`nav-btn ${activeSection === 'overview' ? 'active' : ''}`}
           onClick={() => setActiveSection('overview')}
         >
           <i className="fas fa-chart-line"></i>
           Overview
         </button>
-        <button 
+        <button
+          className={`nav-btn ${activeSection === 'account' ? 'active' : ''}`}
+          onClick={() => setActiveSection('account')}
+        >
+          <i className="fas fa-user"></i>
+          Account
+        </button>
+        <button
           className={`nav-btn ${activeSection === 'buy' ? 'active' : ''}`}
           onClick={() => setActiveSection('buy')}
         >
           <i className="fas fa-shopping-cart"></i>
           Buy ({cartItems.length})
         </button>
-        <button 
+        <button
           className={`nav-btn ${activeSection === 'sell' ? 'active' : ''}`}
           onClick={() => setActiveSection('sell')}
         >
           <i className="fas fa-tag"></i>
           Sell
         </button>
-        <button 
+        <button
           className={`nav-btn ${activeSection === 'manage' ? 'active' : ''}`}
           onClick={() => setActiveSection('manage')}
         >
@@ -432,6 +790,7 @@ function BuySell() {
 
       <div className="buysell-content">
         {activeSection === 'overview' && renderOverview()}
+        {activeSection === 'account' && renderAccountSection()}
         {activeSection === 'buy' && renderBuySection()}
         {activeSection === 'sell' && renderSellSection()}
         {activeSection === 'manage' && renderManageSection()}
