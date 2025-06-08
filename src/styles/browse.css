@@ -1,7 +1,16 @@
 .browse-container {
   min-height: 100vh;
   background-color: var(--bg-color, #f7f3eb);
-  padding: 2rem 1rem;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Container System - Full width approach */
+.container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .browse-header {
@@ -27,6 +36,7 @@
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
+  padding: 0 10px;
 }
 
 .tab-button {
@@ -56,8 +66,9 @@
 }
 
 .browse-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .search-filters {
@@ -361,8 +372,9 @@
 
 /* List Content Styles */
 .list-content {
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .list-header {

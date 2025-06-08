@@ -428,53 +428,102 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .about-container {
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .mission-section {
+    padding: 60px 20px;
+  }
+
+  .mission-cards {
+    gap: 20px;
+  }
+}
+
 @media (max-width: 900px) {
   .about-container {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
+
+  .about-left {
+    text-align: center;
+  }
+
   .about-left, .about-right {
     gap: 18px;
   }
-  
+
   .about-title {
     font-size: 2rem;
   }
+
+  .about-image1,
+  .about-image2 {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .mission-cards {
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
   }
-  
+
+  .mission-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
   .community-section {
     flex-direction: column;
     align-items: flex-start;
-    padding: 32px 16px;
-    gap: 28px;
+    padding: 30px 15px;
+    gap: 25px;
   }
-  
+
   .community-books img {
-    width: 110px;
-    height: 165px;
+    width: 100px;
+    height: 150px;
   }
-  
+
   .footer-section {
     flex-direction: column;
     text-align: center;
+    padding: 40px 15px;
   }
-  
+
   .footer-center {
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    padding: 20px 15px;
+  }
+
+  .about-container {
+    padding: 0 15px;
+  }
+
+  .mission-section {
+    padding: 50px 15px;
+  }
+
+  .about-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 }
 
@@ -564,5 +613,80 @@
   .about-left,
   .about-right {
     gap: 15px;
+  }
+
+  .newsletter-section {
+    padding: 30px 15px;
+  }
+
+  .newsletter-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .newsletter-form {
+    max-width: 100%;
+  }
+
+  .newsletter-form input {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .newsletter-form button {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-container {
+    padding: 0 10px;
+    gap: 15px;
+  }
+
+  .about-title {
+    font-size: 1.5rem;
+  }
+
+  .about-desc {
+    font-size: 0.85rem;
+  }
+
+  .mission-section {
+    padding: 30px 10px;
+  }
+
+  .mission-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .mission-card {
+    padding: 15px 10px;
+  }
+
+  .mission-title {
+    font-size: 1rem;
+  }
+
+  .mission-text {
+    font-size: 0.85rem;
+  }
+
+  .community-section {
+    padding: 25px 10px;
+  }
+
+  .community-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
   }
 }

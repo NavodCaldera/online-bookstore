@@ -207,34 +207,68 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .contact-container {
+    padding: 0 20px;
+  }
+
+  .contact-header {
+    padding: 80px 20px;
+  }
+
+  .contact-content {
+    gap: 2.5rem;
+    padding: 50px 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .contact-header {
     padding: 60px 20px;
   }
-  
+
   .contact-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
-  
+
+  .contact-header p {
+    font-size: 0.95rem;
+  }
+
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 60px 20px;
+    gap: 2rem;
+    padding: 40px 15px;
   }
-  
+
   .contact-form {
-    padding: 30px 20px;
+    padding: 25px 20px;
+    order: 1;
   }
-  
+
+  .contact-info {
+    order: 2;
+  }
+
   .info-item {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    text-align: left;
     gap: 15px;
+    padding: 15px 0;
   }
-  
+
   .info-item i {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-top: 0;
+    min-width: 40px;
+  }
+
+  .info-item h3 {
+    font-size: 1rem;
+  }
+
+  .info-item p {
+    font-size: 0.9rem;
   }
 }
 

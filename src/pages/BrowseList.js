@@ -275,6 +275,7 @@ function BrowseList() {
   // Fetch books when page or filters change
   useEffect(() => {
     fetchBooks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory, searchQuery, priceRange, sortBy, currentPage]);
 
   // Fetch categories from API
