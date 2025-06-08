@@ -11,7 +11,7 @@
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem; /* Restored to reasonable padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -190,7 +190,7 @@
 /* Tablet Responsive */
 @media screen and (max-width: 1024px) {
   .nav-container {
-    padding: 0 1rem;
+    padding: 0 1.5rem; /* Reasonable tablet padding */
   }
 
   .nav-menu {
@@ -212,7 +212,7 @@
 @media screen and (max-width: 768px) {
   .nav-container {
     height: 60px;
-    padding: 0 1rem;
+    padding: 0 1rem; /* Restored to reasonable mobile padding */
   }
 
   .nav-menu {
@@ -313,7 +313,7 @@
 /* Small Mobile Responsive */
 @media screen and (max-width: 480px) {
   .nav-container {
-    padding: 0 0.75rem;
+    padding: 0 0.75rem; /* Restored to reasonable small mobile padding */
     height: 55px;
   }
 
@@ -369,7 +369,7 @@
 /* Extra Small Mobile */
 @media screen and (max-width: 360px) {
   .nav-container {
-    padding: 0 0.5rem;
+    padding: 0 0.5rem; /* Restored to reasonable extra small padding */
     height: 50px;
   }
 
