@@ -361,11 +361,11 @@ function HomePage() {
             <div className="footer-column">
               <h3>Categories</h3>
               <ul>
-                <li><a href="#">Mathematics</a></li>
-                <li><a href="#">Reference</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Litreature</a></li>
-                <li><a href="#">Non-Fiction</a></li>
+                <li><Link to="/browse?category=mathematics">Mathematics</Link></li>
+                <li><Link to="/browse?category=reference">Reference</Link></li>
+                <li><Link to="/browse?category=technology">Technology</Link></li>
+                <li><Link to="/browse?category=literature">Literature</Link></li>
+                <li><Link to="/browse?category=non-fiction">Non-Fiction</Link></li>
               </ul>
             </div>
             <div className="footer-column">
@@ -374,7 +374,7 @@ function HomePage() {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/buy-sell?section=buy">Buy Books</Link></li>
                 <li><Link to="/buy-sell?section=sell">Sell Books</Link></li>
-                <li><a href="#">My Account</a></li>
+                <li><Link to="/buy-sell">My Account</Link></li>
                 <li><Link to="/help">Help</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
