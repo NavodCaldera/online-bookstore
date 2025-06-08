@@ -8,6 +8,7 @@ import BrowseList from './pages/BrowseList';
 import BuySell from './pages/BuySell';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
+import HelpPage from './pages/HelpPage'; // Corrected Path: Use ./ to go down one directory from 'src' to 'pages'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="*" element={<div>Page not found</div>} />
+            <Route path="/help" element={<HelpPage />} />
           </Routes>
         </Router>
       </CartProvider>
