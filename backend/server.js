@@ -28,7 +28,8 @@ app.get('/', (req, res) => {
       books: '/api/books',
       categories: '/api/categories',
       users: '/api/users',
-      cart: '/api/cart'
+      cart: '/api/cart',
+      newsletter: '/api/newsletter'
     }
   });
 });
@@ -57,12 +58,14 @@ const booksRoutes = require('./routes/books');
 const categoriesRoutes = require('./routes/categories');
 const usersRoutes = require('./routes/users');
 const cartRoutes = require('./routes/cart');
+const newsletterRoutes = require('./routes/newsletter');
 
 // API Routes
 app.use('/api/books', booksRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 import { useToast } from './context/ToastContext';
 import Navigation from './components/Navigation';
+import NewsletterSubscription from './components/NewsletterSubscription';
 import './styles/home.css';
 
 function HomePage() {
@@ -164,6 +165,8 @@ function HomePage() {
     // Show success message
     showToast(`${book.title} has been added to your cart!`, 'success');
   };
+
+
 
   return (
     <div>
@@ -351,10 +354,7 @@ function HomePage() {
         <div className="container">
           <div className="footer-left">
             <h2>Receive The Latest Offers & Updates Via Email</h2>
-            <form className="subscribe-form">
-              <input type="email" placeholder="Enter your email" required />
-              <button type="submit">Subscribe</button>
-            </form>
+            <NewsletterSubscription source="homepage_footer" />
           </div>
 
           <div className="footer-center">
