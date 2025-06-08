@@ -83,9 +83,11 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  padding: 15px 30px;
+  padding: 15px 40px;
   border-bottom: 1px solid #ddd;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .main-header .header-left,
@@ -176,8 +178,13 @@
 
 .main-nav {
   background-color: #f8f8f8;
-  padding: 12px 30px;
   border-bottom: 1px solid #ddd;
+}
+
+.main-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 40px;
 }
 
 .main-nav ul {
@@ -400,7 +407,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
 /* Section title styling - matching AboutUs Mission style */
@@ -784,7 +791,19 @@ body {
     }
 
     .container {
-        padding: 0 20px;
+        padding: 0 30px;
+    }
+
+    .page-content {
+        padding: 30px 30px 0 30px;
+    }
+
+    .main-header {
+        padding: 15px 30px;
+    }
+
+    .main-nav-container {
+        padding: 12px 30px;
     }
 
     .slider-container {
@@ -886,7 +905,19 @@ body {
     }
 
     .container {
-        padding: 0 15px;
+        padding: 0 20px;
+    }
+
+    .page-content {
+        padding: 20px 20px 0 20px;
+    }
+
+    .main-header {
+        padding: 15px 20px;
+    }
+
+    .main-nav-container {
+        padding: 12px 20px;
     }
 }
 
@@ -1074,6 +1105,18 @@ body {
 
     .container {
         padding: 0 15px;
+    }
+
+    .page-content {
+        padding: 15px 15px 0 15px;
+    }
+
+    .main-header {
+        padding: 10px 15px;
+    }
+
+    .main-nav-container {
+        padding: 10px 15px;
     }
 
     .slide h1 {

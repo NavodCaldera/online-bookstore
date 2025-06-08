@@ -117,10 +117,10 @@ function Navigation() {
             <i className="fas fa-user"></i>
           </button>
           
-          <button className="nav-action-btn login-btn">
+          <Link to="/login" className="nav-action-btn login-btn">
             <i className="fas fa-sign-in-alt"></i>
             <span>Login</span>
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
