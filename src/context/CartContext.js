@@ -71,8 +71,7 @@ export const CartProvider = ({ children }) => {
   };
 
   // MODIFIED: The value object provided to consumers of the context.
-  // It's good practice to not expose the raw 'setCartItems' function.
-  // We've also added the new clearCart function.
+ 
   const value = {
     cartItems,
     updateQuantity,

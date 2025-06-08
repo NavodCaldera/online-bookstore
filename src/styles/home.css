@@ -779,39 +779,43 @@ body::before {
       display: flex;
     }
 
-    .how-it-works {
-      text-align: center;
-      width: 100%;
-      padding: 60px 20px;
-    }
+    /* --- New "How It Works" Section Styling --- */
 
-    .how-it-works h2 {
-      font-size: 2.8em;
-      color: var(--primary-color);
-      margin-bottom: 3rem;
-      font-family: var(--heading-font);
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 20px;
-    }
+/* This keyframe animation will make the content fade in smoothly */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .how-it-works h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
-      border-radius: 2px;
-    }
+/* Main container for the "How It Works" slide */
+.how-it-works {
+  /* Fixes the layout and centering issue */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensures it uses the full slide width */
+  height: 100%;
+  padding: 4rem 2rem;
+  box-sizing: border-box; /* Important for correct padding calculation */
+  text-align: center;
+  /* Adds an appealing, subtle background gradient */
+  background: linear-gradient(135deg, #f5fef7, #e8f9ed);
+}
 
-    .how-it-works .description {
-      font-size: 1.1em;
-      color: #666;
-      margin-bottom: 40px;
-    }
+/* Animate the content when the slide becomes active */
+.slide.active .how-it-works h2,
+.slide.active .how-it-works .description,
+.slide.active .how-it-works .steps {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+ 
 
     .steps {
       display: flex;

@@ -341,7 +341,7 @@ function HomePage() {
             )}
 
             {slide.type === 'how-it-works' && (
-              <div className="how-it-works">
+               <div className="how-it-works">
                 <h2>{slide.title}</h2>
                 <p className="description">{slide.description}</p>
                 <div className="steps">
