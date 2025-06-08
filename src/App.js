@@ -8,9 +8,7 @@ import BrowseList from './pages/BrowseList';
 import BuySell from './pages/BuySell';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
-
-// 1. We keep ONLY the correct import for HelpPage
-import HelpPage from './pages/HelpPage'; 
+import HelpPage from './pages/Help';
 
 function App() {
   return (
@@ -25,11 +23,8 @@ function App() {
             <Route path="/buy-sell" element={<BuySell />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
-
-            {/* 2. We keep ONLY the one, correct route for /help */}
-            <Route path="/help" element={<HelpPage />} />
-
             <Route path="*" element={<div>Page not found</div>} />
+            <Route path="/help" element={<HelpPage />} />
           </Routes>
         </Router>
       </CartProvider>
@@ -38,3 +33,4 @@ function App() {
 }
 
 export default App;
+
