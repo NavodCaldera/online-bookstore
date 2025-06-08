@@ -229,8 +229,8 @@ function BrowseList() {
     try {
       const params = new URLSearchParams({
         page: currentPage,
-        limit: 20,
-        availability: 1
+        limit: 20
+        // Removed availability filter to show all books
       });
 
       if (selectedCategory !== 'all') {

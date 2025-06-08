@@ -23,6 +23,23 @@ function BuySell() {
     user_type: 'buyer'
   });
 
+  // Categories state
+  const [categories, setCategories] = useState([]);
+  const [isLoadingCategories, setIsLoadingCategories] = useState(true);
+
+  // Sell form state
+  const [sellFormData, setSellFormData] = useState({
+    title: '',
+    author: '',
+    category_id: '',
+    subject: '',
+    description: '',
+    condition: '',
+    original_price: '',
+    price: '',
+    negotiable: 'yes'
+  });
+
   // Handle URL parameters to set initial section
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -32,9 +49,10 @@ function BuySell() {
     }
   }, [location.search]);
 
-  // Load user profile on component mount
+  // Load user profile and categories on component mount
   useEffect(() => {
     loadUserProfile();
+    loadCategories();
   }, []);
 
   const loadUserProfile = async () => {
@@ -82,6 +100,25 @@ function BuySell() {
       showToast('Error loading profile data', 'error');
     } finally {
       setIsLoadingProfile(false);
+    }
+  };
+
+  const loadCategories = async () => {
+    try {
+      const response = await fetch('http://localhost:3002/api/categories');
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setCategories(data.data);
+      } else {
+        console.error('Failed to load categories:', data.error);
+        showToast('Failed to load categories', 'error');
+      }
+    } catch (error) {
+      console.error('Error loading categories:', error);
+      showToast('Error loading categories', 'error');
+    } finally {
+      setIsLoadingCategories(false);
     }
   };
 
@@ -171,6 +208,65 @@ function BuySell() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleSellFormChange = (e) => {
+    const { name, value } = e.target;
+    setSellFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSellFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const authToken = localStorage.getItem('authToken');
+      const userData = localStorage.getItem('userData');
+
+      if (!authToken || !userData) {
+        showToast('Please log in to list items', 'error');
+        navigate('/login');
+        return;
+      }
+
+      const user = JSON.parse(userData);
+
+      // Prepare the book data for submission
+      const bookData = {
+        title: sellFormData.title,
+        author: sellFormData.author,
+        condition: sellFormData.condition,
+        published_year: new Date().getFullYear(), // Default to current year
+        edition: '1st', // Default edition
+        short_description: sellFormData.description,
+        availability: 1,
+        category_id: parseInt(sellFormData.category_id),
+        rating: 0.0,
+        price: parseFloat(sellFormData.price),
+        isbn: '', // Will be generated or left empty
+        language: 'English', // Default language
+        seller_id: user.id
+      };
+
+      console.log('Submitting book data:', bookData);
+      showToast('Book listing functionality will be implemented soon!', 'info');
+
+      // TODO: Implement actual API call to create book listing
+      // const response = await fetch('http://localhost:3002/api/books', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Authorization': `Bearer ${authToken}`,
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(bookData)
+      // });
+
+    } catch (error) {
+      console.error('Error submitting book listing:', error);
+      showToast('Error submitting listing', 'error');
+    }
   };
 
   const renderOverview = () => (
@@ -375,40 +471,73 @@ function BuySell() {
       </div>
 
       <div className="sell-form-container">
-        <form className="sell-form">
+        <form className="sell-form" onSubmit={handleSellFormSubmit}>
           <div className="form-section">
             <h3>Item Details</h3>
             <div className="form-row">
               <div className="form-group">
                 <label>Title *</label>
-                <input type="text" placeholder="Enter book title" required />
+                <input
+                  type="text"
+                  name="title"
+                  value={sellFormData.title}
+                  onChange={handleSellFormChange}
+                  placeholder="Enter book title"
+                  required
+                />
               </div>
               <div className="form-group">
                 <label>Author *</label>
-                <input type="text" placeholder="Enter author name" required />
+                <input
+                  type="text"
+                  name="author"
+                  value={sellFormData.author}
+                  onChange={handleSellFormChange}
+                  placeholder="Enter author name"
+                  required
+                />
               </div>
             </div>
 
             <div className="form-row">
               <div className="form-group">
                 <label>Category *</label>
-                <select required>
+                <select
+                  name="category_id"
+                  value={sellFormData.category_id}
+                  onChange={handleSellFormChange}
+                  required
+                >
                   <option value="">Select category</option>
-                  <option value="textbooks">Textbooks</option>
-                  <option value="notes">Study Notes</option>
-                  <option value="papers">Past Papers</option>
-                  <option value="reference">Reference Books</option>
+                  {isLoadingCategories ? (
+                    <option disabled>Loading categories...</option>
+                  ) : (
+                    categories.map(category => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))
+                  )}
                 </select>
               </div>
               <div className="form-group">
                 <label>Subject</label>
-                <input type="text" placeholder="e.g., Mathematics, Physics" />
+                <input
+                  type="text"
+                  name="subject"
+                  value={sellFormData.subject}
+                  onChange={handleSellFormChange}
+                  placeholder="e.g., Mathematics, Physics"
+                />
               </div>
             </div>
 
             <div className="form-group">
               <label>Description *</label>
-              <textarea 
+              <textarea
+                name="description"
+                value={sellFormData.description}
+                onChange={handleSellFormChange}
                 placeholder="Describe the condition, edition, and any additional details..."
                 rows="4"
                 required
@@ -421,28 +550,50 @@ function BuySell() {
             <div className="form-row">
               <div className="form-group">
                 <label>Condition *</label>
-                <select required>
+                <select
+                  name="condition"
+                  value={sellFormData.condition}
+                  onChange={handleSellFormChange}
+                  required
+                >
                   <option value="">Select condition</option>
-                  <option value="excellent">Excellent - Like new</option>
-                  <option value="good">Good - Minor wear</option>
-                  <option value="fair">Fair - Noticeable wear</option>
-                  <option value="poor">Poor - Heavy wear</option>
+                  <option value="New">New - Brand new condition</option>
+                  <option value="Used">Used - Good condition with minor wear</option>
+                  <option value="Fair">Fair - Noticeable wear but functional</option>
+                  <option value="Poor">Poor - Heavy wear, still usable</option>
                 </select>
               </div>
               <div className="form-group">
                 <label>Original Price (LKR)</label>
-                <input type="number" placeholder="0" />
+                <input
+                  type="number"
+                  name="original_price"
+                  value={sellFormData.original_price}
+                  onChange={handleSellFormChange}
+                  placeholder="0"
+                />
               </div>
             </div>
 
             <div className="form-row">
               <div className="form-group">
                 <label>Your Price (LKR) *</label>
-                <input type="number" placeholder="0" required />
+                <input
+                  type="number"
+                  name="price"
+                  value={sellFormData.price}
+                  onChange={handleSellFormChange}
+                  placeholder="0"
+                  required
+                />
               </div>
               <div className="form-group">
                 <label>Negotiable?</label>
-                <select>
+                <select
+                  name="negotiable"
+                  value={sellFormData.negotiable}
+                  onChange={handleSellFormChange}
+                >
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>

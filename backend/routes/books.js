@@ -14,14 +14,20 @@ router.get('/', async (req, res) => {
       maxPrice,
       condition,
       language,
-      availability = 1,
+      availability,
       sortBy = 'created_at',
       sortOrder = 'DESC'
     } = req.query;
 
     const offset = (page - 1) * limit;
-    let whereConditions = ['b.availability = ?'];
-    let queryParams = [availability];
+    let whereConditions = [];
+    let queryParams = [];
+
+    // Only filter by availability if specified
+    if (availability !== undefined) {
+      whereConditions.push('b.availability = ?');
+      queryParams.push(availability);
+    }
 
     // Build WHERE conditions
     if (category && category !== 'all') {

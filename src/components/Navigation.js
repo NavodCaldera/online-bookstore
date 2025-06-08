@@ -1,15 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import '../styles/navigation.css';
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const { getTotalItems } = useCart();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleUserDropdown = () => {
+    setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  // Check authentication status on component mount and when localStorage changes
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      const authToken = localStorage.getItem('authToken');
+      const userData = localStorage.getItem('userData');
+
+      if (authToken && userData) {
+        setIsLoggedIn(true);
+        try {
+          setUserInfo(JSON.parse(userData));
+        } catch (error) {
+          console.error('Error parsing user data:', error);
+          setIsLoggedIn(false);
+          setUserInfo(null);
+        }
+      } else {
+        setIsLoggedIn(false);
+        setUserInfo(null);
+      }
+    };
+
+    checkAuthStatus();
+
+    // Listen for storage changes (when user logs in/out in another tab)
+    const handleStorageChange = (e) => {
+      if (e.key === 'authToken' || e.key === 'userData') {
+        checkAuthStatus();
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
+    setIsLoggedIn(false);
+    setUserInfo(null);
+    setIsUserDropdownOpen(false);
+    navigate('/');
   };
 
   // Prevent body scroll when mobile menu is open
@@ -29,9 +80,22 @@ function Navigation() {
     };
   }, [isMenuOpen]);
 
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.user-dropdown-container')) {
+        setIsUserDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsUserDropdownOpen(false);
   }, [location.pathname]);
 
   const isActive = (path) => {
@@ -76,14 +140,16 @@ function Navigation() {
             <span>Buy & Sell</span>
           </Link>
           
-          <Link 
-            to="/create-account" 
-            className={`nav-link ${isActive('/create-account')}`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <i className="fas fa-user-plus"></i>
-            <span>Sign Up</span>
-          </Link>
+          {!isLoggedIn && (
+            <Link
+              to="/create-account"
+              className={`nav-link ${isActive('/create-account')}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <i className="fas fa-user-plus"></i>
+              <span>Sign Up</span>
+            </Link>
+          )}
 
           {/* Additional Navigation Items */}
           <div className="nav-link dropdown">
@@ -113,15 +179,94 @@ function Navigation() {
             <span className="cart-count">{getTotalItems()}</span>
           </Link>
 
-          <Link to="/buy-sell?section=account" className="nav-action-btn profile-btn">
-            <i className="fas fa-user"></i>
-            <span>My Account</span>
-          </Link>
+          {isLoggedIn ? (
+            /* Logged In User Dropdown */
+            <div className="user-dropdown-container">
+              <button
+                className="nav-action-btn profile-btn user-dropdown-trigger"
+                onClick={toggleUserDropdown}
+              >
+                <i className="fas fa-user-circle"></i>
+                <span>{userInfo?.full_name || 'User'}</span>
+                <i className={`fas fa-chevron-down dropdown-arrow ${isUserDropdownOpen ? 'open' : ''}`}></i>
+              </button>
 
-          <Link to="/login" className="nav-action-btn login-btn">
-            <i className="fas fa-sign-in-alt"></i>
-            <span>Login</span>
-          </Link>
+              {isUserDropdownOpen && (
+                <div className="user-dropdown-menu">
+                  <div className="user-dropdown-header">
+                    <div className="user-avatar">
+                      <i className="fas fa-user-circle"></i>
+                    </div>
+                    <div className="user-info">
+                      <div className="user-name">{userInfo?.full_name}</div>
+                      <div className="user-email">{userInfo?.email}</div>
+                    </div>
+                  </div>
+
+                  <div className="user-dropdown-divider"></div>
+
+                  <Link
+                    to="/buy-sell?section=account"
+                    className="user-dropdown-item"
+                    onClick={() => setIsUserDropdownOpen(false)}
+                  >
+                    <i className="fas fa-user"></i>
+                    <span>My Account</span>
+                  </Link>
+
+                  <Link
+                    to="/buy-sell?section=account"
+                    className="user-dropdown-item"
+                    onClick={() => setIsUserDropdownOpen(false)}
+                  >
+                    <i className="fas fa-cog"></i>
+                    <span>Account Settings</span>
+                  </Link>
+
+                  <Link
+                    to="/buy-sell?section=manage"
+                    className="user-dropdown-item"
+                    onClick={() => setIsUserDropdownOpen(false)}
+                  >
+                    <i className="fas fa-list"></i>
+                    <span>My Listings</span>
+                  </Link>
+
+                  <Link
+                    to="/buy-sell?section=buy"
+                    className="user-dropdown-item"
+                    onClick={() => setIsUserDropdownOpen(false)}
+                  >
+                    <i className="fas fa-shopping-bag"></i>
+                    <span>My Orders</span>
+                  </Link>
+
+                  <div className="user-dropdown-divider"></div>
+
+                  <button
+                    className="user-dropdown-item logout-item"
+                    onClick={handleLogout}
+                  >
+                    <i className="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            /* Not Logged In - Show Login/Signup */
+            <>
+              <Link to="/create-account" className="nav-action-btn signup-btn">
+                <i className="fas fa-user-plus"></i>
+                <span>Sign Up</span>
+              </Link>
+
+              <Link to="/login" className="nav-action-btn login-btn">
+                <i className="fas fa-sign-in-alt"></i>
+                <span>Login</span>
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Toggle */}
