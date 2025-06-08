@@ -10,6 +10,7 @@ function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
+  const [isFiltering, setIsFiltering] = useState(false);
   const { addToCart, getTotalItems, getTotalPrice } = useCart();
   const { showToast } = useToast();
 
@@ -146,7 +147,33 @@ function HomePage() {
 
   // Filter function
   const handleFilterChange = (filter) => {
-    setActiveFilter(filter);
+    if (filter === activeFilter) return; // Don't filter if same filter is clicked
+
+    setIsFiltering(true);
+
+    // Add a small delay for smooth transition
+    setTimeout(() => {
+      setActiveFilter(filter);
+      setIsFiltering(false);
+    }, 200);
+  };
+
+  // Filter books based on active filter
+  const filteredBooks = featuredBooks.filter(book => {
+    if (activeFilter === 'All') {
+      return true;
+    }
+    return book.category && book.category.toLowerCase() === activeFilter.toLowerCase();
+  });
+
+  // Get count for each category
+  const getCategoryCount = (category) => {
+    if (category === 'All') {
+      return featuredBooks.length;
+    }
+    return featuredBooks.filter(book =>
+      book.category && book.category.toLowerCase() === category.toLowerCase()
+    ).length;
   };
 
   // Add to cart function
@@ -287,24 +314,33 @@ function HomePage() {
             <br />
           </div>
           <div className="product-filter">
-            {['All', 'Mathematics', 'Reference', 'Technology', 'History', 'Literature'].map((filter) => (
-              <button
-                key={filter}
-                className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
-                onClick={() => handleFilterChange(filter)}
-              >
-                {filter}
-              </button>
-            ))}
+            {['All', 'Mathematics', 'Reference', 'Technology', 'History', 'Literature'].map((filter) => {
+              const count = getCategoryCount(filter);
+              return (
+                <button
+                  key={filter}
+                  className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                  onClick={() => handleFilterChange(filter)}
+                  disabled={count === 0 && filter !== 'All'}
+                >
+                  {filter} {count > 0 && <span className="count">({count})</span>}
+                </button>
+              );
+            })}
           </div>
           {loading ? (
             <div className="loading-state">
               <i className="fas fa-spinner fa-spin"></i>
               <p>Loading featured books...</p>
             </div>
-          ) : (
+          ) : isFiltering ? (
+            <div className="loading-state">
+              <i className="fas fa-filter fa-spin"></i>
+              <p>Filtering books...</p>
+            </div>
+          ) : filteredBooks.length > 0 ? (
             <div className="product-grid">
-              {featuredBooks.map((book) => (
+              {filteredBooks.map((book) => (
                 <div key={book.id} className="product-card">
                   {book.badge && (
                     <div className={`product-badge ${book.badge.toLowerCase()}`}>
@@ -328,6 +364,18 @@ function HomePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          ) : (
+            <div className="no-books-message">
+              <i className="fas fa-book-open"></i>
+              <h3>No books found in {activeFilter} category</h3>
+              <p>Try selecting a different category or check back later for new arrivals.</p>
+              <button
+                className="btn-primary"
+                onClick={() => handleFilterChange('All')}
+              >
+                View All Books
+              </button>
             </div>
           )}
         </div>
