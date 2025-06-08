@@ -193,7 +193,7 @@ function ContactUs() {
                 <li><Link to="/buy-sell?section=buy">Buy Books</Link></li>
                 <li><Link to="/buy-sell?section=sell">Sell Books</Link></li>
                 <li><a href="#">My Account</a></li>
-                <li><a href="#">Help</a></li>
+                <li><Link to="/help">Help</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>

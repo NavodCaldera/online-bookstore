@@ -8,6 +8,7 @@ import BrowseList from './pages/BrowseList';
 import BuySell from './pages/BuySell';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
+import Help from './pages/Help';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/buy-sell" element={<BuySell />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/help" element={<Help />} />
             <Route path="*" element={<div>Page not found</div>} />
           </Routes>
         </Router>
