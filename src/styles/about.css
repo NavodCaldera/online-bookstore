@@ -244,7 +244,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #2c3e50;
+  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
   color: white;
   padding: 60px 50px;
   margin-top: 60px;
@@ -260,7 +260,7 @@
 .footer-left h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #ecf0f1;
+  color: #ffffff;
 }
 
 .subscribe-form {
@@ -301,7 +301,7 @@
 .footer-column h3 {
   font-size: 1.3rem;
   margin-bottom: 20px;
-  color: #ecf0f1;
+  color: #ffffff;
 }
 
 .footer-column ul {
@@ -314,13 +314,13 @@
 }
 
 .footer-column a {
-  color: #bdc3c7;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-column a:hover {
-  color: #52c41a;
+  color: #73d13d;
 }
 
 .footer-right {
@@ -339,17 +339,17 @@
 .footer-right h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #ecf0f1;
+  color: #ffffff;
 }
 
 .footer-right p {
-  color: #bdc3c7;
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
 }
 
 /* Second Footer */
 .footer-bottom {
-  background-color: #34495e;
+  background-color: #1a3d1a;
   color: white;
   padding: 30px 50px;
   display: flex;
@@ -362,31 +362,39 @@
 .footer-social h4,
 .footer-payments h4 {
   margin-bottom: 15px;
-  color: #ecf0f1;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .social-icons {
   display: flex;
   gap: 15px;
+  margin-top: 10px;
 }
 
 .social-icons a {
   width: 40px;
   height: 40px;
-  background: #2c3e50;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #bdc3c7;
+  color: #ffffff;
+  font-size: 1.3rem;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .social-icons a:hover {
   background: #52c41a;
   color: white;
   transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(82, 196, 26, 0.3);
+  border-color: #52c41a;
 }
 
 .footer-center-logo {
@@ -421,15 +429,18 @@
 }
 
 .copyright-footer {
-  background-color: #2c3e50;
-  color: #95a5a6;
+  background-color: #1a3d1a;
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
   padding: 20px;
-  border-top: 1px solid #34495e;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .copyright-footer p {
   margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
 /* Responsive Design */

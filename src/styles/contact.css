@@ -194,8 +194,8 @@
 
 /* Footer */
 .contact-footer {
-  background: #1a3d1a;
-  color: #9ca3af;
+  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
   padding: 30px 20px;
   margin-top: 60px;

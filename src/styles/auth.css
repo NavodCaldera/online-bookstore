@@ -244,7 +244,7 @@
   text-align: center;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid rgba(45, 90, 39, 0.2);
 }
 
 .auth-benefits {
