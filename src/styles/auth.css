@@ -1,7 +1,16 @@
 .auth-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #f7f3eb 0%, #efe8dd 100%);
-  padding: 2rem 1rem;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Container System - Full width approach */
+.container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .auth-header {
@@ -26,8 +35,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .auth-form-container {
@@ -269,37 +279,84 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .auth-content {
+    gap: 2.5rem;
+    padding: 0 10px;
+  }
+
+  .auth-header {
+    padding: 60px 10px;
+  }
+}
+
 @media (max-width: 768px) {
   .auth-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .auth-form-container {
     padding: 1.5rem;
+    order: 1;
   }
-  
+
+  .auth-benefits {
+    order: 2;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
-  
+
+  .auth-header {
+    padding: 50px 10px;
+  }
+
   .auth-header h1 {
     font-size: 2rem;
   }
-  
+
+  .auth-header p {
+    font-size: 0.95rem;
+  }
+
   .radio-group {
     gap: 0.5rem;
   }
-  
+
   .radio-label {
     padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .benefit-item {
+    padding: 15px;
+  }
+
+  .benefit-item h4 {
+    font-size: 1rem;
+  }
+
+  .benefit-item p {
+    font-size: 0.9rem;
   }
 }
 
 /* Enhanced Mobile Responsiveness */
 @media (max-width: 480px) {
-  .auth-container {
-    padding: 10px;
+  .container {
+    padding: 0 5px;
   }
 
   .auth-content {
@@ -359,5 +416,59 @@
 
   .form-row .form-group {
     width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .auth-container {
+    padding: 5px;
+  }
+
+  .auth-header {
+    padding: 30px 15px;
+  }
+
+  .auth-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .auth-header p {
+    font-size: 0.85rem;
+  }
+
+  .auth-form-container {
+    padding: 15px 10px;
+  }
+
+  .auth-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .btn-primary {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .radio-label {
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  .benefit-item {
+    padding: 12px;
+  }
+
+  .benefit-item h4 {
+    font-size: 0.9rem;
+  }
+
+  .benefit-item p {
+    font-size: 0.8rem;
   }
 }
