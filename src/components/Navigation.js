@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import '../styles/navigation.css';
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { getTotalItems } = useCart();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -106,10 +108,10 @@ function Navigation() {
 
         {/* User Actions */}
         <div className="nav-actions">
-          <button className="nav-action-btn cart-btn">
+          <Link to="/buy-sell?section=buy" className="nav-action-btn cart-btn">
             <i className="fas fa-shopping-cart"></i>
-            <span className="cart-count">0</span>
-          </button>
+            <span className="cart-count">{getTotalItems()}</span>
+          </Link>
           
           <button className="nav-action-btn profile-btn">
             <i className="fas fa-user"></i>
