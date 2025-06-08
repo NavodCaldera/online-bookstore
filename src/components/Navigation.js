@@ -112,11 +112,12 @@ function Navigation() {
             <i className="fas fa-shopping-cart"></i>
             <span className="cart-count">{getTotalItems()}</span>
           </Link>
-          
-          <button className="nav-action-btn profile-btn">
+
+          <Link to="/buy-sell?section=account" className="nav-action-btn profile-btn">
             <i className="fas fa-user"></i>
-          </button>
-          
+            <span>My Account</span>
+          </Link>
+
           <Link to="/login" className="nav-action-btn login-btn">
             <i className="fas fa-sign-in-alt"></i>
             <span>Login</span>

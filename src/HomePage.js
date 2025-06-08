@@ -308,7 +308,7 @@ function HomePage() {
             <li><Link to="/browse">Shop Now</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/buy-sell">My Account <i className="fas fa-user"></i></Link></li>
+            <li><Link to="/buy-sell?section=account">My Account <i className="fas fa-user"></i></Link></li>
           </ul>
         </div>
       </nav>
@@ -505,7 +505,7 @@ function HomePage() {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/buy-sell?section=buy">Buy Books</Link></li>
                 <li><Link to="/buy-sell?section=sell">Sell Books</Link></li>
-                <li><Link to="/buy-sell">My Account</Link></li>
+                <li><Link to="/buy-sell?section=account">My Account</Link></li>
                 <li><Link to="/help">Help</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>

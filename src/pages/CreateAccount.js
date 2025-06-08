@@ -351,7 +351,7 @@ function CreateAccount() {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/buy-sell?section=buy">Buy Books</Link></li>
                 <li><Link to="/buy-sell?section=sell">Sell Books</Link></li>
-                <li><Link to="/buy-sell">My Account</Link></li>
+                <li><Link to="/buy-sell?section=account">My Account</Link></li>
                 <li><Link to="/help">Help</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
