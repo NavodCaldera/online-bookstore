@@ -144,7 +144,11 @@ function BuySell() {
   ]);
 
   const handleCheckout = () => {
-    alert('Proceeding to checkout...');
+    if (cartItems.length > 0) {
+      navigate('/checkout'); // Navigate to the new checkout page
+    } else {
+      showToast('Your cart is empty. Please add items before checking out.', 'info');
+    }
   };
 
   const handleEditProfile = () => {
