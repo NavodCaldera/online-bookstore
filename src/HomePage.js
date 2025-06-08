@@ -11,6 +11,7 @@ function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
   const [isFiltering, setIsFiltering] = useState(false);
+  const [wishlist, setWishlist] = useState([]);
   const { addToCart, getTotalItems, getTotalPrice } = useCart();
   const { showToast } = useToast();
 
@@ -43,6 +44,19 @@ function HomePage() {
   // Featured books data - will be loaded from API
   const [featuredBooks, setFeaturedBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Load wishlist from localStorage on component mount
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem('bookstore_wishlist');
+    if (savedWishlist) {
+      setWishlist(JSON.parse(savedWishlist));
+    }
+  }, []);
+
+  // Save wishlist to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('bookstore_wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
 
   // Fetch featured books from API
   useEffect(() => {
@@ -176,6 +190,58 @@ function HomePage() {
     ).length;
   };
 
+  // Wishlist functions
+  const addToWishlist = (book) => {
+    const isAlreadyInWishlist = wishlist.some(item => item.id === book.id);
+
+    if (!isAlreadyInWishlist) {
+      const wishlistItem = {
+        id: book.id,
+        title: book.title,
+        author: book.author,
+        currentPrice: book.currentPrice,
+        originalPrice: book.originalPrice,
+        image: book.image,
+        category: book.category,
+        addedAt: new Date().toISOString()
+      };
+
+      setWishlist(prev => [...prev, wishlistItem]);
+      showToast(`"${book.title}" added to wishlist!`, 'success');
+    } else {
+      showToast(`"${book.title}" is already in your wishlist!`, 'info');
+    }
+  };
+
+  const removeFromWishlist = (bookId) => {
+    const book = wishlist.find(item => item.id === bookId);
+    setWishlist(prev => prev.filter(item => item.id !== bookId));
+    if (book) {
+      showToast(`"${book.title}" removed from wishlist!`, 'success');
+    }
+  };
+
+  const isInWishlist = (bookId) => {
+    return wishlist.some(item => item.id === bookId);
+  };
+
+  const toggleWishlist = (book) => {
+    if (isInWishlist(book.id)) {
+      removeFromWishlist(book.id);
+    } else {
+      addToWishlist(book);
+    }
+  };
+
+  const handleWishlistClick = () => {
+    if (wishlist.length === 0) {
+      showToast('Your wishlist is empty! Add some books to your wishlist by clicking the heart icon on any book.', 'info');
+    } else {
+      const recentBook = wishlist[wishlist.length - 1];
+      showToast(`You have ${wishlist.length} item${wishlist.length > 1 ? 's' : ''} in your wishlist! Most recent: "${recentBook.title}"`, 'info');
+    }
+  };
+
   // Add to cart function
   const handleAddToCart = (book) => {
     const cartItem = {
@@ -222,7 +288,15 @@ function HomePage() {
           </div>
         </div>
         <div className="header-right">
-          <a href="#"><i className="fas fa-heart"></i> <span>(2)</span></a>
+          <a
+            href="#"
+            data-count={wishlist.length}
+            onClick={(e) => { e.preventDefault(); handleWishlistClick(); }}
+            title={`Wishlist (${wishlist.length} item${wishlist.length !== 1 ? 's' : ''})`}
+          >
+            <i className="fas fa-heart"></i>
+            <span>({wishlist.length})</span>
+          </a>
           <Link to="/buy-sell?section=buy"><i className="fas fa-shopping-cart"></i> <span>LKR {getTotalPrice().toLocaleString()}</span></Link>
         </div>
       </header>
@@ -349,7 +423,16 @@ function HomePage() {
                   )}
                   <img src={book.image} alt={book.title} />
                   <div className="product-details">
-                    <h3>{book.title}</h3>
+                    <div className="product-header">
+                      <h3>{book.title}</h3>
+                      <button
+                        className={`wishlist-btn ${isInWishlist(book.id) ? 'active' : ''}`}
+                        onClick={() => toggleWishlist(book)}
+                        title={isInWishlist(book.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+                      >
+                        <i className={`fas fa-heart ${isInWishlist(book.id) ? 'filled' : ''}`}></i>
+                      </button>
+                    </div>
                     <p className="product-author">By {book.author}</p>
                     <div className="product-price">
                       <span className="current-price">LKR {book.currentPrice.toFixed(2)}</span>

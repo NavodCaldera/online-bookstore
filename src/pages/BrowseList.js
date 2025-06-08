@@ -23,6 +23,7 @@ function BrowseList() {
   const [totalPages, setTotalPages] = useState(1);
   const [totalBooks, setTotalBooks] = useState(0);
   const [sortBy, setSortBy] = useState('newest');
+  const [wishlist, setWishlist] = useState([]);
 
   // List item form state
   const [listForm, setListForm] = useState({
@@ -39,6 +40,66 @@ function BrowseList() {
   });
   const [listLoading, setListLoading] = useState(false);
   const [listSuccess, setListSuccess] = useState(false);
+
+  // Load wishlist from localStorage on component mount
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem('bookstore_wishlist');
+    if (savedWishlist) {
+      setWishlist(JSON.parse(savedWishlist));
+    }
+  }, []);
+
+  // Save wishlist to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('bookstore_wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
+
+  // Wishlist functions
+  const addToWishlist = (book) => {
+    const isAlreadyInWishlist = wishlist.some(item => item.id === book.id);
+
+    if (!isAlreadyInWishlist) {
+      const wishlistItem = {
+        id: book.id,
+        title: book.title,
+        author: book.author,
+        price: book.price,
+        originalPrice: book.originalPrice,
+        image: book.image,
+        category: book.category,
+        addedAt: new Date().toISOString()
+      };
+
+      setWishlist(prev => [...prev, wishlistItem]);
+      showToast(`"${book.title}" added to wishlist!`, 'success');
+    } else {
+      showToast(`"${book.title}" is already in your wishlist!`, 'info');
+    }
+  };
+
+  const removeFromWishlist = (bookId) => {
+    const book = wishlist.find(item => item.id === bookId);
+    setWishlist(prev => prev.filter(item => item.id !== bookId));
+    if (book) {
+      showToast(`"${book.title}" removed from wishlist!`, 'success');
+    }
+  };
+
+  const isInWishlist = (bookId) => {
+    return wishlist.some(item => item.id === bookId);
+  };
+
+  const toggleWishlist = (book) => {
+    if (isInWishlist(book.id)) {
+      removeFromWishlist(book.id);
+    } else {
+      addToWishlist(book);
+    }
+  };
+
+  const handleViewBook = (book) => {
+    showToast(`Viewing "${book.title}" by ${book.author}. Full book details coming soon!`, 'info');
+  };
 
   // Add error boundary
   console.log('BrowseList component rendering...');
@@ -489,10 +550,18 @@ function BrowseList() {
                           <i className="fas fa-shopping-cart"></i>
                           Add to Cart
                         </button>
-                        <button className="btn-secondary">
-                          <i className="fas fa-heart"></i>
+                        <button
+                          className={`btn-secondary wishlist-btn ${isInWishlist(book.id) ? 'active' : ''}`}
+                          onClick={() => toggleWishlist(book)}
+                          title={isInWishlist(book.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+                        >
+                          <i className={`fas fa-heart ${isInWishlist(book.id) ? 'filled' : ''}`}></i>
                         </button>
-                        <button className="btn-secondary">
+                        <button
+                          className="btn-secondary view-btn"
+                          onClick={() => handleViewBook(book)}
+                          title="View book details"
+                        >
                           <i className="fas fa-eye"></i>
                         </button>
                       </div>
