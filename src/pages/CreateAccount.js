@@ -284,7 +284,7 @@ function CreateAccount() {
           </form>
 
           <div className="auth-footer">
-            <p>Already have an account? <a href="/login" className="link">Sign in here</a></p>
+            <p>Already have an account? <Link to="/login" className="link">Sign in here</Link></p>
           </div>
         </div>
 

@@ -8,7 +8,7 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 80px 40px;
 }
 
 .contact-header h1 {
@@ -27,7 +27,7 @@
 .contact-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 80px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
@@ -224,7 +224,7 @@
 
 @media (max-width: 768px) {
   .contact-header {
-    padding: 60px 20px;
+    padding: 60px 30px;
   }
 
   .contact-header h1 {
@@ -238,7 +238,7 @@
   .contact-content {
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: 40px 15px;
+    padding: 40px 30px;
   }
 
   .contact-form {
@@ -288,7 +288,7 @@
   }
   
   .contact-content {
-    padding: 40px 15px;
+    padding: 40px 20px;
   }
   
   .contact-form {

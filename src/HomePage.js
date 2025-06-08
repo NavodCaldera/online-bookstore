@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from './context/CartContext';
+import { useToast } from './context/ToastContext';
 import Navigation from './components/Navigation';
 import './styles/home.css';
 
@@ -7,6 +9,8 @@ function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
+  const { addToCart, getTotalItems, getTotalPrice } = useCart();
+  const { showToast } = useToast();
 
   // Slider data
   const slides = [
@@ -144,6 +148,23 @@ function HomePage() {
     setActiveFilter(filter);
   };
 
+  // Add to cart function
+  const handleAddToCart = (book) => {
+    const cartItem = {
+      id: book.id,
+      title: book.title,
+      author: book.author,
+      price: book.currentPrice,
+      image: book.image,
+      seller: 'PageTurn Store' // Default seller for featured books
+    };
+
+    addToCart(cartItem);
+
+    // Show success message
+    showToast(`${book.title} has been added to your cart!`, 'success');
+  };
+
   return (
     <div>
       {/* Navigation Bar */}
@@ -172,18 +193,20 @@ function HomePage() {
         </div>
         <div className="header-right">
           <a href="#"><i className="fas fa-heart"></i> <span>(2)</span></a>
-          <a href="#"><i className="fas fa-shopping-cart"></i> <span>LKR 3,200</span></a>
+          <Link to="/buy-sell?section=buy"><i className="fas fa-shopping-cart"></i> <span>LKR {getTotalPrice().toLocaleString()}</span></Link>
         </div>
       </header>
 
       {/* Navigation */}
       <nav className="main-nav">
-        <ul>
-          <li><Link to="/browse">Shop Now</Link></li>
-          <li><Link to="/about">About Us</Link></li>
-          <li><Link to="/contact">Contact Us</Link></li>
-          <li><Link to="/buy-sell">My Account <i className="fas fa-user"></i></Link></li>
-        </ul>
+        <div className="main-nav-container">
+          <ul>
+            <li><Link to="/browse">Shop Now</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/contact">Contact Us</Link></li>
+            <li><Link to="/buy-sell">My Account <i className="fas fa-user"></i></Link></li>
+          </ul>
+        </div>
       </nav>
 
       {/* Slider Container */}
@@ -293,7 +316,12 @@ function HomePage() {
                       <span className="current-price">LKR {book.currentPrice.toFixed(2)}</span>
                       <span className="original-price">LKR {book.originalPrice.toFixed(2)}</span>
                     </div>
-                    <button className="add-to-cart">Add to Cart</button>
+                    <button
+                      className="add-to-cart"
+                      onClick={() => handleAddToCart(book)}
+                    >
+                      Add to Cart
+                    </button>
                   </div>
                 </div>
               ))}

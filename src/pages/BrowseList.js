@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { useToast } from '../context/ToastContext';
 import Navigation from '../components/Navigation';
 import '../styles/browse.css';
 import '../styles/home.css';
@@ -13,6 +15,8 @@ function BrowseList() {
   const [categories, setCategories] = useState([
     { value: 'all', label: 'All Categories' }
   ]);
+  const { addToCart } = useCart();
+  const { showToast } = useToast();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -305,6 +309,23 @@ function BrowseList() {
   // Just use the books directly from API
   const filteredBooks = books;
 
+  // Add to cart function
+  const handleAddToCart = (book) => {
+    const cartItem = {
+      id: book.id,
+      title: book.title,
+      author: book.author,
+      price: book.price,
+      image: book.image,
+      seller: book.seller || 'Unknown Seller'
+    };
+
+    addToCart(cartItem);
+
+    // Show success message
+    showToast(`${book.title} has been added to your cart!`, 'success');
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
     // Search functionality is handled by the filter above
@@ -461,7 +482,10 @@ function BrowseList() {
                         </span>
                       </div>
                       <div className="book-actions">
-                        <button className="btn-primary">
+                        <button
+                          className="btn-primary"
+                          onClick={() => handleAddToCart(book)}
+                        >
                           <i className="fas fa-shopping-cart"></i>
                           Add to Cart
                         </button>
