@@ -1,20 +1,25 @@
 /* Remove duplicate body styles - handled by index.css */
 
 :root {
-    /* Updated Color palette */
-    --primary-color: #5338128d;
-    --secondary-color: #f8f9fa;
-    --accent-color: #ff6b6b;
-    --text-dark: #2d3142;
-    --text-light: #6b7280;
+    /* Green Color Theme */
+    --primary-color: #2d5a27; /* Deep forest green */
+    --primary-light: #4a7c59; /* Medium green */
+    --primary-dark: #1a3d1a; /* Dark green */
+    --secondary-color: #f0f8f0; /* Very light green */
+    --accent-color: #52c41a; /* Bright green */
+    --accent-light: #73d13d; /* Light bright green */
+    --success-color: #389e0d; /* Success green */
+    --text-dark: #1f2937; /* Dark gray for text */
+    --text-light: #6b7280; /* Light gray for text */
     --white: #ffffff;
     --light-gray: #e5e7eb;
     --medium-gray: #9ca3af;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --bg-color: #f7f3eb; /* New warm background color */
-    --card-bg: #fefefe;  /* Card background */
-    --section-alt-bg: #efe8dd; /* Alternative section background */
-    
+    --shadow: rgba(45, 90, 39, 0.1); /* Green-tinted shadow */
+    --bg-color: #f6fdf6; /* Very light green background */
+    --card-bg: #ffffff; /* Card background */
+    --section-alt-bg: #e8f5e8; /* Light green section background */
+    --hover-green: #237804; /* Darker green for hover states */
+
     /* Typography */
     --heading-font: 'Playfair Display', serif;
     --body-font: 'Poppins', sans-serif;
@@ -24,7 +29,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f4f4f4;
+  background-color: var(--secondary-color);
   padding: 10px 30px;
   flex-wrap: wrap;
 }
@@ -164,12 +169,17 @@
 
 .search-container button {
   padding: 8px 12px;
-  background-color: #333;
+  background-color: var(--primary-color);
   color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid var(--primary-color);
   border-left: none;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: var(--hover-green);
 }
 
 .search-container button i {
@@ -177,8 +187,8 @@
 }
 
 .main-nav {
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
+  background-color: var(--section-alt-bg);
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .main-nav-container {
@@ -213,7 +223,7 @@
 
 .main-nav a:hover {
   font-size: 1.2rem;
-  color: #696564;
+  color: var(--primary-color);
   transition: font-size 0.2s ease, color 0.2s ease;
 }
 
@@ -225,8 +235,8 @@
 }
 
 body {
-  background-color: #f9f3ea;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  font-family: var(--body-font);
 }
 
     .slider-container {
@@ -244,7 +254,7 @@ body {
   top: 0;
   left: 0;
   padding: 40px;
-  background-color: #f9f3ea;
+  background-color: var(--bg-color);
   align-items: center;
   justify-content: space-between;
 }
@@ -281,14 +291,25 @@ body {
     }
 
     .btn-primary {
-      background-color: #9d8562;
+      background-color: var(--primary-color);
       color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--hover-green);
     }
 
     .btn-outline {
       background-color: transparent;
-      border: 2px solid #9d8562;
-      color: #9d8562;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: white;
     }
 
     .slide.active {
@@ -340,11 +361,16 @@ body {
 
     .step i {
       font-size: 2.5em;
-      background-color: #9d8562;
+      background-color: var(--primary-color);
       color: white;
       padding: 20px;
       border-radius: 50%;
       margin-bottom: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .step:hover i {
+      background-color: var(--accent-color);
     }
 
     .step h3 {
@@ -396,7 +422,11 @@ body {
     }
 
     .dot.active {
-      background-color: #9d8562;
+      background-color: var(--primary-color);
+    }
+
+    .dot:hover {
+      background-color: var(--primary-light);
     }
 
 .featured-products {
@@ -550,14 +580,14 @@ body {
 }
 
 .add-to-cart:hover {
-    background-color: #3d2a0f;
+    background-color: var(--hover-green);
 }
 
 .info-banner {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #dddcda;
+    background-color: var(--section-alt-bg);
     padding: 30px 20px;
     margin: 40px 0;
     box-shadow: 0 2px 10px var(--shadow);
@@ -640,7 +670,7 @@ body {
 }
 
 .subscribe-form button:hover {
-    background-color: #3d2a0f;
+    background-color: var(--hover-green);
 }
 
 .footer-center {

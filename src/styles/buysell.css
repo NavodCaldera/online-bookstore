@@ -1,6 +1,6 @@
 .buysell-container {
   min-height: 100vh;
-  background-color: var(--bg-color, #f7f3eb);
+  background-color: var(--bg-color, #f6fdf6);
   padding: 0;
   margin: 0;
   width: 100%;
@@ -70,14 +70,14 @@
 }
 
 .nav-btn:hover {
-  border-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
   transform: translateY(-2px);
 }
 
 .nav-btn.active {
-  background: var(--primary-color, #5338128d);
+  background: var(--primary-color, #2d5a27);
   color: white;
-  border-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
 }
 
 .buysell-content {
@@ -124,10 +124,10 @@
   color: white;
 }
 
-.stat-icon.buy { background: #3b82f6; }
-.stat-icon.sell { background: #10b981; }
-.stat-icon.earnings { background: #f59e0b; }
-.stat-icon.savings { background: #8b5cf6; }
+.stat-icon.buy { background: #2d5a27; }
+.stat-icon.sell { background: #52c41a; }
+.stat-icon.earnings { background: #4a7c59; }
+.stat-icon.savings { background: #389e0d; }
 
 .stat-content h3 {
   font-size: 1rem;
@@ -180,7 +180,7 @@
 }
 
 .action-btn:hover {
-  border-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
   transform: translateY(-2px);
 }
 
@@ -199,10 +199,10 @@
   font-size: 0.875rem;
 }
 
-.buy-btn i { color: #3b82f6; }
-.sell-btn i { color: #10b981; }
-.browse-btn i { color: #f59e0b; }
-.manage-btn i { color: #8b5cf6; }
+.buy-btn i { color: #2d5a27; }
+.sell-btn i { color: #52c41a; }
+.browse-btn i { color: #4a7c59; }
+.manage-btn i { color: #389e0d; }
 
 .recent-activity {
   background: white;
@@ -243,9 +243,9 @@
   font-size: 1rem;
 }
 
-.activity-icon.buy { background: #3b82f6; }
-.activity-icon.view { background: #f59e0b; }
-.activity-icon.success { background: #10b981; }
+.activity-icon.buy { background: #2d5a27; }
+.activity-icon.view { background: #4a7c59; }
+.activity-icon.success { background: #52c41a; }
 
 .activity-content p {
   color: var(--text-dark, #2d3142);
@@ -284,7 +284,7 @@
 .empty-cart i {
   font-size: 4rem;
   margin-bottom: 1rem;
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
 }
 
 .cart-content {
@@ -350,7 +350,7 @@
 
 .item-price {
   font-weight: 700;
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
 }
 
 .remove-btn {
@@ -397,7 +397,7 @@
 
 .checkout-btn {
   width: 100%;
-  background: var(--primary-color, #5338128d);
+  background: var(--primary-color, #2d5a27);
   color: white;
   border: none;
   padding: 1rem;
@@ -409,6 +409,11 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background: var(--hover-green, #237804);
 }
 
 /* Sell Section */
@@ -483,12 +488,12 @@
 }
 
 .upload-area:hover {
-  border-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
 }
 
 .upload-area i {
   font-size: 3rem;
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
   margin-bottom: 1rem;
 }
 

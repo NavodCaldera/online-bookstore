@@ -1,7 +1,7 @@
 /* About Us Page Styles - Integrated with existing design */
 .about-page {
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: #f6fdf6;
 }
 
 /* About Container - Main section */
@@ -22,7 +22,7 @@
 }
 
 .about-link {
-  color: #181c32;
+  color: #2d5a27;
   text-decoration: underline;
   font-size: 1rem;
   margin-bottom: 12px;
@@ -81,11 +81,11 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #181c32;
+  color: #2d5a27;
 }
 
 .underline {
-  border-bottom: 3px solid #181c32;
+  border-bottom: 3px solid #2d5a27;
   padding-bottom: 2px;
 }
 
@@ -104,9 +104,9 @@
 }
 
 .mission-card {
-  background: #f7fafd;
+  background: #f0f8f0;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 16px rgba(45, 90, 39, 0.1);
   padding: 32px 28px 24px 28px;
   width: 320px;
   text-align: left;
@@ -128,7 +128,7 @@
 .mission-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #181c32;
+  color: #2d5a27;
 }
 
 .mission-text {
@@ -154,15 +154,15 @@
 }
 
 .mission-arrow:hover {
-  background: #e6eaf2;
+  background: #e8f5e8;
 }
 
 /* Community Section */
 .community-section {
   background: #fff;
-  border: 2px solid #e6eaf2;
+  border: 2px solid #e8f5e8;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 16px rgba(45, 90, 39, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -198,7 +198,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2px;
-  color: #181c32;
+  color: #2d5a27;
 }
 
 .community-subtitle {
@@ -211,7 +211,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  border-bottom: 2px solid #e6eaf2;
+  border-bottom: 2px solid #e8f5e8;
   margin-top: 8px;
 }
 
@@ -228,10 +228,15 @@
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #181c32;
+  color: #2d5a27;
   cursor: pointer;
   margin-left: 8px;
   padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.community-input-group button:hover {
+  color: #52c41a;
 }
 
 /* Footer Section */
@@ -274,7 +279,7 @@
 
 .subscribe-form button {
   padding: 12px 20px;
-  background-color: #3498db;
+  background-color: #2d5a27;
   color: white;
   border: none;
   border-radius: 5px;
@@ -284,7 +289,7 @@
 }
 
 .subscribe-form button:hover {
-  background-color: #2980b9;
+  background-color: #237804;
 }
 
 .footer-center {
@@ -315,7 +320,7 @@
 }
 
 .footer-column a:hover {
-  color: #3498db;
+  color: #52c41a;
 }
 
 .footer-right {
@@ -379,7 +384,7 @@
 }
 
 .social-icons a:hover {
-  background: #3498db;
+  background: #52c41a;
   color: white;
   transform: translateY(-3px);
 }

@@ -1,6 +1,6 @@
 .auth-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f7f3eb 0%, #efe8dd 100%);
+  background: linear-gradient(135deg, #f6fdf6 0%, #e8f5e8 100%);
   padding: 0;
   margin: 0;
   width: 100%;
@@ -90,7 +90,7 @@
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
 }
 
 .form-group input.error,
@@ -128,8 +128,8 @@
 }
 
 .radio-label:hover {
-  border-color: var(--primary-color, #5338128d);
-  background-color: #f9f9f9;
+  border-color: var(--primary-color, #2d5a27);
+  background-color: #f0f8f0;
 }
 
 .radio-label input[type="radio"] {
@@ -147,8 +147,8 @@
 }
 
 .radio-label input[type="radio"]:checked + .radio-custom {
-  border-color: var(--primary-color, #5338128d);
-  background-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
+  background-color: var(--primary-color, #2d5a27);
 }
 
 .radio-label input[type="radio"]:checked + .radio-custom::after {
@@ -188,8 +188,8 @@
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
-  border-color: var(--primary-color, #5338128d);
-  background-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
+  background-color: var(--primary-color, #2d5a27);
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
@@ -200,7 +200,7 @@
 }
 
 .link {
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
   text-decoration: none;
   font-weight: 500;
 }
@@ -210,7 +210,7 @@
 }
 
 .auth-button {
-  background: var(--primary-color, #5338128d);
+  background: var(--primary-color, #2d5a27);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -227,7 +227,7 @@
 }
 
 .auth-button:hover:not(:disabled) {
-  background: #3d2a0f;
+  background: var(--hover-green, #237804);
   transform: translateY(-2px);
 }
 
@@ -277,7 +277,7 @@
 
 .benefit-item i {
   font-size: 2rem;
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
   margin-top: 0.25rem;
 }
 

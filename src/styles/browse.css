@@ -1,6 +1,6 @@
 .browse-container {
   min-height: 100vh;
-  background-color: var(--bg-color, #f7f3eb);
+  background-color: var(--bg-color, #f6fdf6);
   padding: 0;
   margin: 0;
   width: 100%;
@@ -69,14 +69,14 @@
 }
 
 .tab-button:hover {
-  border-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
   transform: translateY(-2px);
 }
 
 .tab-button.active {
-  background: var(--primary-color, #5338128d);
+  background: var(--primary-color, #2d5a27);
   color: white;
-  border-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
 }
 
 .browse-content {
@@ -115,12 +115,12 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--primary-color, #5338128d);
+  border-color: var(--primary-color, #2d5a27);
 }
 
 .search-button {
   padding: 1rem 1.5rem;
-  background: var(--primary-color, #5338128d);
+  background: var(--primary-color, #2d5a27);
   color: white;
   border: none;
   border-radius: 0 12px 12px 0;
@@ -129,7 +129,7 @@
 }
 
 .search-button:hover {
-  background: #3d2a0f;
+  background: var(--hover-green, #237804);
 }
 
 .filters {
@@ -177,7 +177,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--primary-color, #5338128d);
+  background: var(--primary-color, #2d5a27);
   cursor: pointer;
 }
 
@@ -219,7 +219,7 @@
 .loading-state i {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
 }
 
 .books-grid {
@@ -256,7 +256,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: var(--primary-color, #5338128d);
+  background: var(--primary-color, #2d5a27);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -311,7 +311,7 @@
 .current-price {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
 }
 
 .original-price {
@@ -321,7 +321,7 @@
 }
 
 .savings {
-  background: #10b981;
+  background: var(--accent-color, #52c41a);
   color: white;
   padding: 0.25rem 0.5rem;
   border-radius: 12px;
@@ -336,7 +336,7 @@
 
 .btn-primary {
   flex: 1;
-  background: var(--primary-color, #5338128d);
+  background: var(--primary-color, #2d5a27);
   color: white;
   border: none;
   padding: 0.75rem 1rem;
@@ -351,7 +351,7 @@
 }
 
 .btn-primary:hover {
-  background: #3d2a0f;
+  background: var(--hover-green, #237804);
 }
 
 .btn-secondary {
@@ -377,7 +377,7 @@
 .no-results i {
   font-size: 4rem;
   margin-bottom: 1rem;
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
 }
 
 .no-results h3 {
@@ -425,7 +425,7 @@
 
 .benefit-card i {
   font-size: 3rem;
-  color: var(--primary-color, #5338128d);
+  color: var(--primary-color, #2d5a27);
   margin-bottom: 1rem;
 }
 
