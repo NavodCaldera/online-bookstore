@@ -6,6 +6,14 @@ import Navigation from './components/Navigation';
 import NewsletterSubscription from './components/NewsletterSubscription';
 import './styles/home.css';
 
+// Import images
+import welcomeImg from './assets/images/welcome.jpg';
+import slider2Img from './assets/images/slider2.jpg';
+import logoImg from './assets/images/logo.webp';
+import shippedImg from './assets/images/shipped.png';
+import creditCardImg from './assets/images/credit-card.png';
+import bestPriceImg from './assets/images/best-price.png';
+
 function HomePage() {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -24,7 +32,7 @@ function HomePage() {
       type: 'welcome',
       title: 'WELCOME TO PAGE TURN',
       description: 'PageTurn reduces financial burden on students by providing access to educational materials at 50-70% lower prices than retail while enabling income generation through resale opportunities.',
-      image: '/welcome.jpg',
+      image: welcomeImg,
       buttonText: 'LEARN MORE'
     },
     {
@@ -32,7 +40,7 @@ function HomePage() {
       type: 'education',
       title: 'Pre-loved Books For Education',
       description: 'Affordable access to knowledge for students and book lovers alike',
-      image: '/slider2.jpg',
+      image: slider2Img,
       buttons: ['Shop Now', 'Sell Books']
     },
     {
@@ -379,7 +387,7 @@ function HomePage() {
       <header className="main-header">
         <div className="header-left">
           <Link to="/">
-            <img src="/logo.webp" alt="Logo" className="logo" />
+            <img src={logoImg} alt="Logo" className="logo" />
           </Link>
           <span className="site-name">PageTurn</span>
         </div>
@@ -618,15 +626,15 @@ function HomePage() {
       {/* Info Banner */}
       <div className="info-banner">
         <div className="info-item left">
-          <img src="/shipped.png" alt="Delivery Truck" />
+          <img src={shippedImg} alt="Delivery Truck" />
           <span>Island wide delivery</span>
         </div>
         <div className="info-item center">
-          <img src="/credit-card.png" alt="Secure Payments" />
+          <img src={creditCardImg} alt="Secure Payments" />
           <span>Secure payments</span>
         </div>
         <div className="info-item right">
-          <img src="/best-price.png" alt="Best Price" />
+          <img src={bestPriceImg} alt="Best Price" />
           <span>Best Price</span>
         </div>
       </div>
@@ -666,7 +674,7 @@ function HomePage() {
           <div className="footer-right">
             <div style={{textAlign: 'right'}}>
               <Link to="/">
-                <img src="/logo.webp" alt="Site Logo" className="logo" />
+                <img src={logoImg} alt="Site Logo" className="logo" />
               </Link>
               <span style={{textAlign: 'right'}}>PageTurn</span>
             </div>
@@ -690,7 +698,7 @@ function HomePage() {
 
           <div className="footer-center-logo">
             <Link to="/">
-              <img src="/logo.webp" alt="Logo" />
+              <img src={logoImg} alt="Logo" />
             </Link>
             <span>PageTurn</span>
           </div>

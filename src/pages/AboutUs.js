@@ -4,6 +4,15 @@ import Navigation from '../components/Navigation';
 import '../styles/about.css';
 import '../styles/home.css';
 
+// Import images
+import abtImg1 from '../assets/images/abt_img1.png';
+import abtImg2 from '../assets/images/abt_img2.png';
+import bestBookImg from '../assets/images/best_book.png';
+import trustSellerImg from '../assets/images/trust_seller.png';
+import expandImg from '../assets/images/expand.png';
+import commImg from '../assets/images/comm.png';
+import logoImg from '../assets/images/logo.webp';
+
 function AboutUs() {
   const [email, setEmail] = useState('');
 
@@ -28,12 +37,12 @@ function AboutUs() {
         <div className="about-left">
           <Link to="/about" className="about-link">About us</Link>
           <div className="about-title">PageTurn Is Best<br />Choice For You</div>
-          <img src="/abt_img1.png" alt="Book on table" className="about-image1" />
+          <img src={abtImg1} alt="Book on table" className="about-image1" />
         </div>
-        
+
         {/* Right Column: Image 2 and Description */}
         <div className="about-right">
-          <img src="/abt_img2.png" alt="Person holding book" className="about-image2" />
+          <img src={abtImg2} alt="Person holding book" className="about-image2" />
           <div className="about-desc">
             Welcome! We're passionate about literature and committed to sharing the magic of storytelling. 
             Our page is where you'll discover our love for books, our mission to connect readers, and our 
@@ -53,7 +62,7 @@ function AboutUs() {
         <div className="mission-cards">
           <div className="mission-card">
             <div className="mission-icon">
-              <img src="/best_book.png" alt="Best Bookstore" width="40" height="40" />
+              <img src={bestBookImg} alt="Best Bookstore" width="40" height="40" />
             </div>
             <div className="mission-title">Best Bookstore</div>
             <div className="mission-text">
@@ -63,10 +72,10 @@ function AboutUs() {
               <span>&rarr;</span>
             </button>
           </div>
-          
+
           <div className="mission-card">
             <div className="mission-icon">
-              <img src="/trust_seller.png" alt="Trusted Seller" width="40" height="40" />
+              <img src={trustSellerImg} alt="Trusted Seller" width="40" height="40" />
             </div>
             <div className="mission-title">Trusted Seller</div>
             <div className="mission-text">
@@ -79,7 +88,7 @@ function AboutUs() {
           
           <div className="mission-card">
             <div className="mission-icon">
-              <img src="/expand.png" alt="Expand Store" width="40" height="40" />
+              <img src={expandImg} alt="Expand Store" width="40" height="40" />
             </div>
             <div className="mission-title">Expand Store</div>
             <div className="mission-text">
@@ -95,7 +104,7 @@ function AboutUs() {
       {/* Join the Community Section */}
       <section className="community-section">
         <div className="community-books">
-          <img src="/comm.png" alt="Community Books" />
+          <img src={commImg} alt="Community Books" />
         </div>
         <form className="community-form" onSubmit={handleNewsletterSubmit}>
           <div className="community-title"><span className="underline">Join the community</span></div>
@@ -151,7 +160,7 @@ function AboutUs() {
           <div className="footer-right">
             <div style={{textAlign: 'right'}}>
               <Link to="/">
-                <img src="/logo.webp" alt="Site Logo" className="logo" />
+                <img src={logoImg} alt="Site Logo" className="logo" />
               </Link>
               <span style={{textAlign: 'right'}}>PageTurn</span>
             </div>
@@ -175,7 +184,7 @@ function AboutUs() {
 
           <div className="footer-center-logo">
             <Link to="/">
-              <img src="/logo.webp" alt="Logo" />
+              <img src={logoImg} alt="Logo" />
             </Link>
             <span>PageTurn</span>
           </div>

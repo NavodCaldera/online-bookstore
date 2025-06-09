@@ -1,3 +1,12 @@
+# PageTurn Educational Bookstore Platform
 # https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /checkout/
+Disallow: /profile/
+
+# Sitemap
+Sitemap: http://localhost:3001/sitemap.xml
