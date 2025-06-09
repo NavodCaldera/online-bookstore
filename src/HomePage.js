@@ -67,7 +67,7 @@ function HomePage() {
           const data = await response.json();
           if (data.success) {
             // Transform API data to match our component structure
-            const transformedBooks = data.data.slice(0, 4).map(book => ({
+            const transformedBooks = data.data.slice(0, 20).map(book => ({
               id: book.id,
               title: book.title,
               author: book.author,
@@ -94,7 +94,10 @@ function HomePage() {
               currentPrice: 5424.00,
               originalPrice: 5450.00,
               image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-              badge: 'Sale'
+              badge: 'Sale',
+              category: 'Mathematics',
+              rating: 4.5,
+              condition: 'Used'
             },
             {
               id: 2,
@@ -103,7 +106,46 @@ function HomePage() {
               currentPrice: 918.00,
               originalPrice: 2320.00,
               image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-              badge: 'New'
+              badge: 'New',
+              category: 'Literature',
+              rating: 4.3,
+              condition: 'New'
+            },
+            {
+              id: 3,
+              title: 'Oxford Dictionary',
+              author: 'Oxford Press',
+              currentPrice: 2500.00,
+              originalPrice: 3000.00,
+              image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+              badge: 'Popular',
+              category: 'Reference',
+              rating: 4.9,
+              condition: 'New'
+            },
+            {
+              id: 4,
+              title: 'AI Programming Guide',
+              author: 'Tech Authors',
+              currentPrice: 2800.00,
+              originalPrice: 3200.00,
+              image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+              badge: 'New',
+              category: 'Technology',
+              rating: 4.8,
+              condition: 'New'
+            },
+            {
+              id: 5,
+              title: 'World History',
+              author: 'History Experts',
+              currentPrice: 1800.00,
+              originalPrice: 2200.00,
+              image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+              badge: 'Sale',
+              category: 'History',
+              rating: 4.6,
+              condition: 'Used'
             }
           ]);
         }
@@ -118,7 +160,46 @@ function HomePage() {
             currentPrice: 5424.00,
             originalPrice: 5450.00,
             image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
-            badge: 'Sale'
+            badge: 'Sale',
+            category: 'Mathematics',
+            rating: 4.5,
+            condition: 'Used'
+          },
+          {
+            id: 2,
+            title: 'Oxford Dictionary',
+            author: 'Oxford Press',
+            currentPrice: 2500.00,
+            originalPrice: 3000.00,
+            image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+            badge: 'Popular',
+            category: 'Reference',
+            rating: 4.9,
+            condition: 'New'
+          },
+          {
+            id: 3,
+            title: 'AI Programming Guide',
+            author: 'Tech Authors',
+            currentPrice: 2800.00,
+            originalPrice: 3200.00,
+            image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+            badge: 'New',
+            category: 'Technology',
+            rating: 4.8,
+            condition: 'New'
+          },
+          {
+            id: 4,
+            title: 'World History',
+            author: 'History Experts',
+            currentPrice: 1800.00,
+            originalPrice: 2200.00,
+            image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+            badge: 'Sale',
+            category: 'History',
+            rating: 4.6,
+            condition: 'Used'
           }
         ]);
       } finally {

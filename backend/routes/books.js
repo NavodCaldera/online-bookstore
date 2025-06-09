@@ -155,7 +155,7 @@ router.get('/featured', async (req, res) => {
       LEFT JOIN categories c ON b.category_id = c.id
       WHERE b.availability = 1 AND b.rating >= 4.0
       ORDER BY b.rating DESC, b.created_at DESC
-      LIMIT 8
+      LIMIT 20
     `;
 
     const result = await executeQuery(query);
