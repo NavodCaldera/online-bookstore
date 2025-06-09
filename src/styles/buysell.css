@@ -80,6 +80,21 @@
   border-color: var(--primary-color, #2d5a27);
 }
 
+.nav-btn.disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.nav-btn.disabled:hover {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  transform: none;
+}
+
 .buysell-content {
   width: 100%;
   margin: 0 auto; /* Center the content */
