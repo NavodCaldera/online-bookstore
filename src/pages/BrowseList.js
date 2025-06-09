@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import Navigation from '../components/Navigation';
@@ -7,6 +7,7 @@ import '../styles/browse.css';
 import '../styles/home.css';
 
 function BrowseList() {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('browse');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -342,6 +343,19 @@ function BrowseList() {
     fetchBooks();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory, searchQuery, priceRange, sortBy, currentPage]);
+
+  // Handle URL parameters for category filtering
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const categoryParam = urlParams.get('category');
+
+    if (categoryParam) {
+      // Convert URL parameter to match our category values
+      const categoryValue = categoryParam.toLowerCase().replace(/\s+/g, '-');
+      setSelectedCategory(categoryValue);
+      setCurrentPage(1); // Reset to first page when category changes
+    }
+  }, [location.search]);
 
   // Fetch categories from API
   useEffect(() => {
