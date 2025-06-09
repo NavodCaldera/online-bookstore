@@ -1391,10 +1391,38 @@ section:nth-child(odd) {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background:
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(135deg, #482e1d 0%, #6b4423 25%, #805234 50%, #9a6b47 75%, #805234 100%);
+    background-size: 50px 50px, 80px 80px, 120px 120px, 100% 100%;
     padding: 60px 0;
     margin: 0;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%);
+    animation: shine 3s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
 }
 
 .footer-section .container {
@@ -1406,6 +1434,8 @@ section:nth-child(odd) {
     align-items: flex-start;
     gap: 40px;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .footer-left {
@@ -1427,24 +1457,60 @@ section:nth-child(odd) {
 .subscribe-form input {
     flex: 1;
     padding: 12px 15px;
-    border: 1px solid var(--light-gray);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
     font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.subscribe-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.subscribe-form input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
 .subscribe-form button {
     padding: 12px 25px;
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, #6b4423 0%, #805234 100%);
     color: var(--white);
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.subscribe-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%);
+    transition: left 0.3s ease;
 }
 
 .subscribe-form button:hover {
-    background-color: var(--hover-green);
+    background: linear-gradient(135deg, #805234 0%, #9a6b47 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.subscribe-form button:hover::before {
+    left: 100%;
 }
 
 .footer-center {
@@ -1465,17 +1531,51 @@ section:nth-child(odd) {
 }
 
 .footer-column li {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease;
+}
+
+.footer-column li:hover {
+    transform: translateX(3px);
 }
 
 .footer-column a {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-column a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%);
+    transition: left 0.3s ease;
+    z-index: 1;
 }
 
 .footer-column a:hover {
-    color: var(--accent-light);
+    color: #fff;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.25) 100%);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footer-column a:hover::before {
+    left: 100%;
 }
 
 .footer-right {

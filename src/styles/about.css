@@ -244,17 +244,47 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  background:
+      radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(135deg, #482e1d 0%, #6b4423 25%, #805234 50%, #9a6b47 75%, #805234 100%);
+  background-size: 50px 50px, 80px 80px, 120px 120px, 100% 100%;
   color: white;
   padding: 60px 50px;
   margin-top: 60px;
   flex-wrap: wrap;
   gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%);
+  animation: shine 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
 }
 
 .footer-left {
   flex: 1;
   min-width: 300px;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-left h2 {
