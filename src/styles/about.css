@@ -1,7 +1,7 @@
 /* About Us Page Styles - Integrated with existing design */
 .about-page {
   min-height: 100vh;
-  background-color: #f6fdf6;
+  background-color: #faf8f5;
 }
 
 /* About Container - Main section */
@@ -22,7 +22,7 @@
 }
 
 .about-link {
-  color: #2d5a27;
+  color: #482E1D;
   text-decoration: underline;
   font-size: 1rem;
   margin-bottom: 12px;
@@ -228,7 +228,7 @@
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #2d5a27;
+  color: #482E1D;
   cursor: pointer;
   margin-left: 8px;
   padding-bottom: 2px;
@@ -236,7 +236,7 @@
 }
 
 .community-input-group button:hover {
-  color: #52c41a;
+  color: #905530;
 }
 
 /* Footer Section */
@@ -309,7 +309,7 @@
 
 .subscribe-form button {
   padding: 12px 20px;
-  background-color: #2d5a27;
+  background-color: #482E1D;
   color: white;
   border: none;
   border-radius: 5px;
@@ -319,7 +319,7 @@
 }
 
 .subscribe-form button:hover {
-  background-color: #237804;
+  background-color: #3a2517;
 }
 
 .footer-center {
@@ -350,7 +350,7 @@
 }
 
 .footer-column a:hover {
-  color: #73d13d;
+  color: #A3966A;
 }
 
 .footer-right {
@@ -420,11 +420,11 @@
 }
 
 .social-icons a:hover {
-  background: #52c41a;
+  background: #905530;
   color: white;
   transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(82, 196, 26, 0.3);
-  border-color: #52c41a;
+  box-shadow: 0 4px 15px rgba(144, 85, 48, 0.3);
+  border-color: #905530;
 }
 
 .footer-center-logo {
@@ -459,7 +459,7 @@
 }
 
 .copyright-footer {
-  background-color: #1a3d1a;
+  background-color: #482E1D;
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
   padding: 20px;

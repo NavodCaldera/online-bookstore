@@ -26,7 +26,7 @@
 }
 
 .toast-success {
-  border-left: 4px solid #52c41a;
+  border-left: 4px solid #905530;
 }
 
 .toast-error {
@@ -41,7 +41,7 @@
 }
 
 .toast-success .toast-content i {
-  color: #52c41a;
+  color: #905530;
 }
 
 .toast-error .toast-content i {

@@ -1,11 +1,11 @@
 /* Contact Us Page Styles */
 .contact-container {
   min-height: 100vh;
-  background-color: #f6fdf6;
+  background-color: #faf8f5;
 }
 
 .contact-header {
-  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  background: linear-gradient(135deg, #482E1D 0%, #895D2B 100%);
   color: white;
   text-align: center;
   padding: 80px 40px;
@@ -59,7 +59,7 @@
 
 .info-item i {
   font-size: 1.5rem;
-  color: #2d5a27;
+  color: #482E1D;
   margin-top: 5px;
   width: 24px;
   text-align: center;
@@ -119,8 +119,8 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #2d5a27;
-  box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+  border-color: #482E1D;
+  box-shadow: 0 0 0 3px rgba(72, 46, 29, 0.1);
 }
 
 .form-group textarea {
@@ -131,7 +131,7 @@
 .submit-btn {
   width: 100%;
   padding: 15px 30px;
-  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  background: linear-gradient(135deg, #482E1D 0%, #895D2B 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -147,7 +147,7 @@
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(45, 90, 39, 0.3);
+  box-shadow: 0 8px 25px rgba(72, 46, 29, 0.3);
 }
 
 .submit-btn:disabled {
@@ -194,7 +194,7 @@
 
 /* Footer */
 .contact-footer {
-  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  background: linear-gradient(135deg, #482E1D 0%, #895D2B 100%);
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
   padding: 30px 20px;

@@ -16,7 +16,7 @@
 }
 
 .breadcrumb a {
-  color: #007bff;
+  color: #482E1D;
   text-decoration: none;
 }
 
@@ -91,8 +91,8 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  border-color: #482E1D;
+  box-shadow: 0 0 0 2px rgba(72, 46, 29, 0.2);
 }
 
 .payment-method {
@@ -109,8 +109,8 @@
 }
 
 .method-option.active {
-  border-color: #007bff;
-  background-color: #e7f3ff;
+  border-color: #482E1D;
+  background-color: #f7f3eb;
   font-weight: bold;
 }
 
@@ -192,7 +192,7 @@
   font-size: 1.1rem;
   font-weight: bold;
   color: #fff;
-  background-color: #28a745;
+  background-color: #482E1D;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -200,7 +200,7 @@
 }
 
 .place-order-btn:hover {
-  background-color: #218838;
+  background-color: #3a2517;
 }
 
 .place-order-btn:disabled {
@@ -219,7 +219,7 @@
     font-size: 0.9rem;
 }
 .secure-payment-info i {
-    color: #28a745;
+    color: #482E1D;
     margin-right: 0.3rem;
 }
 
@@ -236,7 +236,7 @@
     margin-top: 1.5rem;
     padding: 0.8rem 2rem;
     text-decoration: none;
-    background: #007bff;
+    background: #482E1D;
     color: white;
     border-radius: 5px;
     display: inline-block;
