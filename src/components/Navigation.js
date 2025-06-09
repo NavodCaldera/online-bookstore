@@ -6,6 +6,7 @@ import '../styles/navigation.css';
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const location = useLocation();
@@ -18,6 +19,10 @@ function Navigation() {
 
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const toggleMoreDropdown = () => {
+    setIsMoreDropdownOpen(!isMoreDropdownOpen);
   };
 
   // Check authentication status on component mount and when localStorage changes
@@ -86,6 +91,9 @@ function Navigation() {
       if (!event.target.closest('.user-dropdown-container')) {
         setIsUserDropdownOpen(false);
       }
+      if (!event.target.closest('.more-dropdown-container')) {
+        setIsMoreDropdownOpen(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -96,6 +104,7 @@ function Navigation() {
   useEffect(() => {
     setIsMenuOpen(false);
     setIsUserDropdownOpen(false);
+    setIsMoreDropdownOpen(false);
   }, [location.pathname]);
 
   const isActive = (path) => {
@@ -152,23 +161,31 @@ function Navigation() {
           )}
 
           {/* Additional Navigation Items */}
-          <div className="nav-link dropdown">
-            <i className="fas fa-ellipsis-h"></i>
-            <span>More</span>
-            <div className="dropdown-content">
-              <Link to="/about" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-info-circle"></i>
-                About Us
-              </Link>
-              <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-envelope"></i>
-                Contact
-              </Link>
-              <Link to="/help" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-question-circle"></i>
-                Help
-              </Link>
-            </div>
+          <div className="nav-link dropdown more-dropdown-container">
+            <button
+              className="more-dropdown-trigger"
+              onClick={toggleMoreDropdown}
+            >
+              <i className="fas fa-ellipsis-h"></i>
+              <span>More</span>
+              <i className={`fas fa-chevron-down dropdown-arrow ${isMoreDropdownOpen ? 'open' : ''}`}></i>
+            </button>
+            {isMoreDropdownOpen && (
+              <div className="dropdown-content">
+                <Link to="/about" onClick={() => { setIsMenuOpen(false); setIsMoreDropdownOpen(false); }}>
+                  <i className="fas fa-info-circle"></i>
+                  About Us
+                </Link>
+                <Link to="/contact" onClick={() => { setIsMenuOpen(false); setIsMoreDropdownOpen(false); }}>
+                  <i className="fas fa-envelope"></i>
+                  Contact
+                </Link>
+                <Link to="/help" onClick={() => { setIsMenuOpen(false); setIsMoreDropdownOpen(false); }}>
+                  <i className="fas fa-question-circle"></i>
+                  Help
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
