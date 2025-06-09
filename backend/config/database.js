@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 require('dotenv').config();
 
-// Database configuration
+// Database configuration - Use SQLite for development
 const dbPath = path.join(__dirname, '../database/bookstore.db');
 
 // Create SQLite database connection

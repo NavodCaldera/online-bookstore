@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import '../styles/contact.css';
 import '../styles/home.css';
+import logoImg from '../assets/images/logo.webp';
 
 function ContactUs() {
   const [formData, setFormData] = useState({
@@ -202,7 +203,7 @@ function ContactUs() {
           <div className="footer-right">
             <div style={{textAlign: 'right'}}>
               <Link to="/">
-                <img src="/logo.webp" alt="Site Logo" className="logo" />
+                <img src={logoImg} alt="Site Logo" className="logo" />
               </Link>
               <span style={{textAlign: 'right'}}>PageTurn</span>
             </div>
@@ -226,7 +227,7 @@ function ContactUs() {
 
           <div className="footer-center-logo">
             <Link to="/">
-              <img src="/logo.webp" alt="Logo" />
+              <img src={logoImg} alt="Logo" />
             </Link>
             <span>PageTurn</span>
           </div>

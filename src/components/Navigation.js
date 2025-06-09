@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import '../styles/navigation.css';
+import logoImg from '../assets/images/logo.webp';
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -116,7 +117,7 @@ function Navigation() {
       <div className="nav-container">
         {/* Logo/Brand */}
         <Link to="/" className="nav-logo">
-          <img src="/logo.webp" alt="PageTurn Logo" className="nav-logo-img" />
+          <img src={logoImg} alt="PageTurn Logo" className="nav-logo-img" />
           <span>PageTurn</span>
         </Link>
 

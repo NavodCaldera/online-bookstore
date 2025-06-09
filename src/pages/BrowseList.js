@@ -5,13 +5,14 @@ import { useToast } from '../context/ToastContext';
 import Navigation from '../components/Navigation';
 import '../styles/browse.css';
 import '../styles/home.css';
+import logoImg from '../assets/images/logo.webp';
 
 function BrowseList() {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('browse');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [priceRange, setPriceRange] = useState([0, 3000]); // Updated for 1 USD = 50 LKR conversion
+  const [priceRange, setPriceRange] = useState([0, 10000]); // Updated for 1 USD = 50 LKR conversion
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([
     { value: 'all', label: 'All Categories' }
@@ -249,7 +250,7 @@ function BrowseList() {
       if (priceRange[0] > 0) {
         params.append('minPrice', priceRange[0]);
       }
-      if (priceRange[1] < 3000) {
+      if (priceRange[1] < 10000) {
         params.append('maxPrice', priceRange[1]);
       }
 
@@ -267,12 +268,6 @@ function BrowseList() {
       const sortConfig = sortMapping[sortBy] || sortMapping['newest'];
       params.append('sortBy', sortConfig.sortBy);
       params.append('sortOrder', sortConfig.sortOrder);
-      if (priceRange[0] > 0) {
-        params.append('minPrice', priceRange[0]);
-      }
-      if (priceRange[1] < 10000) {
-        params.append('maxPrice', priceRange[1]);
-      }
 
       const apiUrl = `${API_BASE_URL}/books?${params}`;
       console.log('🔍 API URL:', apiUrl);
@@ -481,7 +476,7 @@ function BrowseList() {
                   <input
                     type="range"
                     min="0"
-                    max="3000"
+                    max="10000"
                     step="100"
                     value={priceRange[0]}
                     onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
@@ -490,7 +485,7 @@ function BrowseList() {
                   <input
                     type="range"
                     min="0"
-                    max="3000"
+                    max="10000"
                     step="100"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
@@ -664,7 +659,7 @@ function BrowseList() {
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory('all');
-                    setPriceRange([0, 3000]);
+                    setPriceRange([0, 10000]);
                     setSortBy('newest');
                   }}
                 >
@@ -754,7 +749,7 @@ function BrowseList() {
                   value={listForm.price}
                   onChange={handleListFormChange}
                   min="50"
-                  max="3000"
+                  max="10000"
                   required
                 />
               </div>
@@ -898,7 +893,7 @@ function BrowseList() {
           <div className="footer-right">
             <div style={{textAlign: 'right'}}>
               <Link to="/">
-                <img src="/logo.webp" alt="Site Logo" className="logo" />
+                <img src={logoImg} alt="Site Logo" className="logo" />
               </Link>
               <span style={{textAlign: 'right'}}>PageTurn</span>
             </div>
@@ -922,7 +917,7 @@ function BrowseList() {
 
           <div className="footer-center-logo">
             <Link to="/">
-              <img src="/logo.webp" alt="Logo" />
+              <img src={logoImg} alt="Logo" />
             </Link>
             <span>PageTurn</span>
           </div>

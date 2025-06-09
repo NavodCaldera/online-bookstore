@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import NewsletterSubscription from '../components/NewsletterSubscription';
 import '../styles/contact.css'; // Reusing contact styles for consistency
 import '../styles/home.css';
+import logoImg from '../assets/images/logo.webp';
 
 function Help() {
   const [activeSection, setActiveSection] = useState('getting-started');
@@ -414,7 +415,7 @@ function Help() {
           <div className="footer-right">
             <div style={{textAlign: 'right'}}>
               <Link to="/">
-                <img src="/logo.webp" alt="Site Logo" className="logo" />
+                <img src={logoImg} alt="Site Logo" className="logo" />
               </Link>
               <span style={{textAlign: 'right'}}>PageTurn</span>
             </div>
@@ -438,7 +439,7 @@ function Help() {
 
           <div className="footer-center-logo">
             <Link to="/">
-              <img src="/logo.webp" alt="Logo" />
+              <img src={logoImg} alt="Logo" />
             </Link>
             <span>PageTurn</span>
           </div>

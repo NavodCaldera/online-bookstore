@@ -1,7 +1,9 @@
 {
-  "name": "online-bookstore",
-  "version": "0.1.0",
+  "name": "pageturn-bookstore",
+  "version": "1.0.0",
+  "description": "PageTurn Educational Bookstore - A modern platform for buying and selling educational materials",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -14,6 +16,16 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "keywords": [
+    "bookstore",
+    "education",
+    "react",
+    "e-commerce",
+    "books",
+    "students"
+  ],
+  "author": "Dinusha Ekanayake",
+  "license": "MIT",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -31,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "proxy": "http://localhost:3002"
 }
