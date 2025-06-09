@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 import { useToast } from './context/ToastContext';
 import Navigation from './components/Navigation';
@@ -7,11 +7,13 @@ import NewsletterSubscription from './components/NewsletterSubscription';
 import './styles/home.css';
 
 function HomePage() {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
   const [isFiltering, setIsFiltering] = useState(false);
   const [wishlist, setWishlist] = useState([]);
+  const [currentBookIndex, setCurrentBookIndex] = useState(0);
   const { addToCart, getTotalItems, getTotalPrice } = useCart();
   const { showToast } = useToast();
 
@@ -245,6 +247,7 @@ function HomePage() {
     if (filter === activeFilter) return; // Don't filter if same filter is clicked
 
     setIsFiltering(true);
+    setCurrentBookIndex(0); // Reset to first page when filter changes
 
     // Add a small delay for smooth transition
     setTimeout(() => {
@@ -260,6 +263,31 @@ function HomePage() {
     }
     return book.category && book.category.toLowerCase() === activeFilter.toLowerCase();
   });
+
+  // Book carousel functions
+  const booksPerPage = 4;
+  const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
+
+  const nextBooks = () => {
+    setCurrentBookIndex((prev) => {
+      const nextIndex = prev + booksPerPage;
+      return nextIndex >= filteredBooks.length ? 0 : nextIndex;
+    });
+  };
+
+  const prevBooks = () => {
+    setCurrentBookIndex((prev) => {
+      const prevIndex = prev - booksPerPage;
+      return prevIndex < 0 ? Math.max(0, filteredBooks.length - booksPerPage) : prevIndex;
+    });
+  };
+
+  // Reset book index if it's beyond the filtered results
+  useEffect(() => {
+    if (currentBookIndex >= filteredBooks.length && filteredBooks.length > 0) {
+      setCurrentBookIndex(0);
+    }
+  }, [filteredBooks.length, currentBookIndex]);
 
   // Get count for each category
   const getCategoryCount = (category) => {
@@ -403,7 +431,7 @@ function HomePage() {
                 <div className="slide-content">
                   <h1>{slide.title}</h1>
                   <p>{slide.description}</p>
-                  <button className="btn-outline">{slide.buttonText}</button>
+                  <button className="btn-outline" onClick={() => navigate('/about')}>{slide.buttonText}</button>
                 </div>
                 <img src={slide.image} alt="Girl with books" />
               </>
@@ -415,8 +443,8 @@ function HomePage() {
                 <div className="slide-content">
                   <h1>{slide.title}</h1>
                   <p>{slide.description}</p>
-                  <button className="btn-primary">Shop Now</button>
-                  <button className="btn-outline">Sell Books</button>
+                  <button className="btn-primary" onClick={() => navigate('/browse')}>Shop Now</button>
+                  <button className="btn-outline" onClick={() => navigate('/buy-sell?section=sell')}>Sell Books</button>
                 </div>
               </>
             )}
@@ -494,41 +522,83 @@ function HomePage() {
               <p>Filtering books...</p>
             </div>
           ) : filteredBooks.length > 0 ? (
-            <div className="product-grid">
-              {filteredBooks.map((book) => (
-                <div key={book.id} className="product-card">
-                  {book.badge && (
-                    <div className={`product-badge ${book.badge.toLowerCase()}`}>
-                      {book.badge}
-                    </div>
-                  )}
-                  <img src={book.image} alt={book.title} />
-                  <div className="product-details">
-                    <div className="product-header">
-                      <h3>{book.title}</h3>
+            <>
+              <div className="featured-books-container">
+                {filteredBooks.length > booksPerPage && (
+                  <button
+                    className="book-nav-btn book-nav-prev"
+                    onClick={prevBooks}
+                    disabled={currentBookIndex === 0}
+                  >
+                    <i className="fas fa-chevron-left"></i>
+                  </button>
+                )}
+
+                <div className="product-grid">
+                  {filteredBooks.slice(currentBookIndex, currentBookIndex + booksPerPage).map((book) => (
+                  <div key={book.id} className="product-card">
+                    {book.badge && (
+                      <div className={`product-badge ${book.badge.toLowerCase()}`}>
+                        {book.badge}
+                      </div>
+                    )}
+                    <img src={book.image} alt={book.title} />
+                    <div className="product-details">
+                      <div className="product-header">
+                        <h3>{book.title}</h3>
+                        <button
+                          className={`wishlist-btn ${isInWishlist(book.id) ? 'active' : ''}`}
+                          onClick={() => toggleWishlist(book)}
+                          title={isInWishlist(book.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+                        >
+                          <i className={`fas fa-heart ${isInWishlist(book.id) ? 'filled' : ''}`}></i>
+                        </button>
+                      </div>
+                      <p className="product-author">By {book.author}</p>
+                      <div className="product-price">
+                        <span className="current-price">LKR {book.currentPrice.toFixed(2)}</span>
+                        <span className="original-price">LKR {book.originalPrice.toFixed(2)}</span>
+                      </div>
                       <button
-                        className={`wishlist-btn ${isInWishlist(book.id) ? 'active' : ''}`}
-                        onClick={() => toggleWishlist(book)}
-                        title={isInWishlist(book.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+                        className="add-to-cart"
+                        onClick={() => handleAddToCart(book)}
                       >
-                        <i className={`fas fa-heart ${isInWishlist(book.id) ? 'filled' : ''}`}></i>
+                        Add to Cart
                       </button>
                     </div>
-                    <p className="product-author">By {book.author}</p>
-                    <div className="product-price">
-                      <span className="current-price">LKR {book.currentPrice.toFixed(2)}</span>
-                      <span className="original-price">LKR {book.originalPrice.toFixed(2)}</span>
-                    </div>
-                    <button
-                      className="add-to-cart"
-                      onClick={() => handleAddToCart(book)}
-                    >
-                      Add to Cart
-                    </button>
+                  </div>
+                ))}
+                </div>
+
+                {filteredBooks.length > booksPerPage && (
+                  <button
+                    className="book-nav-btn book-nav-next"
+                    onClick={nextBooks}
+                    disabled={currentBookIndex + booksPerPage >= filteredBooks.length}
+                  >
+                    <i className="fas fa-chevron-right"></i>
+                  </button>
+                )}
+              </div>
+
+              {/* Page Indicators */}
+              {filteredBooks.length > booksPerPage && (
+                <div className="book-pagination-info">
+                  <div className="book-page-indicators">
+                    {Array.from({ length: totalPages }, (_, index) => (
+                      <span
+                        key={index}
+                        className={`page-dot ${Math.floor(currentBookIndex / booksPerPage) === index ? 'active' : ''}`}
+                        onClick={() => setCurrentBookIndex(index * booksPerPage)}
+                      ></span>
+                    ))}
+                  </div>
+                  <div className="page-info">
+                    Showing {currentBookIndex + 1}-{Math.min(currentBookIndex + booksPerPage, filteredBooks.length)} of {filteredBooks.length} books
                   </div>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           ) : (
             <div className="no-books-message">
               <i className="fas fa-book-open"></i>
