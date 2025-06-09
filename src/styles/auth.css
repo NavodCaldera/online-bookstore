@@ -1,6 +1,6 @@
 .auth-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f6fdf6 0%, #e8f5e8 100%);
+  background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
   padding: 0;
   margin: 0;
   width: 100%;
@@ -31,13 +31,13 @@
 
 .auth-header h1 {
   font-size: 2.5rem;
-  color: var(--text-dark, #2d3142);
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
 .auth-header p {
   font-size: 1.1rem;
-  color: var(--text-light, #6b7280);
+  color: var(--text-light);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -74,7 +74,7 @@
 
 .form-group label {
   font-weight: 600;
-  color: var(--text-dark, #2d3142);
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -188,8 +188,8 @@
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
-  border-color: var(--primary-color, #2d5a27);
-  background-color: var(--primary-color, #2d5a27);
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
@@ -200,7 +200,7 @@
 }
 
 .link {
-  color: var(--primary-color, #2d5a27);
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
 }
@@ -244,7 +244,7 @@
   text-align: center;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(45, 90, 39, 0.2);
+  border-top: 1px solid rgba(72, 46, 29, 0.2);
 }
 
 .auth-benefits {

@@ -226,7 +226,7 @@ function Help() {
                 padding: '0.75rem',
                 margin: '0.25rem 0',
                 border: 'none',
-                background: activeSection === key ? '#007bff' : 'transparent',
+                background: activeSection === key ? '#482E1D' : 'transparent',
                 color: activeSection === key ? 'white' : '#333',
                 borderRadius: '5px',
                 cursor: 'pointer',
@@ -292,8 +292,8 @@ function Help() {
                           color: '#333',
                           fontSize: '1.1rem'
                         }}>
-                          <i className="fas fa-question-circle" style={{ 
-                            color: '#007bff',
+                          <i className="fas fa-question-circle" style={{
+                            color: '#482E1D',
                             marginRight: '0.5rem'
                           }}></i>
                           {item.question}
@@ -341,10 +341,10 @@ function Help() {
           justifyContent: 'center',
           flexWrap: 'wrap'
         }}>
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             style={{
-              background: '#007bff',
+              background: '#482E1D',
               color: 'white',
               padding: '0.75rem 1.5rem',
               borderRadius: '5px',
@@ -358,10 +358,10 @@ function Help() {
             <i className="fas fa-envelope"></i>
             Contact Support
           </Link>
-          <a 
+          <a
             href="mailto:support@pageturn.lk"
             style={{
-              background: '#28a745',
+              background: '#905530',
               color: 'white',
               padding: '0.75rem 1.5rem',
               borderRadius: '5px',

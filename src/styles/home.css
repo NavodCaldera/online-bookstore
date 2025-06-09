@@ -55,24 +55,24 @@ html {
 }
 
 :root {
-    /* Green Color Theme */
-    --primary-color: #2d5a27; /* Deep forest green */
-    --primary-light: #4a7c59; /* Medium green */
-    --primary-dark: #1a3d1a; /* Dark green */
-    --secondary-color: #f0f8f0; /* Very light green */
-    --accent-color: #52c41a; /* Bright green */
-    --accent-light: #73d13d; /* Light bright green */
-    --success-color: #389e0d; /* Success green */
+    /* Warm Brown Color Theme */
+    --primary-color: #482E1D; /* Espresso - Deep brown */
+    --primary-light: #895D2B; /* Caramel - Medium brown */
+    --primary-dark: #3a2517; /* Darker espresso */
+    --secondary-color: #f7f3eb; /* Very light warm beige */
+    --accent-color: #905530; /* Cinnamon - Warm accent */
+    --accent-light: #A3966A; /* Leafy - Light brown accent */
+    --success-color: #895D2B; /* Caramel for success states */
     --text-dark: #1f2937; /* Dark gray for text */
     --text-light: #6b7280; /* Light gray for text */
     --white: #ffffff;
     --light-gray: #e5e7eb;
     --medium-gray: #9ca3af;
-    --shadow: rgba(45, 90, 39, 0.1); /* Green-tinted shadow */
-    --bg-color: #f6fdf6; /* Very light green background */
+    --shadow: rgba(72, 46, 29, 0.1); /* Brown-tinted shadow */
+    --bg-color: #faf8f5; /* Very light warm background */
     --card-bg: #ffffff; /* Card background */
-    --section-alt-bg: #e8f5e8; /* Light green section background */
-    --hover-green: #237804; /* Darker green for hover states */
+    --section-alt-bg: #f0ebe3; /* Light warm section background */
+    --hover-brown: #3a2517; /* Darker brown for hover states */
 
     /* Typography */
     --heading-font: 'Playfair Display', serif;
@@ -177,7 +177,7 @@ html {
 
 /* Add subtle glow effect on header hover */
 .main-header:hover {
-  box-shadow: 0 6px 25px rgba(45, 90, 39, 0.2);
+  box-shadow: 0 6px 25px rgba(72, 46, 29, 0.2);
 }
 
 /* Badge/notification styling for cart and wishlist */
@@ -330,9 +330,9 @@ html {
 
 .main-header a:hover {
   color: var(--accent-color);
-  background: rgba(82, 196, 26, 0.1);
+  background: rgba(144, 85, 48, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(82, 196, 26, 0.2);
+  box-shadow: 0 4px 12px rgba(144, 85, 48, 0.2);
 }
 
 .main-header .header-center > a {
@@ -489,11 +489,11 @@ html {
 }
 
 .search-container:hover {
-  box-shadow: 0 4px 12px rgba(45, 90, 39, 0.15);
+  box-shadow: 0 4px 12px rgba(72, 46, 29, 0.15);
 }
 
 .search-container:focus-within {
-  box-shadow: 0 4px 16px rgba(45, 90, 39, 0.2);
+  box-shadow: 0 4px 16px rgba(72, 46, 29, 0.2);
 }
 
 .search-container input[type="text"] {
@@ -558,15 +558,15 @@ html {
 }
 
 .search-container button:hover {
-  background: linear-gradient(135deg, #4a3020 0%, #5a3828 100%);
-  border-color: #4a3020;
+  background: linear-gradient(135deg, #895D2B 0%, #A3966A 100%);
+  border-color: #895D2B;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(58, 37, 23, 0.4);
+  box-shadow: 0 4px 12px rgba(137, 93, 43, 0.4);
 }
 
 .search-container button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(58, 37, 23, 0.3);
+  box-shadow: 0 2px 6px rgba(137, 93, 43, 0.3);
 }
 
 .search-container button i {
@@ -603,7 +603,7 @@ html {
 }
 
 .main-nav {
-  background-color: #d1c2b6;
+  background-color: #e8ddd1;
   border-bottom: 1px solid var(--light-gray);
 }
 
@@ -839,7 +839,7 @@ body::before {
   box-sizing: border-box; /* Important for correct padding calculation */
   text-align: center;
   /* Adds an appealing, subtle background gradient */
-  background: linear-gradient(135deg, #f5fef7, #e8f9ed);
+  background: linear-gradient(135deg, #faf8f5, #f0ebe3);
 }
 
 /* Animate the content when the slide becomes active */
@@ -860,14 +860,14 @@ body::before {
       background: linear-gradient(135deg, white 0%, var(--secondary-color) 100%);
       padding: 40px 30px;
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(45, 90, 39, 0.15);
+      box-shadow: 0 8px 25px rgba(72, 46, 29, 0.15);
       width: 280px;
       text-decoration: none;
       color: inherit;
       transition: all 0.4s ease;
       display: block;
       position: relative;
-      border: 1px solid rgba(45, 90, 39, 0.1);
+      border: 1px solid rgba(72, 46, 29, 0.1);
     }
 
     .step::before {
@@ -877,7 +877,7 @@ body::before {
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(82, 196, 26, 0.05) 0%, transparent 100%);
+      background: linear-gradient(135deg, rgba(144, 85, 48, 0.05) 0%, transparent 100%);
       opacity: 0;
       transition: opacity 0.3s ease;
       border-radius: 20px;
@@ -885,7 +885,7 @@ body::before {
 
     .step:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(45, 90, 39, 0.25);
+      box-shadow: 0 15px 40px rgba(72, 46, 29, 0.25);
       text-decoration: none;
       color: inherit;
       border-color: var(--accent-color);
@@ -956,7 +956,7 @@ body::before {
 .no-books-message .btn-primary:hover {
     background: var(--accent-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(82, 196, 26, 0.3);
+    box-shadow: 0 4px 12px rgba(144, 85, 48, 0.3);
 }
 
     .step h3 {
@@ -1107,7 +1107,7 @@ section:nth-child(odd) {
     padding: 20px;
     background: var(--secondary-color);
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(45, 90, 39, 0.1);
+    box-shadow: 0 2px 8px rgba(72, 46, 29, 0.1);
 }
 
 .filter-btn {
@@ -1129,7 +1129,7 @@ section:nth-child(odd) {
     color: var(--primary-color);
     border-color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45, 90, 39, 0.2);
+    box-shadow: 0 4px 12px rgba(72, 46, 29, 0.2);
 }
 
 .filter-btn.active {
@@ -1137,7 +1137,7 @@ section:nth-child(odd) {
     color: var(--white);
     border-color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45, 90, 39, 0.3);
+    box-shadow: 0 4px 12px rgba(72, 46, 29, 0.3);
 }
 
 .filter-btn.active:hover {
@@ -1187,9 +1187,9 @@ section:nth-child(odd) {
     background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary-color) 100%);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(45, 90, 39, 0.15);
+    box-shadow: 0 8px 25px rgba(72, 46, 29, 0.15);
     transition: all 0.4s ease;
-    border: 1px solid rgba(45, 90, 39, 0.1);
+    border: 1px solid rgba(72, 46, 29, 0.1);
 }
 
 .product-card::before {
@@ -1199,7 +1199,7 @@ section:nth-child(odd) {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(82, 196, 26, 0.05) 0%, transparent 100%);
+    background: linear-gradient(135deg, rgba(144, 85, 48, 0.05) 0%, transparent 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
@@ -1207,7 +1207,7 @@ section:nth-child(odd) {
 
 .product-card:hover {
     transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(45, 90, 39, 0.25);
+    box-shadow: 0 20px 40px rgba(72, 46, 29, 0.25);
     border-color: var(--accent-color);
 }
 
@@ -1291,7 +1291,7 @@ section:nth-child(odd) {
 }
 
 .wishlist-btn:hover {
-    background: rgba(45, 90, 39, 0.1);
+    background: rgba(72, 46, 29, 0.1);
     transform: scale(1.1);
 }
 

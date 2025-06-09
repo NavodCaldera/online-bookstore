@@ -69,14 +69,14 @@
 }
 
 .tab-button:hover {
-  border-color: #482E1D;
+  border-color: var(--primary-color, #2d5a27);
   transform: translateY(-2px);
 }
 
 .tab-button.active {
-  background: #482E1D;
+  background: var(--primary-color);
   color: white;
-  border-color: #482E1D;
+  border-color: var(--primary-color);
 }
 
 .browse-content {
@@ -107,7 +107,7 @@
 .search-input {
   flex: 1;
   padding: 1rem;
-  border: 2px solid #3a2517;
+  border: 2px solid var(--primary-color);
   border-right: none;
   border-radius: 12px 0 0 12px;
   font-size: 1rem;
@@ -115,13 +115,13 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #3a2517;
-  box-shadow: 0 0 0 3px rgba(58, 37, 23, 0.1);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(72, 46, 29, 0.1);
 }
 
 .search-button {
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, #3a2517 0%, #4a3020 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
   color: white;
   border: none;
   border-radius: 0 12px 12px 0;
@@ -234,7 +234,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #482E1D;
+  background: var(--primary-color);
   cursor: pointer;
 }
 
@@ -276,7 +276,7 @@
 .loading-state i {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: var(--primary-color, #2d5a27);
+  color: var(--primary-color);
 }
 
 .books-grid {
@@ -313,7 +313,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: var(--primary-color, #2d5a27);
+  background: var(--primary-color);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -327,18 +327,18 @@
 
 .book-details h4 {
   font-size: 1.2rem;
-  color: var(--text-dark, #2d3142);
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
 .author {
-  color: var(--text-light, #6b7280);
+  color: var(--text-light);
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
 }
 
 .description {
-  color: var(--text-light, #6b7280);
+  color: var(--text-light);
   font-size: 0.9rem;
   line-height: 1.4;
   margin-bottom: 1rem;
@@ -349,7 +349,7 @@
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: 0.875rem;
-  color: var(--text-light, #6b7280);
+  color: var(--text-light);
 }
 
 .book-meta span {
@@ -368,17 +368,17 @@
 .current-price {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--primary-color, #2d5a27);
+  color: var(--primary-color);
 }
 
 .original-price {
   font-size: 1rem;
-  color: var(--text-light, #6b7280);
+  color: var(--text-light);
   text-decoration: line-through;
 }
 
 .savings {
-  background: var(--accent-color, #52c41a);
+  background: var(--accent-color);
   color: white;
   padding: 0.25rem 0.5rem;
   border-radius: 12px;
@@ -393,7 +393,7 @@
 
 .btn-primary {
   flex: 1;
-  background: #482E1D;
+  background: var(--primary-color);
   color: white;
   border: none;
   padding: 0.75rem 1rem;
@@ -408,12 +408,12 @@
 }
 
 .btn-primary:hover {
-  background: #3a2014;
+  background: var(--primary-dark);
 }
 
 .btn-secondary {
   background: #f3f4f6;
-  color: var(--text-dark, #2d3142);
+  color: var(--text-dark);
   border: none;
   padding: 0.75rem;
   border-radius: 8px;
@@ -476,12 +476,12 @@
 
 /* View button specific styling */
 .btn-secondary.view-btn:hover {
-    background: rgba(52, 152, 219, 0.1);
-    border: 1px solid rgba(52, 152, 219, 0.3);
+    background: rgba(144, 85, 48, 0.1);
+    border: 1px solid rgba(144, 85, 48, 0.3);
 }
 
 .btn-secondary.view-btn:hover i {
-    color: #3498db;
+    color: #905530;
     transform: scale(1.1);
 }
 
@@ -494,12 +494,12 @@
 .no-results i {
   font-size: 4rem;
   margin-bottom: 1rem;
-  color: #482E1D;
+  color: var(--primary-color);
 }
 
 .no-results h3 {
   font-size: 1.5rem;
-  color: var(--text-dark, #2d3142);
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -542,13 +542,13 @@
 
 .benefit-card i {
   font-size: 3rem;
-  color: var(--primary-color, #2d5a27);
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
 .benefit-card h3 {
   font-size: 1.2rem;
-  color: var(--text-dark, #2d3142);
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -562,7 +562,7 @@
 
 .quick-list-section h3 {
   font-size: 1.5rem;
-  color: var(--text-dark, #2d3142);
+  color: var(--text-dark);
   margin-bottom: 1.5rem;
 }
 
@@ -603,9 +603,9 @@
 
 /* Success message styles */
 .success-message {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+  background: #f0ebe3;
+  color: #482E1D;
+  border: 1px solid #e8ddd1;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -615,7 +615,7 @@
 }
 
 .success-message i {
-  color: #28a745;
+  color: #905530;
   font-size: 1.2rem;
 }
 
@@ -624,8 +624,8 @@
 .form-select:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: var(--primary-color, #5338128d);
-  box-shadow: 0 0 0 2px rgba(83, 56, 18, 0.1);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(72, 46, 29, 0.1);
 }
 
 .form-input:required:invalid {
@@ -633,7 +633,7 @@
 }
 
 .form-input:required:valid {
-  border-color: #28a745;
+  border-color: #905530;
 }
 
 /* Button loading state */
@@ -656,7 +656,7 @@
 
 .listing-tips h3 {
   font-size: 1.5rem;
-  color: var(--text-dark, #2d3142);
+  color: var(--text-dark);
   margin-bottom: 1rem;
 }
 
@@ -670,11 +670,11 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0;
-  color: var(--text-light, #6b7280);
+  color: var(--text-light);
 }
 
 .listing-tips li i {
-  color: #10b981;
+  color: #905530;
 }
 
 /* Responsive Design */
@@ -833,21 +833,21 @@
 }
 
 .page-number:hover {
-  background: var(--primary-color, #5338128d);
-  border-color: var(--primary-color, #5338128d);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
   color: white;
   transform: translateY(-1px);
 }
 
 .page-number.active {
-  background: var(--primary-color, #5338128d);
-  border-color: var(--primary-color, #5338128d);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
   color: white;
 }
 
 .page-number.active:hover {
-  background: #3d2a0f;
-  border-color: #3d2a0f;
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
 }
 
 /* Responsive pagination */

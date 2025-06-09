@@ -3,19 +3,19 @@ body {
   font-family: Arial, sans-serif;
 }
 :root {
-    /* Updated Color palette */
-    --primary-color: #5338128d;
-    --secondary-color: #f8f9fa;
-    --accent-color: #ff6b6b;
+    /* Warm Brown Color Theme */
+    --primary-color: #482E1D; /* Espresso */
+    --secondary-color: #f7f3eb;
+    --accent-color: #905530; /* Cinnamon */
     --text-dark: #2d3142;
     --text-light: #6b7280;
     --white: #ffffff;
     --light-gray: #e5e7eb;
     --medium-gray: #9ca3af;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --bg-color: #f7f3eb; /* New warm background color */
+    --shadow: rgba(72, 46, 29, 0.1);
+    --bg-color: #faf8f5; /* Warm background color */
     --card-bg: #fefefe;  /* Card background */
-    --section-alt-bg: #efe8dd; /* Alternative section background */
+    --section-alt-bg: #f0ebe3; /* Alternative section background */
     
     /* Typography */
     --heading-font: 'Playfair Display', serif;
@@ -164,7 +164,7 @@ body {
 
 .search-container button {
   padding: 8px 12px;
-  background-color: #333;
+  background-color: #482E1D;
   color: #fff;
   border: 1px solid #ccc;
   border-left: none;
@@ -257,7 +257,7 @@ body {
       gap: 32px;
     }
     .about-link {
-      color: #181c32;
+      color: #482E1D;
       text-decoration: underline;
       font-size: 1rem;
       margin-bottom: 12px;
@@ -319,10 +319,10 @@ body {
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #181c32;
+  color: #482E1D;
 }
 .underline {
-  border-bottom: 3px solid #181c32;
+  border-bottom: 3px solid #482E1D;
   padding-bottom: 2px;
 }
 .mission-subtitle {

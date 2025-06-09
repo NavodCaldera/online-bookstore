@@ -1,51 +1,14 @@
 /* Contact Us Page Styles */
 .contact-container {
   min-height: 100vh;
-  background-color: #f6fdf6;
+  background-color: #faf8f5;
 }
 
 .contact-header {
-  background: linear-gradient(135deg, #4d3418 0%, #7a5426 20%, #a77134 40%, #7a5426 60%, #a77134 80%, #4d3418 100%);
+  background: linear-gradient(135deg, #482E1D 0%, #895D2B 100%);
   color: white;
   text-align: center;
   padding: 80px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Shine effect overlay */
-.contact-header::before {
-  content: '';
-  position: absolute;
-  top: -70%;
-  left: -70%;
-  width: 240%;
-  height: 240%;
-  background: linear-gradient(45deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.25) 50%,
-    transparent 70%);
-  animation: contactHeaderShine 4.5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.contact-header h1,
-.contact-header p {
-  position: relative;
-  z-index: 2;
-}
-
-@keyframes contactHeaderShine {
-  0% {
-    transform: translateX(-140%) translateY(-140%) rotate(45deg);
-  }
-  50% {
-    transform: translateX(140%) translateY(140%) rotate(45deg);
-  }
-  100% {
-    transform: translateX(-140%) translateY(-140%) rotate(45deg);
-  }
 }
 
 .contact-header h1 {
@@ -156,8 +119,8 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #2d5a27;
-  box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+  border-color: #482E1D;
+  box-shadow: 0 0 0 3px rgba(72, 46, 29, 0.1);
 }
 
 .form-group textarea {
@@ -168,7 +131,7 @@
 .submit-btn {
   width: 100%;
   padding: 15px 30px;
-  background: linear-gradient(135deg, #482E1D 0%, #5a3722 100%);
+  background: linear-gradient(135deg, #482E1D 0%, #895D2B 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -183,9 +146,8 @@
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #3a2014 0%, #4a2a1a 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(72, 46, 29, 0.4);
+  box-shadow: 0 8px 25px rgba(72, 46, 29, 0.3);
 }
 
 .submit-btn:disabled {
@@ -232,7 +194,7 @@
 
 /* Footer */
 .contact-footer {
-  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  background: linear-gradient(135deg, #482E1D 0%, #895D2B 100%);
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
   padding: 30px 20px;
