@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 import { useToast } from './context/ToastContext';
 import Navigation from './components/Navigation';
@@ -7,6 +7,7 @@ import NewsletterSubscription from './components/NewsletterSubscription';
 import './styles/home.css';
 
 function HomePage() {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
@@ -403,7 +404,7 @@ function HomePage() {
                 <div className="slide-content">
                   <h1>{slide.title}</h1>
                   <p>{slide.description}</p>
-                  <button className="btn-outline">{slide.buttonText}</button>
+                  <button className="btn-outline" onClick={() => navigate('/about')}>{slide.buttonText}</button>
                 </div>
                 <img src={slide.image} alt="Girl with books" />
               </>
@@ -415,8 +416,8 @@ function HomePage() {
                 <div className="slide-content">
                   <h1>{slide.title}</h1>
                   <p>{slide.description}</p>
-                  <button className="btn-primary">Shop Now</button>
-                  <button className="btn-outline">Sell Books</button>
+                  <button className="btn-primary" onClick={() => navigate('/browse')}>Shop Now</button>
+                  <button className="btn-outline" onClick={() => navigate('/buy-sell?section=sell')}>Sell Books</button>
                 </div>
               </>
             )}
