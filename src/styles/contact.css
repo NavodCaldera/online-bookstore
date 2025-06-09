@@ -5,10 +5,47 @@
 }
 
 .contact-header {
-  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  background: linear-gradient(135deg, #4d3418 0%, #7a5426 20%, #a77134 40%, #7a5426 60%, #a77134 80%, #4d3418 100%);
   color: white;
   text-align: center;
   padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine effect overlay */
+.contact-header::before {
+  content: '';
+  position: absolute;
+  top: -70%;
+  left: -70%;
+  width: 240%;
+  height: 240%;
+  background: linear-gradient(45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 70%);
+  animation: contactHeaderShine 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-header h1,
+.contact-header p {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes contactHeaderShine {
+  0% {
+    transform: translateX(-140%) translateY(-140%) rotate(45deg);
+  }
+  50% {
+    transform: translateX(140%) translateY(140%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(-140%) translateY(-140%) rotate(45deg);
+  }
 }
 
 .contact-header h1 {
@@ -59,7 +96,7 @@
 
 .info-item i {
   font-size: 1.5rem;
-  color: #2d5a27;
+  color: #482E1D;
   margin-top: 5px;
   width: 24px;
   text-align: center;
@@ -131,7 +168,7 @@
 .submit-btn {
   width: 100%;
   padding: 15px 30px;
-  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  background: linear-gradient(135deg, #482E1D 0%, #5a3722 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -146,8 +183,9 @@
 }
 
 .submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3a2014 0%, #4a2a1a 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(45, 90, 39, 0.3);
+  box-shadow: 0 8px 25px rgba(72, 46, 29, 0.4);
 }
 
 .submit-btn:disabled {

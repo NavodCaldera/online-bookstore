@@ -69,14 +69,14 @@
 }
 
 .tab-button:hover {
-  border-color: var(--primary-color, #2d5a27);
+  border-color: #482E1D;
   transform: translateY(-2px);
 }
 
 .tab-button.active {
-  background: var(--primary-color, #2d5a27);
+  background: #482E1D;
   color: white;
-  border-color: var(--primary-color, #2d5a27);
+  border-color: #482E1D;
 }
 
 .browse-content {
@@ -234,7 +234,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--primary-color, #2d5a27);
+  background: #482E1D;
   cursor: pointer;
 }
 
@@ -393,7 +393,7 @@
 
 .btn-primary {
   flex: 1;
-  background: var(--primary-color, #2d5a27);
+  background: #482E1D;
   color: white;
   border: none;
   padding: 0.75rem 1rem;
@@ -408,7 +408,7 @@
 }
 
 .btn-primary:hover {
-  background: var(--hover-green, #237804);
+  background: #3a2014;
 }
 
 .btn-secondary {
@@ -494,7 +494,7 @@
 .no-results i {
   font-size: 4rem;
   margin-bottom: 1rem;
-  color: var(--primary-color, #2d5a27);
+  color: #482E1D;
 }
 
 .no-results h3 {
