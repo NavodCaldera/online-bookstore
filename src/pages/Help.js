@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import NewsletterSubscription from '../components/NewsletterSubscription';
 import '../styles/contact.css'; // Reusing contact styles for consistency
 import '../styles/home.css';
 
@@ -378,15 +379,12 @@ function Help() {
         </div>
       </div>
 
-      {/* Footer sections from other pages */}
+      {/* First Footer Section */}
       <div className="footer-section">
         <div className="container">
           <div className="footer-left">
             <h2>Receive The Latest Offers & Updates Via Email</h2>
-            <form className="subscribe-form">
-              <input type="email" placeholder="Enter your email" required />
-              <button type="submit">Subscribe</button>
-            </form>
+            <NewsletterSubscription source="help_footer" />
           </div>
 
           <div className="footer-center">
@@ -421,6 +419,36 @@ function Help() {
               <span style={{textAlign: 'right'}}>PageTurn</span>
             </div>
             <p>Empowering education through affordable reading</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Second Footer Section */}
+      <div className="footer-bottom">
+        <div className="container">
+          <div className="footer-social">
+            <h4>Follow Us</h4>
+            <div className="social-icons">
+              <a href="#"><i className="fab fa-facebook-f"></i></a>
+              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="#"><i className="fab fa-twitter"></i></a>
+              <a href="#"><i className="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <div className="footer-center-logo">
+            <Link to="/">
+              <img src="/logo.webp" alt="Logo" />
+            </Link>
+            <span>PageTurn</span>
+          </div>
+
+          <div className="footer-payments">
+            <h4>We accept</h4>
+            <div className="payment-icons">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" />
+            </div>
           </div>
         </div>
       </div>
