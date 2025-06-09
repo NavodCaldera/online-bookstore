@@ -210,7 +210,7 @@
 }
 
 .auth-button {
-  background: var(--primary-color, #2d5a27);
+  background: #482E1D;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -227,7 +227,7 @@
 }
 
 .auth-button:hover:not(:disabled) {
-  background: var(--hover-green, #237804);
+  background: #3a2014;
   transform: translateY(-2px);
 }
 
@@ -277,7 +277,7 @@
 
 .benefit-item i {
   font-size: 2rem;
-  color: var(--primary-color, #2d5a27);
+  color: #482E1D;
   margin-top: 0.25rem;
 }
 

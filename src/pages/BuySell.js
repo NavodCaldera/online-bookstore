@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import Navigation from '../components/Navigation';
+import NewsletterSubscription from '../components/NewsletterSubscription';
 import '../styles/buysell.css';
 import '../styles/home.css';
 
@@ -891,10 +892,7 @@ function BuySell() {
         <div className="container">
           <div className="footer-left">
             <h2>Receive The Latest Offers & Updates Via Email</h2>
-            <form className="subscribe-form">
-              <input type="email" placeholder="Enter your email" required />
-              <button type="submit">Subscribe</button>
-            </form>
+            <NewsletterSubscription source="buysell_footer" />
           </div>
 
           <div className="footer-center">

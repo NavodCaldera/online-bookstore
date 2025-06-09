@@ -1432,7 +1432,7 @@ section:nth-child(odd) {
         linear-gradient(135deg, #482e1d 0%, #6b4423 25%, #805234 50%, #9a6b47 75%, #805234 100%);
     background-size: 50px 50px, 80px 80px, 120px 120px, 100% 100%;
 
-    padding: 60px 0;
+    padding: 40px 0;
     margin: 0;
     width: 100%;
     position: relative;
