@@ -248,7 +248,22 @@ function BuySell() {
   };
 
   const handleCheckout = () => {
-    showToast('Checkout functionality will be implemented soon!', 'info');
+    if (cartItems.length === 0) {
+      showToast('Your cart is empty. Add some items first!', 'error');
+      return;
+    }
+
+    // Check if user is logged in
+    const authToken = localStorage.getItem('authToken');
+    if (!authToken) {
+      showToast('Please log in to proceed to checkout', 'error');
+      navigate('/login');
+      return;
+    }
+
+    // Show loading message and navigate to checkout page
+    showToast('Redirecting to checkout...', 'info');
+    navigate('/checkout');
   };
 
   const handleEditProfile = () => {
