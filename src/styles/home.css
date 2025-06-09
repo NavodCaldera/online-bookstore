@@ -1020,6 +1020,96 @@ body::before {
     background-color: white;
 }
 
+/* Featured Books Container with Navigation */
+.featured-books-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Book Navigation Buttons */
+.book-nav-btn {
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(72, 46, 29, 0.2);
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.book-nav-btn:hover:not(:disabled) {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(72, 46, 29, 0.3);
+}
+
+.book-nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.book-nav-btn i {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.book-nav-prev {
+    margin-right: 10px;
+}
+
+.book-nav-next {
+    margin-left: 10px;
+}
+
+/* Book Pagination */
+.book-pagination-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.book-page-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.page-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-dot:hover {
+    background: var(--primary-light);
+    transform: scale(1.2);
+}
+
+.page-dot.active {
+    background: var(--primary-color);
+    transform: scale(1.3);
+}
+
+.page-info {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -1976,6 +2066,19 @@ section:nth-child(odd) {
         gap: 15px;
     }
 
+    .featured-books-container {
+        gap: 10px;
+    }
+
+    .book-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .book-nav-btn i {
+        font-size: 1rem;
+    }
+
     .footer-section .container {
         flex-direction: column;
         gap: 30px;
@@ -2084,6 +2187,19 @@ section:nth-child(odd) {
     .product-grid {
         grid-template-columns: 1fr;
         gap: 15px;
+    }
+
+    .featured-books-container {
+        gap: 5px;
+    }
+
+    .book-nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .book-nav-btn i {
+        font-size: 0.9rem;
     }
 
     .info-banner {
