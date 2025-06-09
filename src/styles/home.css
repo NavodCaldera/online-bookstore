@@ -1424,55 +1424,48 @@ section:nth-child(odd) {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    background: linear-gradient(135deg, #482e1d 0%, #6b4228 25%, #805234 50%, #6b4228 75%, #482e1d 100%);
+
+    background:
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(135deg, #482e1d 0%, #6b4423 25%, #805234 50%, #9a6b47 75%, #805234 100%);
+    background-size: 50px 50px, 80px 80px, 120px 120px, 100% 100%;
+
     padding: 60px 0;
     margin: 0;
     width: 100%;
     position: relative;
     overflow: hidden;
-    color: #ffffff;
+
 }
 
-/* Shine effect overlay */
 .footer-section::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg,
-        transparent 40%,
-        rgba(255, 255, 255, 0.15) 50%,
-        transparent 60%);
-    animation: shine 6s ease-in-out infinite;
-    pointer-events: none;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%);
+    animation: shine 3s ease-in-out infinite;
     z-index: 1;
 }
 
-/* Dots pattern overlay */
-.footer-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250"><circle cx="80" cy="40" r="1.5" fill="%23a67c52" opacity="0.3"/><circle cx="320" cy="80" r="1" fill="%23d4a574" opacity="0.25"/><circle cx="150" cy="150" r="1.2" fill="%23a67c52" opacity="0.28"/><circle cx="350" cy="180" r="0.8" fill="%23d4a574" opacity="0.22"/><circle cx="60" cy="200" r="1.1" fill="%23a67c52" opacity="0.3"/><circle cx="280" cy="60" r="0.9" fill="%23d4a574" opacity="0.24"/></svg>');
-    pointer-events: none;
-    z-index: 2;
-}
-
 @keyframes shine {
-    0% {
-        transform: translateX(-120%) translateY(-120%) rotate(45deg);
-    }
-    50% {
-        transform: translateX(120%) translateY(120%) rotate(45deg);
-    }
-    100% {
-        transform: translateX(-120%) translateY(-120%) rotate(45deg);
-    }
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+
+
+
+
+
+
+
 }
 
 .footer-section .container {
@@ -1484,23 +1477,7 @@ section:nth-child(odd) {
     align-items: flex-start;
     gap: 40px;
     width: 100%;
-    color: #ffffff;
-    position: relative;
-    z-index: 3;
-}
 
-
-
-.footer-section .container * {
-    color: #ffffff;
-}
-
-.footer-section .container h2,
-.footer-section .container h3,
-.footer-section .container p,
-.footer-section .container span,
-.footer-section .container a {
-    color: #ffffff !important;
 }
 
 .footer-left {
@@ -1533,24 +1510,60 @@ section:nth-child(odd) {
 .subscribe-form input {
     flex: 1;
     padding: 12px 15px;
-    border: 1px solid var(--light-gray);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
     font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.subscribe-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.subscribe-form input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
 .subscribe-form button {
     padding: 12px 25px;
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, #6b4423 0%, #805234 100%);
     color: var(--white);
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.subscribe-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%);
+    transition: left 0.3s ease;
 }
 
 .subscribe-form button:hover {
-    background-color: var(--hover-green);
+    background: linear-gradient(135deg, #805234 0%, #9a6b47 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.subscribe-form button:hover::before {
+    left: 100%;
 }
 
 .footer-center {
@@ -1586,19 +1599,26 @@ section:nth-child(odd) {
 }
 
 .footer-column li {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease;
+}
+
+.footer-column li:hover {
+    transform: translateX(3px);
 }
 
 .footer-column a {
     color: #ffffff !important;
     text-decoration: none;
-    transition: all 0.4s ease;
+
+    transition: all 0.3s ease;
+
     padding: 8px 12px;
     border-radius: 6px;
     display: inline-block;
     position: relative;
     overflow: hidden;
-    margin: -8px -12px;
+
 }
 
 .footer-column a::before {
@@ -1608,6 +1628,9 @@ section:nth-child(odd) {
     left: -100%;
     width: 100%;
     height: 100%;
+
+
+
     background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.3), transparent);
     transition: left 0.5s ease;
 }
@@ -1618,6 +1641,7 @@ section:nth-child(odd) {
     transform: translateX(8px) scale(1.02);
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
     box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
+
 }
 
 .footer-column a:hover::before {
